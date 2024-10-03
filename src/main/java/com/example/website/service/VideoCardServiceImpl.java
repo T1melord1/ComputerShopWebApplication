@@ -32,7 +32,7 @@ public class VideoCardServiceImpl implements VideocardService {
     @Override
     @Transactional
     public void delete(Integer id) {
-        videocardRepository.delete(id);
+       videocardRepository.delete(id);
     }
 
     @Override
