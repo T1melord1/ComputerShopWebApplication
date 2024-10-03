@@ -7,11 +7,16 @@
 <body>
 <h1>Добавить видеокарту</h1>
 <form:form modelAttribute="videocard" action="/videocards/add" method="post">
+<%--   тег <form:form> для создания формы. Атрибут modelAttribute указывает на объект модели,
+который будет использоваться для связывания данных формы. Атрибут action указывает URL,
+на который будет отправлена форма, а method указывает метод HTTP (POST).--%>
   <table>
     <tr>
       <td>Manufacturer:</td>
       <td><form:input path="manufacturer"/></td>
     </tr>
+<%--   Каждые поля видеокарты (производитель, графический процессор, видеопамять, цвет, цена)
+занимают соответствующие теги <form:input> с атрибутом path, который указывает на свойство объекта модели. --%>
     <tr>
       <td>Graphic Processor:</td>
       <td><form:input path="graphicProcessor"/></td>

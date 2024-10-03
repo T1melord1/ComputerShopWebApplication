@@ -1,16 +1,37 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: vladb
-  Date: 01.10.2024
-  Time: 10:09
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<table>
+<tr>
+  <th>ID</th>
+  <th>Manufacturer</th>
+  <th>Graphic Processor</th>
+  <th>Video Memory</th>
+  <th>Color</th>
+  <th>Price</th>
+</tr>
+
+  <c:forEach var="videocard" items="${videocards}">
+    <tr>
+      <td>${videocard.id}</td>
+      <td>${videocard.manufacturer}</td>
+      <td>${videocard.graphicProcessor}</td>
+      <td>${videocard.videoMemory}</td>
+      <td>${videocard.color}</td>
+      <td>${videocard.price}</td>
+    </tr>
+
+  </c:forEach>
+
+
+
+</table>
+<a href="/videocards/add">Добавить видеокарту</a>
+<a href="/videocards/delete/14">Удалить видеокарту</a>
+<a href="/videocards/find/14">Найти видеокарту</a>
+</body>
 </html>
