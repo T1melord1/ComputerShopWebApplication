@@ -10,7 +10,10 @@
     <label for="manufacturer">Введите производителя видеокарты:</label>
     <input type="text" id="manufacturer" name="manufacturer" required>
     <button type="submit">Найти видеокарту</button>
-<a href="/videocards/add">Добавить видеокарту</a>
+</form>
+    <form action="/videocards/add" method="get">
+        <button type="submit">Добавить видеокарту</button>
+    </form>
 <table>
     <tr>
         <th>ID</th>
