@@ -2,9 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Информация о видеокарте</title>
 </head>
 <body>
+<h2>Найденная видеокарта</h2>
 <table>
     <tr>
         <th>ID</th>
@@ -14,17 +15,17 @@
         <th>Color</th>
         <th>Price</th>
     </tr>
-
+    <c:forEach var="videocard" items="${findVideocards}">
     <tr>
-        <td>${findVideocards.id}</td>
-        <td>${findVideocards.manufacturer}</td>
-        <td>${findVideocards.graphicProcessor}</td>
-        <td>${findVideocards.videoMemory}</td>
-        <td>${findVideocards.color}</td>
-        <td>${findVideocards.price}</td>
+        <td>${videocard.id}</td>
+        <td>${videocard.manufacturer}</td>
+        <td>${videocard.graphicProcessor}</td>
+        <td>${videocard.videoMemory}</td>
+        <td>${videocard.color}</td>
+        <td>${videocard.price}</td>
     </tr>
-
-<a href="/videocards/">Вернуться к списку видеокарт</a>
+    </c:forEach>
 </table>
+<a href="/videocards/">Вернуться к списку видеокарт</a>
 </body>
 </html>

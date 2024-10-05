@@ -1,6 +1,7 @@
 package com.example.website.dao;
 
 import com.example.website.entity.Videocard;
+import com.example.website.entity.VideocardType;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ public interface VideocardRepository {
 
     void delete(Integer id);
 
-    Videocard getVideocardById(Integer id);
+    List<Videocard> getVideocardByManufacturer(VideocardType manufacturer);
 }

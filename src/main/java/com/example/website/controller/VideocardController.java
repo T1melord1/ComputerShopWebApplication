@@ -1,6 +1,7 @@
 package com.example.website.controller;
 
 import com.example.website.entity.Videocard;
+import com.example.website.entity.VideocardType;
 import com.example.website.service.VideocardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -46,12 +47,13 @@ public class VideocardController {
         return "redirect:/videocards";
     }
 
-    @GetMapping("/find/{id}")
-    public String getVideocard(@PathVariable Integer id, Model model) {
-        Videocard videocard = videocardService.getVideocardById(id);
+    @GetMapping("/find/manufacturer/{manufacturer}")
+    public String getVideocardByManufacturer(@PathVariable VideocardType manufacturer, Model model) {
+        List<Videocard> videocard = videocardService.getVideocardByManufacturer(manufacturer);
         model.addAttribute("findVideocards", videocard);
         return "find-videocard";
     }
+
 }
 
 

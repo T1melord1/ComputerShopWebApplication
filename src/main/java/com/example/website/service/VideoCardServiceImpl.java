@@ -2,6 +2,7 @@ package com.example.website.service;
 
 import com.example.website.dao.VideocardRepository;
 import com.example.website.entity.Videocard;
+import com.example.website.entity.VideocardType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,8 +38,9 @@ public class VideoCardServiceImpl implements VideocardService {
 
     @Override
     @Transactional
-    public Videocard getVideocardById(Integer id) {
-        return videocardRepository.getVideocardById(id);
+    public List<Videocard> getVideocardByManufacturer(VideocardType manufacturer) {
+        List<Videocard> videocards = videocardRepository.getVideocardByManufacturer(manufacturer);
+        return videocards;
     }
 
 }

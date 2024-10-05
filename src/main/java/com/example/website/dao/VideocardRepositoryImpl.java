@@ -1,6 +1,7 @@
 package com.example.website.dao;
 
 import com.example.website.entity.Videocard;
+import com.example.website.entity.VideocardType;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -36,9 +37,12 @@ public class VideocardRepositoryImpl implements VideocardRepository {
     }
 
     @Override
-    public Videocard getVideocardById(Integer id) {
+    public List<Videocard> getVideocardByManufacturer(VideocardType manufacturer) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Videocard.class, id);
+        Query query = session.createQuery("from Videocard v where v.manufacturer=:manufacturer",Videocard.class);
+        query.setParameter("manufacturer", manufacturer);
+        List<Videocard> videocards = query.getResultList();
+        return videocards;
     }
 
 }

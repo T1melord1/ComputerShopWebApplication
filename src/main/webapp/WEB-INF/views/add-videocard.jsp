@@ -38,5 +38,6 @@
     </tr>
   </table>
 </form:form>
+<a href="/videocards/">Вернуться к списку видеокарт</a>
 </body>
 </html>

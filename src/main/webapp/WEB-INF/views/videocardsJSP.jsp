@@ -1,10 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Videocard List</title>
 </head>
 <body>
+<a href="/videocards/find/manufacturer/NVIDIA" style="margin-right: 20px">Найти видеокарту</a>
+<a href="/videocards/add">Добавить видеокарту</a>
 <table>
     <tr>
         <th>ID</th>
@@ -13,6 +16,7 @@
         <th>Video Memory</th>
         <th>Color</th>
         <th>Price</th>
+        <th>Actions</th>
     </tr>
 
     <c:forEach var="videocard" items="${videocards}">
@@ -29,11 +33,7 @@
                 </form>
             </td>
         </tr>
-
     </c:forEach>
-
-
 </table>
-<a href="/videocards/add">Добавить видеокарту</a>
 </body>
 </html>
