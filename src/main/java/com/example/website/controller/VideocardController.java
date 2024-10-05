@@ -50,7 +50,6 @@ public class VideocardController {
     @GetMapping("/find/manufacturer")
     public String getVideocardsByManufacturer(@RequestParam String manufacturer, Model model) {
         VideocardType manufacturerEnum = VideocardType.valueOf(manufacturer.toUpperCase());
-        model.addAttribute("errorMessage", "Invalid manufacturer: " + manufacturer);
         List<Videocard> videocards = videocardService.getVideocardByManufacturer(manufacturerEnum);
         model.addAttribute("findVideocards", videocards);
         return "find-videocard";
