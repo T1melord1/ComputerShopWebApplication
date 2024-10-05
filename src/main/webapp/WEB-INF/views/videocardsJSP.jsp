@@ -6,7 +6,10 @@
     <title>Videocard List</title>
 </head>
 <body>
-<a href="/videocards/find/manufacturer/NVIDIA" style="margin-right: 20px">Найти видеокарту</a>
+<form action="/videocards/find/manufacturer" method="get">
+    <label for="manufacturer">Введите производителя видеокарты:</label>
+    <input type="text" id="manufacturer" name="manufacturer" required>
+    <button type="submit">Найти видеокарту</button>
 <a href="/videocards/add">Добавить видеокарту</a>
 <table>
     <tr>

@@ -47,12 +47,15 @@ public class VideocardController {
         return "redirect:/videocards";
     }
 
-    @GetMapping("/find/manufacturer/{manufacturer}")
-    public String getVideocardByManufacturer(@PathVariable VideocardType manufacturer, Model model) {
-        List<Videocard> videocard = videocardService.getVideocardByManufacturer(manufacturer);
-        model.addAttribute("findVideocards", videocard);
+    @GetMapping("/find/manufacturer")
+    public String getVideocardsByManufacturer(@RequestParam String manufacturer, Model model) {
+        VideocardType manufacturerEnum = VideocardType.valueOf(manufacturer.toUpperCase());
+        model.addAttribute("errorMessage", "Invalid manufacturer: " + manufacturer);
+        List<Videocard> videocards = videocardService.getVideocardByManufacturer(manufacturerEnum);
+        model.addAttribute("findVideocards", videocards);
         return "find-videocard";
     }
+
 
 }
 
