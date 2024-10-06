@@ -7,13 +7,17 @@
 </head>
 <body>
 <form action="/videocards/find/manufacturer" method="get">
-    <label for="videocardManufacturer">Введите производителя видеокарты:</label>
-    <input type="text" id="videocardManufacturer" name="manufacturer" required>
+    <label for="videocardManufacturer">Выберите производителя видеокарты:</label>
+    <select id="videocardManufacturer" name="manufacturer" required>
+        <option value="NVIDIA">NVIDIA</option>
+        <option value="AMD">AMD</option>
+        <option value="Intel">Intel</option>
+    </select>
     <button type="submit">Найти видеокарту</button>
 </form>
-    <form action="/videocards/add" method="get">
-        <button type="submit">Добавить видеокарту</button>
-    </form>
+<form action="/videocards/add" method="get">
+    <button type="submit">Добавить видеокарту</button>
+</form>
 <table>
     <tr>
         <th>ID</th>
@@ -36,7 +40,8 @@
                 <form action="/videocards/update/${videocard.id}" method="get">
                     <button type="submit">Обновить</button>
                 </form>
-            </td> <td>
+            </td>
+            <td>
                 <form action="/videocards/delete/${videocard.id}" method="post">
                     <button type="submit">Удалить</button>
                 </form>
