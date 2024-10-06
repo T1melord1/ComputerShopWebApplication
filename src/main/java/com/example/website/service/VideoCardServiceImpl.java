@@ -43,5 +43,11 @@ public class VideoCardServiceImpl implements VideocardService {
         return videocards;
     }
 
+     @Override
+    @Transactional
+    public Videocard findById(Integer id) {
+        return videocardRepository.findById(id);
+    }
+
 }
 

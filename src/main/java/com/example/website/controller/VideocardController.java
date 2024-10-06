@@ -53,6 +53,19 @@ public class VideocardController {
         model.addAttribute("findVideocards", videocards);
         return "find-videocard";
     }
+    @GetMapping("/update/{id}")
+    public String showUpdateForm(@PathVariable Integer id, Model model) {
+        Videocard videocard = videocardService.findById(id);
+        model.addAttribute("videocard", videocard);
+        return "update-videocard";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateVideocard(@PathVariable Integer id, @ModelAttribute Videocard videocard) {
+        videocard.setId(id); // Устанавливаем ID видеокарты
+        videocardService.save(videocard);
+        return "redirect:/videocards";
+    }
 }
 
 

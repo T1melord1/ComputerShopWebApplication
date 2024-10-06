@@ -13,7 +13,13 @@
   <table>
     <tr>
       <td>Manufacturer:</td>
-      <td><form:input path="manufacturer"/></td>
+      <td>
+      <form:select path="manufacturer">
+        <form:option value="NVIDIA" label="NVIDIA" />
+        <form:option value="AMD" label="AMD" />
+        <form:option value="Intel" label="Intel" />
+      </form:select>
+      </td>
     </tr>
 <%--   Каждые поля видеокарты (производитель, графический процессор, видеопамять, цвет, цена)
 занимают соответствующие теги <form:input> с атрибутом path, который указывает на свойство объекта модели. --%>

@@ -7,8 +7,8 @@
 </head>
 <body>
 <form action="/videocards/find/manufacturer" method="get">
-    <label for="manufacturer">Введите производителя видеокарты:</label>
-    <input type="text" id="manufacturer" name="manufacturer" required>
+    <label for="videocardManufacturer">Введите производителя видеокарты:</label>
+    <input type="text" id="videocardManufacturer" name="manufacturer" required>
     <button type="submit">Найти видеокарту</button>
 </form>
     <form action="/videocards/add" method="get">
@@ -22,7 +22,6 @@
         <th>Video Memory</th>
         <th>Color</th>
         <th>Price</th>
-        <th>Actions</th>
     </tr>
 
     <c:forEach var="videocard" items="${videocards}">
@@ -34,6 +33,10 @@
             <td>${videocard.color}</td>
             <td>${videocard.price}</td>
             <td>
+                <form action="/videocards/update/${videocard.id}" method="get">
+                    <button type="submit">Обновить</button>
+                </form>
+            </td> <td>
                 <form action="/videocards/delete/${videocard.id}" method="post">
                     <button type="submit">Удалить</button>
                 </form>

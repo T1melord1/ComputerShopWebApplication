@@ -23,7 +23,7 @@ public class VideocardRepositoryImpl implements VideocardRepository {
 
     @Override
     public Videocard save(Videocard videocard) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(videocard);
         return videocard;
     }
@@ -43,6 +43,14 @@ public class VideocardRepositoryImpl implements VideocardRepository {
         query.setParameter("manufacturer", manufacturer);
         List<Videocard> videocards = query.getResultList();
         return videocards;
+    }
+
+    @Override
+    public Videocard findById(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Videocard v where v.id=:videocardId");
+        query.setParameter("videocardId", id);
+        return (Videocard) query.getSingleResult();
     }
 
 }

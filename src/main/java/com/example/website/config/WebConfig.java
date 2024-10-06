@@ -1,10 +1,9 @@
 package com.example.website.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
@@ -19,4 +18,5 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
 }

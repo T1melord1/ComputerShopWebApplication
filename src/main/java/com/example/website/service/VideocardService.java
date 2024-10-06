@@ -13,4 +13,6 @@ public interface VideocardService {
     void delete(Integer id);
 
     List<Videocard> getVideocardByManufacturer(VideocardType manufacturer);
+
+    Videocard findById(Integer id);
 }
