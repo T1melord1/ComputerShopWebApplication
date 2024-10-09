@@ -8,9 +8,17 @@
         .videoMemory {
             padding-left: 35px; /* Добавляет отступ слева */
         }
+
         .graphicProcessor {
             padding-left: 50px;
         }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
     </style>
 </head>
 <body>
@@ -27,9 +35,11 @@
     <label for="videocardManufacturer">Для добавления видеокарты нажмите кнопку:</label>
     <button type="submit">Добавить видеокарту</button>
 </form>
-<form style="padding-left: 1500px" action="/cart" method="get">
-    <button type="submit">Корзина</button>
-</form>
+<div class="container">
+    <form action="/cart/" method="get">
+        <button type="submit">Корзина</button>
+    </form>
+</div>
 <table>
     <tr>
         <th>ID</th>

@@ -36,7 +36,6 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public void deleteVideocardFromCart(Integer id) {
-    Videocard videocard = videocardRepository.findById(id);
-    videocards.remove(videocard);
+        videocards.removeIf(videocard -> videocard.getId().equals(id));
     }
 }
