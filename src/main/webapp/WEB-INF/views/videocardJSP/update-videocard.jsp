@@ -39,5 +39,8 @@
   </tr>
 </table>
 </form:form>
-<a href="/videocards/">Вернуться к списку видеокарт</a>
+<form action="/videocards/" method="get">
+  <button type="submit">Вернуться к списку видеокарт</button>
+</form>
+</html>
 

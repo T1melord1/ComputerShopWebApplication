@@ -1,8 +1,9 @@
-package com.example.website.service;
+package com.example.website.service.Videocard;
 
 import com.example.website.dao.VideocardRepository;
 import com.example.website.entity.Videocard;
 import com.example.website.entity.VideocardType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service
 public class VideoCardServiceImpl implements VideocardService {
+    @Autowired
     private final VideocardRepository videocardRepository;
 
     public VideoCardServiceImpl(VideocardRepository videocardRepository) {

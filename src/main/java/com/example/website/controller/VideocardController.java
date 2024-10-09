@@ -2,7 +2,7 @@ package com.example.website.controller;
 
 import com.example.website.entity.Videocard;
 import com.example.website.entity.VideocardType;
-import com.example.website.service.VideocardService;
+import com.example.website.service.Videocard.VideocardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +20,13 @@ public class VideocardController {
     public String getAllVideocards(Model model) {
         List<Videocard> videocards = videocardService.getVideocard();
         model.addAttribute("videocards", videocards);
-        return "videocardsJSP";
+        return "videocardJSP/videocardsJSP";
     }
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("videocard", new Videocard());
-        return "add-videocard"; // Возвращает имя представления для формы добавления
+        return "videocardJSP/add-videocard"; // Возвращает имя представления для формы добавления
     }
 
     @PostMapping("/add")
@@ -51,13 +51,13 @@ public class VideocardController {
     public String getVideocardsByManufacturer(@RequestParam VideocardType manufacturer, Model model) {
         List<Videocard> videocards = videocardService.getVideocardByManufacturer(manufacturer);
         model.addAttribute("findVideocards", videocards);
-        return "find-videocard";
+        return "videocardJSP/find-videocard";
     }
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable Integer id, Model model) {
         Videocard videocard = videocardService.findById(id);
         model.addAttribute("videocard", videocard);
-        return "update-videocard";
+        return "videocardJSP/update-videocard";
     }
 
     @PostMapping("/update/{id}")

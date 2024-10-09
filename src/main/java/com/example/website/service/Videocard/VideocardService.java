@@ -1,4 +1,4 @@
-package com.example.website.service;
+package com.example.website.service.Videocard;
 
 import com.example.website.entity.Videocard;
 import com.example.website.entity.VideocardType;
