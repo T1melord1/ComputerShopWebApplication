@@ -16,6 +16,7 @@ public class VideocardController {
     @Autowired
     private VideocardService videocardService;
 
+
     @GetMapping("")
     public String getAllVideocards(Model model) {
         List<Videocard> videocards = videocardService.getVideocard();
@@ -61,8 +62,7 @@ public class VideocardController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateVideocard(@PathVariable Integer id, @ModelAttribute Videocard videocard) {
-        videocard.setId(id); // Устанавливаем ID видеокарты
+    public String updateVideocard(@ModelAttribute Videocard videocard) {
         videocardService.save(videocard);
         return "redirect:/videocards";
     }

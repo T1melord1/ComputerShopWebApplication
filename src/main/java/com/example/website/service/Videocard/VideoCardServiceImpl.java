@@ -3,6 +3,8 @@ package com.example.website.service.Videocard;
 import com.example.website.dao.VideocardRepository;
 import com.example.website.entity.Videocard;
 import com.example.website.entity.VideocardType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,7 @@ import java.util.List;
 public class VideoCardServiceImpl implements VideocardService {
     @Autowired
     private final VideocardRepository videocardRepository;
+    private static final Logger logger = LoggerFactory.getLogger(VideoCardServiceImpl.class);
 
     public VideoCardServiceImpl(VideocardRepository videocardRepository) {
         this.videocardRepository = videocardRepository;
@@ -22,6 +25,7 @@ public class VideoCardServiceImpl implements VideocardService {
     @Override
     @Transactional
     public List<Videocard> getVideocard() {
+        logger.debug("Получение списка видеокарт из БД");
         List<Videocard> videocards = videocardRepository.findAll();
         return new ArrayList<>(videocards);
     }
@@ -29,27 +33,29 @@ public class VideoCardServiceImpl implements VideocardService {
     @Override
     @Transactional
     public Videocard save(Videocard videocard) {
+        logger.debug("Добавление видеокарты в базу данных: {}", videocard);
         return videocardRepository.save(videocard);
     }
 
     @Override
     @Transactional
     public void delete(Integer id) {
-       videocardRepository.delete(id);
+        logger.debug("Удаление видеокарты с ID: {}", id);
+        videocardRepository.delete(id);
     }
 
     @Override
     @Transactional
     public List<Videocard> getVideocardByManufacturer(VideocardType manufacturer) {
+        logger.debug("Получение видеокарт от производителя: {}", manufacturer);
         List<Videocard> videocards = videocardRepository.getVideocardByManufacturer(manufacturer);
         return videocards;
     }
 
-     @Override
+    @Override
     @Transactional
     public Videocard findById(Integer id) {
+        logger.debug("Поиск видеокарты с ID: {}", id);
         return videocardRepository.findById(id);
     }
-
 }
-

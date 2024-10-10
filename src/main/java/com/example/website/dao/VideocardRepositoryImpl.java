@@ -5,6 +5,7 @@ import com.example.website.entity.VideocardType;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
@@ -13,6 +14,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class VideocardRepositoryImpl implements VideocardRepository {
+
     private final SessionFactory sessionFactory;
 
     @Override

@@ -27,6 +27,7 @@ public class ApplicationConfig {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+
     @Bean
     public DataSource dataSource() {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
@@ -40,6 +41,7 @@ public class ApplicationConfig {
         }
         return dataSource;
     }
+
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -50,9 +52,10 @@ public class ApplicationConfig {
         properties.put("hibernate.show_sql", "true");
         sessionFactory.setHibernateProperties(properties);
         return sessionFactory;
-        }
-        @Bean
-    public HibernateTransactionManager transactionManager(){
+    }
+
+    @Bean
+    public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
