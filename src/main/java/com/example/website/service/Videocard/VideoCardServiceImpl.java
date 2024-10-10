@@ -48,8 +48,7 @@ public class VideoCardServiceImpl implements VideocardService {
     @Transactional
     public List<Videocard> getVideocardByManufacturer(VideocardType manufacturer) {
         logger.debug("Получение видеокарт от производителя: {}", manufacturer);
-        List<Videocard> videocards = videocardRepository.getVideocardByManufacturer(manufacturer);
-        return videocards;
+        return videocardRepository.getVideocardByManufacturer(manufacturer);
     }
 
     @Override

@@ -19,25 +19,34 @@
             justify-content: flex-end;
         }
 
+        body {
+            background-color: ivory;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        .fonts {
+            font-family: "Comic Sans MS", cursive;
+        }
+
     </style>
 </head>
 <body>
 <form action="/videocards/find/manufacturer" method="get">
     <label for="videocardManufacturer">Выберите производителя видеокарты:</label>
     <select id="videocardManufacturer" name="manufacturer" required>
-        <option value="NVIDIA">NVIDIA</option>
-        <option value="AMD">AMD</option>
-        <option value="Intel">Intel</option>
+        <option class="fonts" value="NVIDIA">NVIDIA</option>
+        <option class="fonts" value="AMD">AMD</option>
+        <option class="fonts" value="Intel">Intel</option>
     </select>
-    <button type="submit">Найти видеокарту</button>
+    <button class="fonts" type="submit">Найти видеокарту</button>
 </form>
 <form action="/videocards/add" method="get">
     <label for="videocardManufacturer">Для добавления видеокарты нажмите кнопку:</label>
-    <button type="submit">Добавить видеокарту</button>
+    <button class="fonts" type="submit">Добавить видеокарту</button>
 </form>
 <div class="container">
     <form action="/cart/" method="get">
-        <button type="submit">Корзина</button>
+        <button class="fonts" type="submit">Корзина</button>
     </form>
 </div>
 <table>
@@ -60,17 +69,17 @@
             <td>${videocard.price}</td>
             <td>
                 <form action="/videocards/update/${videocard.id}" method="get">
-                    <button type="submit">Обновить</button>
+                    <button class="fonts" type="submit">Обновить</button>
                 </form>
             </td>
             <td>
                 <form action="/videocards/delete/${videocard.id}" method="post">
-                    <button type="submit">Удалить</button>
+                    <button class="fonts" type="submit">Удалить</button>
                 </form>
             </td>
             <td>
                 <form action="/cart/add/${videocard.id}" method="post">
-                    <button type="submit">Добавить в корзину</button>
+                    <button class="fonts" type="submit">Добавить в корзину</button>
                 </form>
             </td>
         </tr>

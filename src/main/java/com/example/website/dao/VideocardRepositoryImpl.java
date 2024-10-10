@@ -19,7 +19,7 @@ public class VideocardRepositoryImpl implements VideocardRepository {
 
     @Override
     public List<Videocard> findAll() {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Videocard", Videocard.class).getResultList();
     }
 

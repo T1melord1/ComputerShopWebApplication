@@ -3,44 +3,54 @@
 <html>
 <head>
   <title>Обновление данных видеокарты</title>
+  <style>
+    body {
+      background-color: ivory;
+      font-family: "Comic Sans MS", cursive;
+    }
+
+    .fonts {
+      font-family: "Comic Sans MS", cursive;
+    }
+  </style>
 </head>
 <body>
 <h1>Обновление данных видеокарты</h1>
-<form:form modelAttribute="videocard" action="/videocards/update/${videocard.id}" method="post">
+<form:form modelAttribute="videocard" cssClass="fonts" action="/videocards/update/${videocard.id}" method="post">
 <table>
   <tr>
     <td>Manufacturer:</td>
     <td>
       <form:select path="manufacturer">
-        <form:option value="NVIDIA" label="NVIDIA" />
-        <form:option value="AMD" label="AMD" />
-        <form:option value="Intel" label="Intel" />
+        <form:option cssClass="fonts" value="NVIDIA" label="NVIDIA" />
+        <form:option cssClass="fonts" value="AMD" label="AMD" />
+        <form:option cssClass="fonts" value="Intel" label="Intel" />
       </form:select>
     </td>
   </tr>
   <tr>
     <td>Graphic Processor:</td>
-    <td><form:input path="graphicProcessor"/></td>
+    <td><form:input cssClass="fonts" path="graphicProcessor"/></td>
   </tr>
   <tr>
     <td>Video Memory:</td>
-    <td><form:input path="videoMemory"/></td>
+    <td><form:input cssClass="fonts" path="videoMemory"/></td>
   </tr>
   <tr>
     <td>Color:</td>
-    <td><form:input path="color"/></td>
+    <td><form:input cssClass="fonts" path="color"/></td>
   </tr>
   <tr>
     <td>Price:</td>
-    <td><form:input path="price"/></td>
+    <td><form:input cssClass="fonts" path="price"/></td>
   </tr>
   <tr>
-    <td colspan="2"><input type="submit" value="Обновить"/></td>
+    <td colspan="2"><input type="submit" class="fonts" value="Обновить"/></td>
   </tr>
 </table>
 </form:form>
 <form action="/videocards/" method="get">
-  <button type="submit">Вернуться к списку видеокарт</button>
+  <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 </html>
 

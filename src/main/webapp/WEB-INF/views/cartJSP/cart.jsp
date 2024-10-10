@@ -11,11 +11,20 @@
         .graphicProcessor {
             padding-left: 50px;
         }
+        body {
+            background-color: ivory;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        .fonts {
+            font-family: "Comic Sans MS", cursive;
+        }
     </style>
 </head>
+
 <body>
 <form action="/videocards/" method="get">
-    <button type="submit">Вернуться к списку видеокарт</button>
+    <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 <table>
     <tr>
@@ -30,7 +39,7 @@
     <c:set var="totalPrice" value="0"/>
     <c:forEach var="videocard" items="${cart}">
         <tr>
-            <td>${videocard.id}</td>
+            <td class="">${videocard.id}</td>
             <td>${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory}</td>
@@ -38,7 +47,7 @@
             <td>${videocard.price}</td>
             <td>
                 <form action="/cart/delete/${videocard.id}" method="post">
-                    <button type="submit">Удалить</button>
+                    <button class="fonts" type="submit">Удалить</button>
                 </form>
             </td>
         </tr>

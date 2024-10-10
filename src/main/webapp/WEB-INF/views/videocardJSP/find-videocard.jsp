@@ -3,6 +3,16 @@
 <html>
 <head>
     <title>Информация о видеокарте</title>
+    <style>
+        body {
+            background-color: ivory;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        .fonts {
+            font-family: "Comic Sans MS", cursive;
+        }
+    </style>
 </head>
 <body>
 <h2>Найденная видеокарта</h2>
@@ -27,7 +37,7 @@
     </c:forEach>
 </table>
 <form action="/videocards/" method="get">
-    <button type="submit">Вернуться к списку видеокарт</button>
+    <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 </body>
 </html>
