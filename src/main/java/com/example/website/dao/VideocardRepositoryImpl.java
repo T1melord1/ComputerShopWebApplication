@@ -41,7 +41,7 @@ public class VideocardRepositoryImpl implements VideocardRepository {
     @Override
     public List<Videocard> getVideocardByManufacturer(VideocardType manufacturer) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Videocard v where v.manufacturer=:manufacturer",Videocard.class);
+        Query query = session.createQuery("from Videocard v where v.manufacturer=:manufacturer", Videocard.class);
         query.setParameter("manufacturer", manufacturer);
         List<Videocard> videocards = query.getResultList();
         return videocards;

@@ -14,10 +14,9 @@ import java.util.List;
 @Service
 public class CartServiceImpl implements CartService {
 
-    private static final Logger log = LoggerFactory.getLogger(CartServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
     private final VideocardRepository videocardRepository;
     private final List<Videocard> videocards = Collections.synchronizedList(new ArrayList<>());
-    private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 
     public CartServiceImpl(VideocardRepository videocardRepository) {
         this.videocardRepository = videocardRepository;

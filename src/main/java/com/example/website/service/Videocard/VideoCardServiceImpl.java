@@ -14,9 +14,9 @@ import java.util.List;
 
 @Service
 public class VideoCardServiceImpl implements VideocardService {
+    private static final Logger logger = LoggerFactory.getLogger(VideoCardServiceImpl.class);
     @Autowired
     private final VideocardRepository videocardRepository;
-    private static final Logger logger = LoggerFactory.getLogger(VideoCardServiceImpl.class);
 
     public VideoCardServiceImpl(VideocardRepository videocardRepository) {
         this.videocardRepository = videocardRepository;

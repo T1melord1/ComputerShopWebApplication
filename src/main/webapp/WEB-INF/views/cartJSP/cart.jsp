@@ -8,9 +8,11 @@
         .videoMemory {
             padding-left: 35px; /* Добавляет отступ слева */
         }
+
         .graphicProcessor {
             padding-left: 50px;
         }
+
         body {
             background-color: ivory;
             font-family: "Comic Sans MS", cursive;

@@ -54,6 +54,7 @@ public class VideocardController {
         model.addAttribute("findVideocards", videocards);
         return "videocardJSP/find-videocard";
     }
+
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable Integer id, Model model) {
         Videocard videocard = videocardService.findById(id);

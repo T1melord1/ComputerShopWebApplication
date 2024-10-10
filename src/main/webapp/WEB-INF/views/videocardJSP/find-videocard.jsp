@@ -26,14 +26,14 @@
         <th>Price</th>
     </tr>
     <c:forEach var="videocard" items="${findVideocards}">
-    <tr>
-        <td>${videocard.id}</td>
-        <td>${videocard.manufacturer}</td>
-        <td>${videocard.graphicProcessor}</td>
-        <td>${videocard.videoMemory}</td>
-        <td>${videocard.color}</td>
-        <td>${videocard.price}</td>
-    </tr>
+        <tr>
+            <td>${videocard.id}</td>
+            <td>${videocard.manufacturer}</td>
+            <td>${videocard.graphicProcessor}</td>
+            <td>${videocard.videoMemory}</td>
+            <td>${videocard.color}</td>
+            <td>${videocard.price}</td>
+        </tr>
     </c:forEach>
 </table>
 <form action="/videocards/" method="get">
