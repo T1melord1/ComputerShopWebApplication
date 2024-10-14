@@ -3,19 +3,19 @@ package com.example.website.controller;
 import com.example.website.entity.Videocard;
 import com.example.website.entity.VideocardType;
 import com.example.website.service.Videocard.VideocardService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@org.springframework.stereotype.Controller
+@Controller
 @RequestMapping("/videocards")
+@RequiredArgsConstructor
 public class VideocardController {
 
-    @Autowired
-    private VideocardService videocardService;
-
+    private final VideocardService videocardService;
 
     @GetMapping("")
     public String getAllVideocards(Model model) {
@@ -39,11 +39,6 @@ public class VideocardController {
 
     @PostMapping("/delete/{id}")
     public String deleteVideocardPost(@PathVariable Integer id) {
-        return deleteVideocard(id);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public String deleteVideocard(@PathVariable Integer id) {
         videocardService.delete(id);
         return "redirect:/videocards";
     }
