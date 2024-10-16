@@ -1,7 +1,7 @@
 package com.example.website.service.Cart;
 
-import com.example.website.dao.VideocardRepository;
-import com.example.website.entity.Videocard;
+import com.example.website.dao.Videocard.VideocardRepository;
+import com.example.website.entity.Videocard.Videocard;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,6 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @Transactional
     public List<Videocard> getVideocardsInCart() {
         log.debug("Получение видеокарт в корзине");
         return videocards;
@@ -38,7 +37,6 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @Transactional
     public void deleteVideocardFromCart(Integer id) {
         log.debug("Удаление видеокарты с ID {} из корзины", id);
         videocards.removeIf(videocard -> videocard.getId().equals(id));

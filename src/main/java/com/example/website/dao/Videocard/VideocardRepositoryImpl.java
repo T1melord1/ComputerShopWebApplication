@@ -1,11 +1,10 @@
-package com.example.website.dao;
+package com.example.website.dao.Videocard;
 
-import com.example.website.entity.Videocard;
-import com.example.website.entity.VideocardType;
+import com.example.website.entity.Videocard.Videocard;
+import com.example.website.entity.Videocard.VideocardType;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;

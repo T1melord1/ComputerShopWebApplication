@@ -1,6 +1,6 @@
 package com.example.website.service.Cart;
 
-import com.example.website.entity.Videocard;
+import com.example.website.entity.Videocard.Videocard;
 
 import java.util.List;
 

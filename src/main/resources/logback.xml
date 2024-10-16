@@ -8,6 +8,6 @@
     <logger name="com.example.website.service" level="DEBUG"/>
 
     <root level="debug">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

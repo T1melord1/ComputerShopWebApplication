@@ -12,6 +12,10 @@
         .fonts {
             font-family: "Comic Sans MS", cursive;
         }
+        .videoMemory {
+            padding-left: 35px; /* Добавляет отступ слева */
+        }
+
     </style>
 </head>
 <body>
@@ -30,7 +34,7 @@
             <td>${videocard.id}</td>
             <td>${videocard.manufacturer}</td>
             <td>${videocard.graphicProcessor}</td>
-            <td>${videocard.videoMemory}</td>
+            <td class="videoMemory">${videocard.videoMemory}</td>
             <td>${videocard.color}</td>
             <td>${videocard.price}</td>
         </tr>

@@ -1,4 +1,4 @@
-package com.example.website.controller;
+package com.example.website.controller.Another;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;

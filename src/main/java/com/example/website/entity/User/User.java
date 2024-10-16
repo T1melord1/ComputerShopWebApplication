@@ -15,10 +15,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false, unique = true)
     private String username;
+    @Column(nullable = false)
     private String password;
     private String email;
-    @Column(columnDefinition = "enum('USER', 'ADMIN', 'ROOT')")
+    @Column(columnDefinition = "enum('USER', 'ADMIN', 'ROOT')", nullable = false)
     @Enumerated(EnumType.STRING)
     private UserType role = UserType.USER;
 }

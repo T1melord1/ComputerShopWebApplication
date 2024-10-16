@@ -1,8 +1,8 @@
 package com.example.website.service.Videocard;
 
-import com.example.website.dao.VideocardRepository;
-import com.example.website.entity.Videocard;
-import com.example.website.entity.VideocardType;
+import com.example.website.dao.Videocard.VideocardRepository;
+import com.example.website.entity.Videocard.Videocard;
+import com.example.website.entity.Videocard.VideocardType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -51,4 +51,5 @@ public class VideoCardServiceImpl implements VideocardService {
         log.debug("Поиск видеокарты с ID: {}", id);
         return videocardRepository.findById(id);
     }
+
 }

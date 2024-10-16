@@ -1,4 +1,4 @@
-package com.example.website.entity;
+package com.example.website.entity.Videocard;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,9 +20,9 @@ public class Videocard {
     @Enumerated(EnumType.STRING)
     private VideocardType manufacturer;
     @Column(name = "graphic_processor")
-    private String graphicProcessor;
+    private String graphicProcessor = "Geforce RTX";
     @Column(name = "video_memory")
-    private Integer videoMemory;
-    private String color;
-    private BigDecimal price;
+    private Integer videoMemory = 0;
+    private String color = "Black";
+    private BigDecimal price = BigDecimal.ZERO;
 }

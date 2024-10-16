@@ -1,4 +1,4 @@
-package com.example.website.entity;
+package com.example.website.entity.Videocard;
 
 public enum VideocardType {
     NVIDIA,

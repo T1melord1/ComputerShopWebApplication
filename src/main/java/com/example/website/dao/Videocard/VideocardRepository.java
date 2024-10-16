@@ -1,7 +1,7 @@
-package com.example.website.dao;
+package com.example.website.dao.Videocard;
 
-import com.example.website.entity.Videocard;
-import com.example.website.entity.VideocardType;
+import com.example.website.entity.Videocard.Videocard;
+import com.example.website.entity.Videocard.VideocardType;
 
 import java.util.List;
 

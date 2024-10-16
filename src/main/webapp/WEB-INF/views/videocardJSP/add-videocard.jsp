@@ -47,7 +47,9 @@
         </tr>
         <tr>
             <td>Price:</td>
-            <td><form:input path="price"/></td>
+            <td>
+                <form:input path="price"/>
+            </td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" class="fonts" value="Добавить"/></td>
