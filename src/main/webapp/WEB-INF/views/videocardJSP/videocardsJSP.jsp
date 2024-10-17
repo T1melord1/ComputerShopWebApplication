@@ -53,8 +53,6 @@
 </head>
 <body>
 <div class="nav-links">
-    <a href="/user/register" class="nav-link register">Регистрация</a>
-    <a href="/user/login" class="nav-link login">Логин</a>
     <form action="/videocards/find/manufacturer" method="get" style="display: inline;">
         <label for="videocardManufacturer">Выберите производителя видеокарты:</label>
         <select id="videocardManufacturer" name="manufacturer" required>
@@ -67,7 +65,7 @@
     <form action="/videocards/add" method="get" style="display: inline;">
         <button class="fonts" type="submit">Добавить видеокарту</button>
     </form>
-    <a href="/cart/" class="cart-icon">
+    <a href="/cart" class="cart-icon">
         <i class="fas fa-shopping-cart"></i>
     </a>
 </div>

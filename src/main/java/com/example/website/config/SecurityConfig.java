@@ -22,17 +22,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/user/register", "/user/login").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/user/register", "/user/login").permitAll() // Разрешить доступ к страницам регистрации и логина
+                        .anyRequest().authenticated() // Все остальные запросы требуют аутентификации
                 )
                 .formLogin((form) -> form
-                        .loginPage("/user/login")
-                        .defaultSuccessUrl("/videocards/")
-                        .permitAll()
+                        .loginPage("/user/login") // Указание страницы для логина
+                        .defaultSuccessUrl("/videocards") // Перенаправление после успешного входа
+                        .failureUrl("/user/login?error=true") // Перенаправление при ошибке входа
+                        .permitAll() // Разрешить всем доступ к форме входа
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout
+                        .logoutSuccessUrl("/user/login?logout=true") // Перенаправление после выхода
+                        .permitAll() // Разрешить всем доступ к выходу
+                );
 
         return http.build();
     }
-
 }

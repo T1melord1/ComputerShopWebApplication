@@ -35,10 +35,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String addUser(@ModelAttribute User user) {
-        userService.registerUser(user);
-        return "redirect:/user/videocards";
+    public String login(@ModelAttribute("user") User user, Model model) {
+        User loggedInUser = userService.authenticate(user.getUsername(), user.getPassword());
+        if (loggedInUser != null) {
+            // Логика для успешного логина, например, установка сессии
+            model.addAttribute("user", loggedInUser);
+            return "redirect:/videocards"; // Перенаправление на главную страницу
+        } else {
+            // Логика для неуспешного логина
+            model.addAttribute("error", "Неверный логин или пароль.");
+            return "userJSP/login"; // Возвращаем на страницу логина
+        }
     }
-
-
 }

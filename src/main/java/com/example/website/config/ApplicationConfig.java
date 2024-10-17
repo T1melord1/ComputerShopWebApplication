@@ -20,6 +20,7 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 public class ApplicationConfig {
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -37,7 +38,7 @@ public class ApplicationConfig {
             dataSource.setUser("root");
             dataSource.setPassword("9939039vladqwer");
         } catch (PropertyVetoException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error setting up the data source", e);
         }
         return dataSource;
     }
@@ -46,10 +47,11 @@ public class ApplicationConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.example.website");
+        sessionFactory.setPackagesToScan("com.example.website.entity");
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         sessionFactory.setHibernateProperties(properties);
         return sessionFactory;
     }

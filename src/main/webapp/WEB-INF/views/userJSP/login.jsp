@@ -24,10 +24,18 @@
         </tr>
         <tr>
             <td>Password:</td>
-            <td><form:input path="password"/></td>
+            <td><form:input path="password" type="password"/></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" class="fonts" value="Логин"/></td>
+            <td colspan="2">
+                <input type="submit" class="fonts" value="Логин"/>
+                <c:if test="${not empty param.error}">
+                    <div style="color: red;">Неверный логин или пароль.</div>
+                </c:if>
+                <c:if test="${not empty param.logout}">
+                    <div style="color: green;">Вы вышли из системы.</div>
+                </c:if>
+            </td>
         </tr>
     </table>
 </form:form>

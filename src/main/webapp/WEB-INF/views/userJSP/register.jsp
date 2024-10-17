@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User login</title>
+    <title>User register</title>
     <style>
         body {
             background-color: ivory;
@@ -39,7 +39,7 @@
         </tr>
     </table>
 </form:form>
-<form action="/user/login/" method="get">
+<form action="/user/login" method="get">
     <button class="fonts" type="submit">Я уже зарегистрирован</button>
 </form>
 </body>

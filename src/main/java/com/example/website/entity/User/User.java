@@ -1,10 +1,13 @@
 package com.example.website.entity.User;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
+import java.util.UUID;
+
 
 @Entity
 @Table(name = "users")
@@ -13,8 +16,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)

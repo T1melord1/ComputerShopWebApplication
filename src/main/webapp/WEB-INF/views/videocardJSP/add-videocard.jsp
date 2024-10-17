@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -56,7 +57,7 @@
         </tr>
     </table>
 </form:form>
-<form action="/videocards/" method="get">
+<form action="/videocards" method="get">
     <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 </body>

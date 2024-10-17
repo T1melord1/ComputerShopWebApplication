@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "videocards")
@@ -15,6 +16,7 @@ import java.math.BigDecimal;
 public class Videocard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
     @Column(columnDefinition = "enum('NVIDIA', 'AMD', 'Intel')")
     @Enumerated(EnumType.STRING)
