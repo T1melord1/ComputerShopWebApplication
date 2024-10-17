@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute User user) {
-        userService.adduser(user);
+        userService.registerUser(user);
         return "redirect:/user/login";
     }
 
@@ -36,7 +36,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String addUser(@ModelAttribute User user) {
-        userService.adduser(user);
+        userService.registerUser(user);
         return "redirect:/user/videocards";
     }
 
