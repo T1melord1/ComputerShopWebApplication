@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String getLogin(Model model) {
+    public String getLoginForm(Model model) {
         model.addAttribute("user", new User());
         return "userJSP/login";
     }

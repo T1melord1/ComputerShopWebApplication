@@ -1,33 +1,34 @@
 package com.example.website.dao.User;
 
 import com.example.website.entity.User.User;
-import com.example.website.entity.Videocard.Videocard;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
-    private final SessionFactory sessionFactory;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
-    public User add(User user) {
-        Session session = sessionFactory.openSession();
-        session.saveOrUpdate(user);
-        return user;
+    public void save(User user) {
+        entityManager.persist(user);
     }
 
     @Override
-    public User findByUsername(String username) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from User v where v.username=:username", User.class);
-        query.setParameter("username", username);
-        return (User) query.getSingleResult();
-
+    public Optional<User> findByUsername(String username) {
+        try {
+            User user = entityManager.createQuery("FROM User WHERE username = :username", User.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+            return Optional.of(user);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 }

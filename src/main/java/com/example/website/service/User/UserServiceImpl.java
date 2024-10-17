@@ -9,19 +9,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+
 
     @Override
     @Transactional
-    public User registerUser(User user) {
+    public void registerUser(User user) {
         log.debug("Добавление пользователя: {}", user);
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+        userRepository.save(user);
+    }
 
-        return userRepository.add(user);
+    @Override
+    public User findUserByUsername(String username) {
+        log.debug("Поиск по имени пользователя: {}", username);
+        return userRepository.findByUsername(username).orElse(null);
     }
 }

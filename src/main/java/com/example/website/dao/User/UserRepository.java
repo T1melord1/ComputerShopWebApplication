@@ -2,8 +2,10 @@ package com.example.website.dao.User;
 
 import com.example.website.entity.User.User;
 
-public interface UserRepository {
-    User add(User user);
+import java.util.Optional;
 
-    User findByUsername(String username);
+public interface UserRepository {
+    void save(User user);
+
+    Optional<User> findByUsername(String username);
 }
