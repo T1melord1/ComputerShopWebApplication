@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<form action="/videocards/" method="get">
+<form action="/videocards" method="get">
     <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 <table>

@@ -21,13 +21,13 @@ public class CartController {
     }
 
     @PostMapping("/add/{id}")
-    public String addToCart(@PathVariable Integer id) {
+    public String addToCart(@PathVariable("id") Integer id) {
         cartService.addToCart(id);
         return "redirect:/videocards";
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteFromCart(@PathVariable Integer id) {
+    public String deleteFromCart(@PathVariable("id") Integer id) {
         cartService.deleteVideocardFromCart(id);
         return "redirect:/cart";
     }

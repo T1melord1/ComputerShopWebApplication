@@ -38,20 +38,20 @@ public class VideocardController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteVideocardPost(@PathVariable Integer id) {
+    public String deleteVideocardPost(@PathVariable("id") Integer id) {
         videocardService.delete(id);
         return "redirect:/videocards";
     }
 
     @GetMapping("/find/manufacturer")
-    public String getVideocardsByManufacturer(@RequestParam VideocardType manufacturer, Model model) {
+    public String getVideocardsByManufacturer(@RequestParam("manufacturer") VideocardType manufacturer, Model model) {
         List<Videocard> videocards = videocardService.getVideocardByManufacturer(manufacturer);
         model.addAttribute("findVideocards", videocards);
         return "videocardJSP/find-videocard";
     }
 
     @GetMapping("/update/{id}")
-    public String showUpdateForm(@PathVariable Integer id, Model model) {
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Videocard videocard = videocardService.findById(id);
         model.addAttribute("videocard", videocard);
         return "videocardJSP/update-videocard";
