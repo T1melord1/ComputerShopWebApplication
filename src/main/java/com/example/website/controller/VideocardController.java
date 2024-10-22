@@ -17,50 +17,56 @@ public class VideocardController {
 
     private final VideocardService videocardService;
 
-    @GetMapping("")
+    @GetMapping("/admin")
     public String getAllVideocards(Model model) {
         List<Videocard> videocards = videocardService.getVideocard();
         model.addAttribute("videocards", videocards);
-        return "videocardJSP/videocardsJSP";
+        return "videocardJSP/Admin/videocards";
+    }
+    @GetMapping("")
+    public String getAllVideocardsAdmin(Model model) {
+        List<Videocard> videocards = videocardService.getVideocard();
+        model.addAttribute("videocards", videocards);
+        return "videocardJSP/User/videocardsUser";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/admin/add")
     public String showAddForm(Model model) {
         model.addAttribute("videocard", new Videocard());
-        return "videocardJSP/add-videocard"; // Возвращает имя представления для формы добавления
+        return "videocardJSP/Admin/add-videocard"; // Возвращает имя представления для формы добавления
     }
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public String addVideocard(@ModelAttribute Videocard videocard) {
         // Объект videocard автоматически заполняется данными из запроса
         videocardService.save(videocard);
-        return "redirect:/videocards"; // Перенаправляет на список видеокарт
+        return "redirect:/videocards/admin"; // Перенаправляет на список видеокарт
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/admin/delete/{id}")
     public String deleteVideocardPost(@PathVariable("id") Integer id) {
         videocardService.delete(id);
-        return "redirect:/videocards";
+        return "redirect:/videocards/admin";
     }
 
     @GetMapping("/find/manufacturer")
     public String getVideocardsByManufacturer(@RequestParam("manufacturer") VideocardType manufacturer, Model model) {
         List<Videocard> videocards = videocardService.getVideocardByManufacturer(manufacturer);
         model.addAttribute("findVideocards", videocards);
-        return "videocardJSP/find-videocard";
+        return "videocardJSP/User/find-videocard";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/admin/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Videocard videocard = videocardService.findById(id);
         model.addAttribute("videocard", videocard);
-        return "videocardJSP/update-videocard";
+        return "videocardJSP/Admin/update-videocard";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/admin/update/{id}")
     public String updateVideocard(@ModelAttribute Videocard videocard) {
         videocardService.save(videocard);
-        return "redirect:/videocards";
+        return "redirect:/videocards/admin";
     }
 }
 

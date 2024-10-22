@@ -17,7 +17,9 @@
 </head>
 <body>
 <h1>Добавить видеокарту</h1>
-<form:form modelAttribute="videocard" action="/videocards/add" method="post">
+<form:form modelAttribute="videocard" action="/videocards/admin/add" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
     <%--   тег <form:form> для создания формы. Атрибут modelAttribute указывает на объект модели,
     который будет использоваться для связывания данных формы. Атрибут action указывает URL,
     на который будет отправлена форма, а method указывает метод HTTP (POST).--%>
@@ -57,7 +59,7 @@
         </tr>
     </table>
 </form:form>
-<form action="/videocards" method="get">
+<form action="/videocards/admin" method="get">
     <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 </body>

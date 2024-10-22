@@ -49,6 +49,7 @@
             <td>${videocard.price}</td>
             <td>
                 <form action="/cart/delete/${videocard.id}" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <button class="fonts" type="submit">Удалить</button>
                 </form>
             </td>

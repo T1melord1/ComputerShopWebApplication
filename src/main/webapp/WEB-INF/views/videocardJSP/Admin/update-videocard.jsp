@@ -17,7 +17,9 @@
 </head>
 <body>
 <h1>Обновление данных видеокарты</h1>
-<form:form modelAttribute="videocard" cssClass="fonts" action="/videocards/update/${videocard.id}" method="post">
+<form:form modelAttribute="videocard" cssClass="fonts" action="/videocards/admin/update/${videocard.id}" method="post">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
 <table>
     <tr>
         <td>Manufacturer:</td>
@@ -50,7 +52,7 @@
     </tr>
 </table>
 </form:form>
-<form action="/videocards" method="get">
+<form action="/videocards/admin" method="get">
     <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
 </form>
 </html>

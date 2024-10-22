@@ -1,9 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User register</title>
+    <title>Регистрация</title>
     <style>
         body {
             background-color: ivory;
@@ -16,31 +15,20 @@
     </style>
 </head>
 <body>
-<form:form modelAttribute="user" action="/user/register" method="post">
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><form:input path="username"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><form:input path="password"/></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><form:input path="email"/></td>
-        </tr>
-        <tr>
-            <td>Role:</td>
-            <td><form:input path="role"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" class="fonts" value="Регистрация"/></td>
-        </tr>
-    </table>
-</form:form>
-<form action="/user/login" method="get">
-    <button class="fonts" type="submit">Я уже зарегистрирован</button>
+<h2>Register</h2>
+<form action="${pageContext.request.contextPath}/register" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" class="fonts" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" class="fonts" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" class="fonts" required><br>
+
+    <button type="submit" class="fonts">Регистрация</button>
 </form>
+<p>Уже есть аккаунт? <a class="fonts" href="${pageContext.request.contextPath}/login">Логин</a></p>
 </body>
 </html>

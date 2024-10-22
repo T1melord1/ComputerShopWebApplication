@@ -1,41 +1,64 @@
 package com.example.website.config;
 
+import com.example.website.component.CustomAuthenticationSuccessHandler;
+import com.example.website.service.User.MyUserDetailsService;
+import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    private final MyUserDetailsService myUserDetailsService;
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(myUserDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/user/register", "/user/login").permitAll() // Разрешить доступ к страницам регистрации и логина
-                        .anyRequest().authenticated() // Все остальные запросы требуют аутентификации
+                .authorizeHttpRequests(
+                        (authorize) -> authorize
+                                .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
+                                .requestMatchers("/login", "/register", "/css/**", "/js/**").permitAll()
+                                .requestMatchers("/videocards/admin/**").hasRole("ADMIN")
+                                .anyRequest().authenticated())
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .successHandler(customAuthenticationSuccessHandler)
+                        .failureUrl("/login?error")
+                        .permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
                 )
-                .formLogin((form) -> form
-                        .loginPage("/user/login") // Указание страницы для логина
-                        .defaultSuccessUrl("/videocards") // Перенаправление после успешного входа
-                        .failureUrl("/user/login?error=true") // Перенаправление при ошибке входа
-                        .permitAll() // Разрешить всем доступ к форме входа
-                )
-                .logout((logout) -> logout
-                        .logoutSuccessUrl("/user/login?logout=true") // Перенаправление после выхода
-                        .permitAll() // Разрешить всем доступ к выходу
-                );
-
+                .exceptionHandling(exception -> exception
+                        .accessDeniedPage("/accessdenied"));
         return http.build();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

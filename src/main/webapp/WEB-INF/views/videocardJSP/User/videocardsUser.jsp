@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -53,7 +52,7 @@
 </head>
 <body>
 <div class="nav-links">
-    <form action="/videocards/find/manufacturer" method="get" style="display: inline;">
+    <form action="${pageContext.request.contextPath}/videocards/find/manufacturer" method="get" style="display: inline;">
         <label for="videocardManufacturer">Выберите производителя видеокарты:</label>
         <select id="videocardManufacturer" name="manufacturer" required>
             <option class="fonts" value="NVIDIA">NVIDIA</option>
@@ -62,10 +61,11 @@
         </select>
         <button class="fonts" type="submit">Найти видеокарту</button>
     </form>
-    <form action="/videocards/add" method="get" style="display: inline;">
-        <button class="fonts" type="submit">Добавить видеокарту</button>
+    <form action="${pageContext.request.contextPath}/logout" method="post" style="display: inline" class="fonts">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button class="fonts" type="submit">Выйти из аккаунта</button>
     </form>
-    <a href="/cart" class="cart-icon">
+    <a href="${pageContext.request.contextPath}/cart" class="cart-icon">
         <i class="fas fa-shopping-cart"></i>
     </a>
 </div>
@@ -87,17 +87,8 @@
             <td>${videocard.color}</td>
             <td>${videocard.price}</td>
             <td>
-                <form action="/videocards/update/${videocard.id}" method="get">
-                    <button class="fonts" type="submit">Обновить</button>
-                </form>
-            </td>
-            <td>
-                <form action="/videocards/delete/${videocard.id}" method="post">
-                    <button class="fonts" type="submit">Удалить</button>
-                </form>
-            </td>
-            <td>
                 <form action="/cart/add/${videocard.id}" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <button class="fonts" type="submit">Добавить в корзину</button>
                 </form>
             </td>
