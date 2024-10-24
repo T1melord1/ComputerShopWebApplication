@@ -21,7 +21,7 @@ public class VideocardController {
     public String getAllVideocards(Model model) {
         List<Videocard> videocards = videocardService.getVideocard();
         model.addAttribute("videocards", videocards);
-        return "videocardJSP/Admin/videocards";
+        return "videocardJSP/Admin/Videocard/videocards";
     }
     @GetMapping("")
     public String getAllVideocardsAdmin(Model model) {
@@ -33,7 +33,7 @@ public class VideocardController {
     @GetMapping("/admin/add")
     public String showAddForm(Model model) {
         model.addAttribute("videocard", new Videocard());
-        return "videocardJSP/Admin/add-videocard"; // Возвращает имя представления для формы добавления
+        return "videocardJSP/Admin/Videocard/add-videocard"; // Возвращает имя представления для формы добавления
     }
 
     @PostMapping("/admin/add")
@@ -60,7 +60,7 @@ public class VideocardController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Videocard videocard = videocardService.findById(id);
         model.addAttribute("videocard", videocard);
-        return "videocardJSP/Admin/update-videocard";
+        return "videocardJSP/Admin/Videocard/update-videocard";
     }
 
     @PostMapping("/admin/update/{id}")

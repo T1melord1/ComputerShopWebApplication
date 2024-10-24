@@ -9,45 +9,29 @@
             position: relative; /* Относительное позиционирование для навигационных ссылок */
             margin-bottom: 20px; /* Отступ между ссылками и формой */
         }
-        .nav-link {
-            font-size: 24px; /* Размер текста */
-            color: cornflowerblue; /* Цвет текста */
-            cursor: pointer; /* Указатель при наведении */
-            position: absolute; /* Абсолютное позиционирование */
-            transition: color 0.3s; /* Плавный переход цвета */
+
+        .logout-button {
+            float: right;
+            font-family: "Comic Sans MS", cursive;
         }
-        .nav-link.register {
-            right: 150px; /* Расположение справа */
-        }
-        .nav-link.login {
-            right: 50px; /* Расположение справа */
-        }
-        .nav-link:hover {
-            color: firebrick; /* Цвет при наведении */
-        }
+
         .videoMemory {
             padding-left: 35px; /* Добавляет отступ слева */
         }
+
         .graphicProcessor {
             padding-left: 50px;
         }
+
         body {
             background-color: ivory;
             font-family: "Comic Sans MS", cursive;
         }
+
         .fonts {
             font-family: "Comic Sans MS", cursive;
         }
-        .cart-icon {
-            font-size: 36px; /* Размер значка */
-            color: cornflowerblue; /* Цвет значка */
-            cursor: pointer; /* Меняет курсор на указатель при наведении на значок */
-            display: inline-block; /* Делает элемент блочным, но оставляет его в строке */
-            transition: color 0.3s; /* Плавный переход цвета при наведении на 0.3 секунды */
-        }
-        .cart-icon:hover {
-            color: #0056b3; /* Цвет значка при наведении */
-        }
+
     </style>
 </head>
 <body>
@@ -56,8 +40,8 @@
         <button class="fonts" type="submit">Добавить видеокарту</button>
     </form>
     <form action="${pageContext.request.contextPath}/logout" method="post" style="display: inline" class="fonts">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        <button class="fonts" type="submit">Выйти из аккаунта</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button class="logout-button" type="submit">Выйти из аккаунта</button>
     </form>
 </div>
 <table>
@@ -74,23 +58,26 @@
             <td>${videocard.id}</td>
             <td>${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
-            <td class="videoMemory">${videocard.videoMemory}</td>
+            <td class="videoMemory">${videocard.videoMemory} GB</td>
             <td>${videocard.color}</td>
             <td>${videocard.price}</td>
             <td>
                 <form action="/videocards/admin/update/${videocard.id}" method="get">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="fonts" type="submit">Обновить</button>
                 </form>
             </td>
             <td>
                 <form action="/videocards/admin/delete/${videocard.id}" method="post">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="fonts" type="submit">Удалить</button>
                 </form>
             </td>
         </tr>
     </c:forEach>
+    <form action="/users" method="get">
+        <button class="fonts" type="submit">Пользователи</button>
+    </form>
 </table>
 </body>
 </html>

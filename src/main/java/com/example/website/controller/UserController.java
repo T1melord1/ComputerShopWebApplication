@@ -5,10 +5,13 @@ import com.example.website.service.User.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,8 +42,11 @@ public class UserController {
         return "redirect:/login"; // Перенаправление на страницу логина
     }
 
-    @GetMapping("/accessdenied")
-    public String showError() {
-        return "userJSP/403";
+    @GetMapping("/users")
+    public String showUsers(Model model) {
+        List<User> users = userService.findAllUsers();
+        model.addAttribute("users", users);
+        return "videocardJSP/Admin/User/user";
     }
+
 }

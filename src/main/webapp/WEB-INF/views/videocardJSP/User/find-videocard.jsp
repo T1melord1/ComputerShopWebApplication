@@ -23,16 +23,16 @@
 <h2>Найденная видеокарта</h2>
 <table>
     <tr>
-        <th>ID</th>
+        <th>Number</th>
         <th>Manufacturer</th>
         <th>Graphic Processor</th>
         <th>Video Memory</th>
         <th>Color</th>
         <th>Price</th>
     </tr>
-    <c:forEach var="videocard" items="${findVideocards}">
+    <c:forEach var="videocard" items="${findVideocards}" varStatus="number">
         <tr>
-            <td>${videocard.id}</td>
+            <td>${number.index + 1}</td>
             <td>${videocard.manufacturer}</td>
             <td>${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory}</td>

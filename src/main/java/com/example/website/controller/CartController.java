@@ -17,7 +17,7 @@ public class CartController {
     @GetMapping("")
     public String showCart(Model model) {
         model.addAttribute("cart", cartService.getVideocardsInCart());
-        return "cartJSP/cart";
+        return "videocardJSP/User/cart";
     }
 
     @PostMapping("/add/{id}")

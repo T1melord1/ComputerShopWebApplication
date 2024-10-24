@@ -30,7 +30,7 @@
 </form>
 <table>
     <tr>
-        <th>ID</th>
+        <th>Number</th>
         <th>Manufacturer</th>
         <th>Graphic Processor</th>
         <th>Video Memory</th>
@@ -39,9 +39,9 @@
     </tr>
 
     <c:set var="totalPrice" value="0"/>
-    <c:forEach var="videocard" items="${cart}">
+    <c:forEach var="videocard" items="${cart}" varStatus="number">
         <tr>
-            <td class="">${videocard.id}</td>
+            <td>${number.index + 1}</td>
             <td>${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory}</td>

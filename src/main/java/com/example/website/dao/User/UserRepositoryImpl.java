@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -31,4 +32,10 @@ public class UserRepositoryImpl implements UserRepository {
             return Optional.empty();
         }
     }
+
+    @Override
+    public List<User> findAll() {
+        return entityManager.createQuery("FROM User", User.class).getResultList();
+    }
+
 }
