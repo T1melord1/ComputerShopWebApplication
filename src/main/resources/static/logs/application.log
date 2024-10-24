@@ -1,0 +1,461 @@
+2024-10-24 17:53:43 - Root WebApplicationContext: initialization started
+2024-10-24 17:53:43 - Refreshing Root WebApplicationContext
+2024-10-24 17:53:43 - Registering component classes: [class com.example.website.config.SecurityConfig,class com.example.website.config.ApplicationConfig]
+2024-10-24 17:53:43 - No component classes found for specified class/package [<NONE>]
+2024-10-24 17:53:44 - MLog clients using slf4j logging.
+2024-10-24 17:53:44 - Initializing c3p0-0.10.1 [built 2024-05-07T13:49:12.919880Z; debug? true; trace: 5]
+2024-10-24 17:53:44 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-24 17:53:44 - HHH000026: Second-level cache disabled
+2024-10-24 17:53:45 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h01dh01nfm0r0|79c42a0c, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h01dh01nfm0r0|79c42a0c, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 17:53:45 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 17:53:47 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 17:53:47 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 17:53:47 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 17:53:47 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 17:53:47 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 17:53:48 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 17:53:48 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 17:53:48 - Root WebApplicationContext initialized in 4617 ms
+2024-10-24 17:53:48 - Filter 'springSecurityFilterChain' configured for use
+2024-10-24 17:53:48 - Initializing Servlet 'dispatcher'
+2024-10-24 17:53:48 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet'
+2024-10-24 17:53:48 - Registering component classes: [class com.example.website.config.ApplicationConfig]
+2024-10-24 17:53:48 - HHH000026: Second-level cache disabled
+2024-10-24 17:53:48 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h01dh01nfm0r0|4ef0ce0a, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h01dh01nfm0r0|4ef0ce0a, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 17:53:48 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 17:53:48 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 17:53:48 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 17:53:48 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 17:53:48 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 17:53:48 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 17:53:48 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 17:53:48 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 17:53:48 - Detected AcceptHeaderLocaleResolver
+2024-10-24 17:53:48 - Detected FixedThemeResolver
+2024-10-24 17:53:48 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@14db957a
+2024-10-24 17:53:48 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@67a1f2da
+2024-10-24 17:53:48 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-24 17:53:48 - Completed initialization in 323 ms
+2024-10-24 17:53:48 - Securing GET /login
+2024-10-24 17:53:48 - Secured GET /login
+2024-10-24 17:53:48 - GET "/login", parameters={}
+2024-10-24 17:53:48 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 17:53:49 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:53:49 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@5af4d5b7, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:53:49 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 17:53:49 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:53:49 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:53:50 - Completed 200 OK
+2024-10-24 17:53:50 - Securing GET /
+2024-10-24 17:53:50 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:53:50 - Saved request http://localhost:8080/?continue to session
+2024-10-24 17:53:50 - Redirecting to http://localhost:8080/login
+2024-10-24 17:53:50 - Securing GET /login
+2024-10-24 17:53:50 - Secured GET /login
+2024-10-24 17:53:50 - GET "/login", parameters={}
+2024-10-24 17:53:50 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 17:53:50 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:53:50 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@3c620b4b, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:53:50 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 17:53:50 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:53:50 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:53:50 - Completed 200 OK
+2024-10-24 17:53:50 - Securing GET /login
+2024-10-24 17:53:50 - Secured GET /login
+2024-10-24 17:53:50 - GET "/login", parameters={}
+2024-10-24 17:53:50 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 17:53:50 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:53:50 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@30e87087, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:53:50 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 17:53:50 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:53:50 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:53:50 - Completed 200 OK
+2024-10-24 17:54:12 - Securing GET /videocards/find/manufacturer?manufacturer=NVIDIA
+2024-10-24 17:54:12 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:54:12 - Saved request http://localhost:8080/videocards/find/manufacturer?manufacturer=NVIDIA&continue to session
+2024-10-24 17:54:12 - Redirecting to http://localhost:8080/login
+2024-10-24 17:54:12 - Securing GET /login
+2024-10-24 17:54:12 - Secured GET /login
+2024-10-24 17:54:12 - GET "/login", parameters={}
+2024-10-24 17:54:12 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 17:54:12 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:54:12 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@31e859ff, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:54:12 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 17:54:12 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:54:12 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:54:12 - Completed 200 OK
+2024-10-24 17:54:13 - Securing POST /login
+2024-10-24 17:54:13 - Поиск пользователя в базе данных по имени пользователя digion4ik
+2024-10-24 17:54:14 - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2024-10-24 17:54:14 - Authenticated user
+2024-10-24 17:54:14 - Changed session id from 90176C45A95AEEAB3615317A7E2F9C76
+2024-10-24 17:54:14 - Replaced CSRF Token
+2024-10-24 17:54:14 - Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=digion4ik, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=90176C45A95AEEAB3615317A7E2F9C76], Granted Authorities=[ROLE_USER]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@7350d07f]
+2024-10-24 17:54:14 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=digion4ik, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=90176C45A95AEEAB3615317A7E2F9C76], Granted Authorities=[ROLE_USER]]
+2024-10-24 17:54:14 - Securing GET /videocards
+2024-10-24 17:54:14 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=digion4ik, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=90176C45A95AEEAB3615317A7E2F9C76], Granted Authorities=[ROLE_USER]]]
+2024-10-24 17:54:14 - Secured GET /videocards
+2024-10-24 17:54:14 - GET "/videocards", parameters={}
+2024-10-24 17:54:14 - Mapped to com.example.website.controller.VideocardController#getAllVideocardsAdmin(Model)
+2024-10-24 17:54:14 - Получение списка видеокарт из БД
+2024-10-24 17:54:14 - 
+    select
+        v1_0.id,
+        v1_0.color,
+        v1_0.graphic_processor,
+        v1_0.manufacturer,
+        v1_0.price,
+        v1_0.video_memory 
+    from
+        videocards v1_0
+2024-10-24 17:54:14 - View name [videocardJSP/User/videocardsUser], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@26978408, videocards=[Videocard(id=16, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3080, videoMemory=10.00, color=Black, price=699.99), Videocard(id=17, manufacturer=AMD, graphicProcessor=Radeon RX 6800 XT, videoMemory=16.00, color=Red, price=649.99), Videocard(id=18, manufacturer=Intel, graphicProcessor=Iris Xe, videoMemory=4.00, color=Blue, price=199.99), Videocard(id=19, manufacturer=NVIDIA, graphicProcessor=GeForce GTX 1660, videoMemory=6.00, color=Black, price=229.99), Videocard(id=20, manufacturer=AMD, graphicProcessor=Radeon RX 5700 XT, videoMemory=8.00, color=Red, price=399.99), Videocard(id=21, manufacturer=Intel, graphicProcessor=Arc A750, videoMemory=8.00, color=Silver, price=349.99), Videocard(id=22, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3090, videoMemory=24.00, color=Black, price=1499.99), Videocard(id=23, manufacturer=AMD, graphicProcessor=Radeon RX 6900 XT, videoMemory=16.00, color=Red, price=999.99), Videocard(id=24, manufacturer=Intel, graphicProcessor=Iris Plus, videoMemory=4.00, color=Blue, price=179.99)], org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:54:14 - Forwarding to [/WEB-INF/views/videocardJSP/User/videocardsUser.jsp]
+2024-10-24 17:54:14 - Securing GET /WEB-INF/views/videocardJSP/User/videocardsUser.jsp
+2024-10-24 17:54:14 - Secured GET /WEB-INF/views/videocardJSP/User/videocardsUser.jsp
+2024-10-24 17:54:14 - Completed 200 OK
+2024-10-24 17:54:15 - Securing GET /videocards/find/manufacturer?manufacturer=NVIDIA
+2024-10-24 17:54:15 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=digion4ik, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=90176C45A95AEEAB3615317A7E2F9C76], Granted Authorities=[ROLE_USER]]]
+2024-10-24 17:54:15 - Secured GET /videocards/find/manufacturer?manufacturer=NVIDIA
+2024-10-24 17:54:15 - GET "/videocards/find/manufacturer?manufacturer=NVIDIA", parameters={masked}
+2024-10-24 17:54:15 - Mapped to com.example.website.controller.VideocardController#getVideocardsByManufacturer(VideocardType, Model)
+2024-10-24 17:54:15 - Получение видеокарт от производителя: NVIDIA
+2024-10-24 17:54:15 - 
+    select
+        v1_0.id,
+        v1_0.color,
+        v1_0.graphic_processor,
+        v1_0.manufacturer,
+        v1_0.price,
+        v1_0.video_memory 
+    from
+        videocards v1_0 
+    where
+        v1_0.manufacturer=?
+2024-10-24 17:54:15 - View name [videocardJSP/User/find-videocard], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@757cf33f, findVideocards=[Videocard(id=16, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3080, videoMemory=10.00, color=Black, price=699.99), Videocard(id=19, manufacturer=NVIDIA, graphicProcessor=GeForce GTX 1660, videoMemory=6.00, color=Black, price=229.99), Videocard(id=22, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3090, videoMemory=24.00, color=Black, price=1499.99)], org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:54:15 - Forwarding to [/WEB-INF/views/videocardJSP/User/find-videocard.jsp]
+2024-10-24 17:54:15 - Securing GET /WEB-INF/views/videocardJSP/User/find-videocard.jsp?manufacturer=NVIDIA
+2024-10-24 17:54:15 - Secured GET /WEB-INF/views/videocardJSP/User/find-videocard.jsp?manufacturer=NVIDIA
+2024-10-24 17:54:15 - Completed 200 OK
+2024-10-24 17:55:25 - Closing WebApplicationContext for namespace 'dispatcher-servlet', started on Thu Oct 24 17:53:48 MSK 2024, parent: Root WebApplicationContext
+2024-10-24 17:55:25 - Closing Root WebApplicationContext, started on Thu Oct 24 17:53:43 MSK 2024
+2024-10-24 17:56:41 - Root WebApplicationContext: initialization started
+2024-10-24 17:56:41 - Refreshing Root WebApplicationContext
+2024-10-24 17:56:41 - Registering component classes: [class com.example.website.config.SecurityConfig,class com.example.website.config.ApplicationConfig]
+2024-10-24 17:56:41 - No component classes found for specified class/package [<NONE>]
+2024-10-24 17:56:42 - MLog clients using slf4j logging.
+2024-10-24 17:56:42 - Initializing c3p0-0.10.1 [built 2024-05-07T13:49:12.919880Z; debug? true; trace: 5]
+2024-10-24 17:56:42 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-24 17:56:42 - HHH000026: Second-level cache disabled
+2024-10-24 17:56:43 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h056vst0x25d|167264cc, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h056vst0x25d|167264cc, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 17:56:43 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 17:56:44 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 17:56:45 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 17:56:45 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 17:56:45 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 17:56:45 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 17:56:45 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 17:56:45 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 17:56:45 - Root WebApplicationContext initialized in 3733 ms
+2024-10-24 17:56:45 - Filter 'springSecurityFilterChain' configured for use
+2024-10-24 17:56:45 - Initializing Servlet 'dispatcher'
+2024-10-24 17:56:45 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet'
+2024-10-24 17:56:45 - Registering component classes: [class com.example.website.config.ApplicationConfig]
+2024-10-24 17:56:45 - HHH000026: Second-level cache disabled
+2024-10-24 17:56:45 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h056vst0x25d|67099de8, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h056vst0x25d|67099de8, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 17:56:45 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 17:56:45 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 17:56:45 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 17:56:45 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 17:56:45 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 17:56:45 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 17:56:45 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 17:56:45 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 17:56:45 - Detected AcceptHeaderLocaleResolver
+2024-10-24 17:56:45 - Detected FixedThemeResolver
+2024-10-24 17:56:45 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@126f6981
+2024-10-24 17:56:45 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@1142c175
+2024-10-24 17:56:45 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-24 17:56:45 - Completed initialization in 275 ms
+2024-10-24 17:57:31 - Closing WebApplicationContext for namespace 'dispatcher-servlet', started on Thu Oct 24 17:56:45 MSK 2024, parent: Root WebApplicationContext
+2024-10-24 17:57:31 - Closing Root WebApplicationContext, started on Thu Oct 24 17:56:41 MSK 2024
+2024-10-24 17:59:20 - Root WebApplicationContext: initialization started
+2024-10-24 17:59:20 - Refreshing Root WebApplicationContext
+2024-10-24 17:59:20 - Registering component classes: [class com.example.website.config.SecurityConfig,class com.example.website.config.ApplicationConfig]
+2024-10-24 17:59:20 - No component classes found for specified class/package [<NONE>]
+2024-10-24 17:59:21 - MLog clients using slf4j logging.
+2024-10-24 17:59:21 - Initializing c3p0-0.10.1 [built 2024-05-07T13:49:12.919880Z; debug? true; trace: 5]
+2024-10-24 17:59:21 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-24 17:59:21 - HHH000026: Second-level cache disabled
+2024-10-24 17:59:21 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h08ldt17dk3u9|30a8fd9, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h08ldt17dk3u9|30a8fd9, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 17:59:22 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 17:59:23 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 17:59:23 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 17:59:23 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 17:59:24 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 17:59:24 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 17:59:24 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 17:59:24 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 17:59:24 - Root WebApplicationContext initialized in 3620 ms
+2024-10-24 17:59:24 - Filter 'springSecurityFilterChain' configured for use
+2024-10-24 17:59:24 - Initializing Servlet 'dispatcher'
+2024-10-24 17:59:24 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet'
+2024-10-24 17:59:24 - Registering component classes: [class com.example.website.config.ApplicationConfig]
+2024-10-24 17:59:24 - HHH000026: Second-level cache disabled
+2024-10-24 17:59:24 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h08ldt17dk3u9|5629b071, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h08ldt17dk3u9|5629b071, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 17:59:24 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 17:59:24 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 17:59:24 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 17:59:24 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 17:59:24 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 17:59:24 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 17:59:24 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 17:59:24 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 17:59:24 - Detected AcceptHeaderLocaleResolver
+2024-10-24 17:59:24 - Detected FixedThemeResolver
+2024-10-24 17:59:24 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3a93a6e1
+2024-10-24 17:59:24 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@7adda96f
+2024-10-24 17:59:24 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-24 17:59:24 - Completed initialization in 277 ms
+2024-10-24 17:59:31 - Securing GET /videocards/admin/add?
+2024-10-24 17:59:31 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:59:31 - Saved request http://localhost:8080/videocards/admin/add?continue to session
+2024-10-24 17:59:31 - Redirecting to http://localhost:8080/login
+2024-10-24 17:59:31 - Securing GET /login
+2024-10-24 17:59:31 - Secured GET /login
+2024-10-24 17:59:31 - GET "/login", parameters={}
+2024-10-24 17:59:31 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 17:59:31 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 17:59:31 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@2855c18b, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:59:31 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 17:59:31 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:59:31 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 17:59:31 - Completed 200 OK
+2024-10-24 17:59:36 - Securing POST /login
+2024-10-24 17:59:36 - Поиск пользователя в базе данных по имени пользователя T1meLord
+2024-10-24 17:59:37 - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2024-10-24 17:59:37 - Authenticated user
+2024-10-24 17:59:37 - Changed session id from CC82132C6DC6C9994ACDC197594C42C1
+2024-10-24 17:59:37 - Replaced CSRF Token
+2024-10-24 17:59:37 - Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=CC82132C6DC6C9994ACDC197594C42C1], Granted Authorities=[ROLE_ADMIN]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@22bce89e]
+2024-10-24 17:59:37 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=CC82132C6DC6C9994ACDC197594C42C1], Granted Authorities=[ROLE_ADMIN]]
+2024-10-24 17:59:37 - Securing GET /videocards/admin
+2024-10-24 17:59:37 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=CC82132C6DC6C9994ACDC197594C42C1], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 17:59:37 - Secured GET /videocards/admin
+2024-10-24 17:59:37 - GET "/videocards/admin", parameters={}
+2024-10-24 17:59:37 - Mapped to com.example.website.controller.VideocardController#getAllVideocards(Model)
+2024-10-24 17:59:37 - Получение списка видеокарт из БД
+2024-10-24 17:59:37 - 
+    select
+        v1_0.id,
+        v1_0.color,
+        v1_0.graphic_processor,
+        v1_0.manufacturer,
+        v1_0.price,
+        v1_0.video_memory 
+    from
+        videocards v1_0
+2024-10-24 17:59:37 - View name [videocardJSP/Admin/Videocard/videocards], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@3b242149, videocards=[Videocard(id=16, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3080, videoMemory=10.00, color=Black, price=699.99), Videocard(id=17, manufacturer=AMD, graphicProcessor=Radeon RX 6800 XT, videoMemory=16.00, color=Red, price=649.99), Videocard(id=18, manufacturer=Intel, graphicProcessor=Iris Xe, videoMemory=4.00, color=Blue, price=199.99), Videocard(id=19, manufacturer=NVIDIA, graphicProcessor=GeForce GTX 1660, videoMemory=6.00, color=Black, price=229.99), Videocard(id=20, manufacturer=AMD, graphicProcessor=Radeon RX 5700 XT, videoMemory=8.00, color=Red, price=399.99), Videocard(id=21, manufacturer=Intel, graphicProcessor=Arc A750, videoMemory=8.00, color=Silver, price=349.99), Videocard(id=22, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3090, videoMemory=24.00, color=Black, price=1499.99), Videocard(id=23, manufacturer=AMD, graphicProcessor=Radeon RX 6900 XT, videoMemory=16.00, color=Red, price=999.99), Videocard(id=24, manufacturer=Intel, graphicProcessor=Iris Plus, videoMemory=4.00, color=Blue, price=179.99)], org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 17:59:37 - Forwarding to [/WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp]
+2024-10-24 17:59:37 - Securing GET /WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp
+2024-10-24 17:59:37 - Secured GET /WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp
+2024-10-24 17:59:37 - Completed 200 OK
+2024-10-24 18:01:19 - Closing WebApplicationContext for namespace 'dispatcher-servlet', started on Thu Oct 24 17:59:24 MSK 2024, parent: Root WebApplicationContext
+2024-10-24 18:01:19 - Closing Root WebApplicationContext, started on Thu Oct 24 17:59:20 MSK 2024
+2024-10-24 18:01:49 - Root WebApplicationContext: initialization started
+2024-10-24 18:01:49 - Refreshing Root WebApplicationContext
+2024-10-24 18:01:49 - Registering component classes: [class com.example.website.config.SecurityConfig,class com.example.website.config.ApplicationConfig]
+2024-10-24 18:01:49 - No component classes found for specified class/package [<NONE>]
+2024-10-24 18:01:50 - MLog clients using slf4j logging.
+2024-10-24 18:01:50 - Initializing c3p0-0.10.1 [built 2024-05-07T13:49:12.919880Z; debug? true; trace: 5]
+2024-10-24 18:01:50 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-24 18:01:50 - HHH000026: Second-level cache disabled
+2024-10-24 18:01:50 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h0bs811hz18v7|7f1fc6ee, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h0bs811hz18v7|7f1fc6ee, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 18:01:50 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 18:01:52 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 18:01:52 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 18:01:52 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 18:01:52 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 18:01:52 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 18:01:53 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 18:01:53 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 18:01:53 - Root WebApplicationContext initialized in 3652 ms
+2024-10-24 18:01:53 - Filter 'springSecurityFilterChain' configured for use
+2024-10-24 18:01:53 - Initializing Servlet 'dispatcher'
+2024-10-24 18:01:53 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet'
+2024-10-24 18:01:53 - Registering component classes: [class com.example.website.config.ApplicationConfig]
+2024-10-24 18:01:53 - HHH000026: Second-level cache disabled
+2024-10-24 18:01:53 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, attemptResurrectOnCheckin -> false, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionIsValidTimeout -> 0, connectionTesterClassName -> null, contextClassLoaderSource -> caller, dataSourceName -> 1hge11mb61h0bs811hz18v7|2cb8de46, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge11mb61h0bs811hz18v7|2cb8de46, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/website?useSSL=false, markSessionBoundaries -> always, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, taskRunnerFactoryClassName -> com.mchange.v2.c3p0.impl.DefaultTaskRunnerFactory, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {} ]
+2024-10-24 18:01:53 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-24 18:01:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-24 18:01:53 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-24 18:01:53 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-24 18:01:53 - 17 mappings in 'requestMappingHandlerMapping'
+2024-10-24 18:01:53 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-24 18:01:53 - ControllerAdvice beans: 1 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-24 18:01:53 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-24 18:01:53 - Detected AcceptHeaderLocaleResolver
+2024-10-24 18:01:53 - Detected FixedThemeResolver
+2024-10-24 18:01:53 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@408b1f91
+2024-10-24 18:01:53 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@63fbeb3d
+2024-10-24 18:01:53 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-24 18:01:53 - Completed initialization in 321 ms
+2024-10-24 18:02:07 - Securing GET /videocards
+2024-10-24 18:02:07 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 18:02:07 - Saved request http://localhost:8080/videocards?continue to session
+2024-10-24 18:02:07 - Redirecting to http://localhost:8080/login
+2024-10-24 18:02:07 - Securing GET /login
+2024-10-24 18:02:07 - Secured GET /login
+2024-10-24 18:02:07 - GET "/login", parameters={}
+2024-10-24 18:02:07 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 18:02:07 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 18:02:07 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@62f1f1bf, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 18:02:07 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 18:02:07 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 18:02:07 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 18:02:07 - Completed 200 OK
+2024-10-24 18:02:07 - Securing GET /favicon.ico
+2024-10-24 18:02:07 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 18:02:07 - Redirecting to http://localhost:8080/login
+2024-10-24 18:02:07 - Securing GET /login
+2024-10-24 18:02:07 - Secured GET /login
+2024-10-24 18:02:07 - GET "/login", parameters={}
+2024-10-24 18:02:07 - Mapped to com.example.website.controller.UserController#showLoginForm(HttpServletRequest)
+2024-10-24 18:02:07 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-24 18:02:07 - View name [userJSP/login], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@1db5302a, org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 18:02:07 - Forwarding to [/WEB-INF/views/userJSP/login.jsp]
+2024-10-24 18:02:07 - Securing GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 18:02:07 - Secured GET /WEB-INF/views/userJSP/login.jsp
+2024-10-24 18:02:07 - Completed 200 OK
+2024-10-24 18:02:12 - Securing POST /login
+2024-10-24 18:02:12 - Поиск пользователя в базе данных по имени пользователя T1meLord
+2024-10-24 18:02:13 - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2024-10-24 18:02:13 - Authenticated user
+2024-10-24 18:02:13 - Changed session id from A3F96D4F41F44448AA9977449998E238
+2024-10-24 18:02:13 - Replaced CSRF Token
+2024-10-24 18:02:13 - Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@11e29ba3]
+2024-10-24 18:02:13 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]
+2024-10-24 18:02:13 - Securing GET /videocards/admin
+2024-10-24 18:02:13 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 18:02:13 - Secured GET /videocards/admin
+2024-10-24 18:02:13 - GET "/videocards/admin", parameters={}
+2024-10-24 18:02:13 - Mapped to com.example.website.controller.VideocardController#getAllVideocards(Model)
+2024-10-24 18:02:13 - Получение списка видеокарт из БД
+2024-10-24 18:02:13 - 
+    select
+        v1_0.id,
+        v1_0.color,
+        v1_0.graphic_processor,
+        v1_0.manufacturer,
+        v1_0.price,
+        v1_0.video_memory 
+    from
+        videocards v1_0
+2024-10-24 18:02:13 - View name [videocardJSP/Admin/Videocard/videocards], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@4b4036d5, videocards=[Videocard(id=16, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3080, videoMemory=10.00, color=Black, price=699.99), Videocard(id=17, manufacturer=AMD, graphicProcessor=Radeon RX 6800 XT, videoMemory=16.00, color=Red, price=649.99), Videocard(id=18, manufacturer=Intel, graphicProcessor=Iris Xe, videoMemory=4.00, color=Blue, price=199.99), Videocard(id=19, manufacturer=NVIDIA, graphicProcessor=GeForce GTX 1660, videoMemory=6.00, color=Black, price=229.99), Videocard(id=20, manufacturer=AMD, graphicProcessor=Radeon RX 5700 XT, videoMemory=8.00, color=Red, price=399.99), Videocard(id=21, manufacturer=Intel, graphicProcessor=Arc A750, videoMemory=8.00, color=Silver, price=349.99), Videocard(id=22, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3090, videoMemory=24.00, color=Black, price=1499.99), Videocard(id=23, manufacturer=AMD, graphicProcessor=Radeon RX 6900 XT, videoMemory=16.00, color=Red, price=999.99), Videocard(id=24, manufacturer=Intel, graphicProcessor=Iris Plus, videoMemory=4.00, color=Blue, price=179.99)], org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 18:02:13 - Forwarding to [/WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp]
+2024-10-24 18:02:13 - Securing GET /WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp
+2024-10-24 18:02:13 - Secured GET /WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp
+2024-10-24 18:02:13 - Completed 200 OK
+2024-10-24 18:02:13 - Securing GET /favicon.ico
+2024-10-24 18:02:13 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 18:02:13 - Secured GET /favicon.ico
+2024-10-24 18:02:13 - GET "/favicon.ico", parameters={}
+2024-10-24 18:02:13 - Mapped to com.example.website.controller.Another.FaviconController#getFavicon()
+2024-10-24 18:02:13 - Using 'image/avif', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/octet-stream, */*, application/json, application/*+json]
+2024-10-24 18:02:13 - Writing [{0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 32, 0, 40, 32, 4, 0, 22, 0, 0, 0, 40, 0, 0, 0, 0, 1, 0, 0, 0, 2 (truncated)...]
+2024-10-24 18:02:13 - Completed 200 OK
+2024-10-24 18:02:24 - Securing GET /videocards/admin/add?
+2024-10-24 18:02:24 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 18:02:24 - Secured GET /videocards/admin/add?
+2024-10-24 18:02:24 - GET "/videocards/admin/add", parameters={}
+2024-10-24 18:02:24 - Mapped to com.example.website.controller.VideocardController#showAddForm(Model)
+2024-10-24 18:02:24 - View name [videocardJSP/Admin/Videocard/add-videocard], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@690358fe, videocard=Videocard(id=null, manufacturer=null, graphicProcessor=Geforce RTX, videoMemory=null, color=Black, price=0), org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors, org.springframework.validation.BindingResult.videocard=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 18:02:24 - Forwarding to [/WEB-INF/views/videocardJSP/Admin/Videocard/add-videocard.jsp]
+2024-10-24 18:02:24 - Securing GET /WEB-INF/views/videocardJSP/Admin/Videocard/add-videocard.jsp?
+2024-10-24 18:02:24 - Secured GET /WEB-INF/views/videocardJSP/Admin/Videocard/add-videocard.jsp?
+2024-10-24 18:02:24 - Completed 200 OK
+2024-10-24 18:02:44 - Securing POST /videocards/admin/add
+2024-10-24 18:02:44 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 18:02:44 - Secured POST /videocards/admin/add
+2024-10-24 18:02:44 - POST "/videocards/admin/add", parameters={masked}
+2024-10-24 18:02:44 - Mapped to com.example.website.controller.VideocardController#addVideocard(Videocard)
+2024-10-24 18:02:44 - Добавление видеокарты в базу данных: Videocard(id=null, manufacturer=NVIDIA, graphicProcessor=Geforce RTX 3060 Mobile, videoMemory=6, color=Black, price=459.89)
+2024-10-24 18:02:44 - 
+    insert 
+    into
+        videocards
+        (color, graphic_processor, manufacturer, price, video_memory) 
+    values
+        (?, ?, ?, ?, ?)
+2024-10-24 18:02:44 - View name [redirect:], model {}
+2024-10-24 18:02:44 - Completed 302 FOUND
+2024-10-24 18:02:44 - Securing GET /videocards/admin
+2024-10-24 18:02:44 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 18:02:44 - Secured GET /videocards/admin
+2024-10-24 18:02:44 - GET "/videocards/admin", parameters={}
+2024-10-24 18:02:44 - Mapped to com.example.website.controller.VideocardController#getAllVideocards(Model)
+2024-10-24 18:02:44 - Получение списка видеокарт из БД
+2024-10-24 18:02:44 - 
+    select
+        v1_0.id,
+        v1_0.color,
+        v1_0.graphic_processor,
+        v1_0.manufacturer,
+        v1_0.price,
+        v1_0.video_memory 
+    from
+        videocards v1_0
+2024-10-24 18:02:44 - View name [videocardJSP/Admin/Videocard/videocards], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@32111643, videocards=[Videocard(id=16, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3080, videoMemory=10.00, color=Black, price=699.99), Videocard(id=17, manufacturer=AMD, graphicProcessor=Radeon RX 6800 XT, videoMemory=16.00, color=Red, price=649.99), Videocard(id=18, manufacturer=Intel, graphicProcessor=Iris Xe, videoMemory=4.00, color=Blue, price=199.99), Videocard(id=19, manufacturer=NVIDIA, graphicProcessor=GeForce GTX 1660, videoMemory=6.00, color=Black, price=229.99), Videocard(id=20, manufacturer=AMD, graphicProcessor=Radeon RX 5700 XT, videoMemory=8.00, color=Red, price=399.99), Videocard(id=21, manufacturer=Intel, graphicProcessor=Arc A750, videoMemory=8.00, color=Silver, price=349.99), Videocard(id=22, manufacturer=NVIDIA, graphicProcessor=GeForce RTX 3090, videoMemory=24.00, color=Black, price=1499.99), Videocard(id=23, manufacturer=AMD, graphicProcessor=Radeon RX 6900 XT, videoMemory=16.00, color=Red, price=999.99), Videocard(id=24, manufacturer=Intel, graphicProcessor=Iris Plus, videoMemory=4.00, color=Blue, price=179.99), Videocard(id=27, manufacturer=NVIDIA, graphicProcessor=Geforce RTX 3060 Mobile, videoMemory=6.00, color=Black, price=459.89)], org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 18:02:44 - Forwarding to [/WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp]
+2024-10-24 18:02:44 - Securing GET /WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp
+2024-10-24 18:02:44 - Secured GET /WEB-INF/views/videocardJSP/Admin/Videocard/videocards.jsp
+2024-10-24 18:02:44 - Completed 200 OK
+2024-10-24 18:02:50 - Securing GET /users?
+2024-10-24 18:02:50 - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=T1meLord, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=A3F96D4F41F44448AA9977449998E238], Granted Authorities=[ROLE_ADMIN]]]
+2024-10-24 18:02:50 - Secured GET /users?
+2024-10-24 18:02:50 - GET "/users", parameters={}
+2024-10-24 18:02:50 - Mapped to com.example.website.controller.UserController#showUsers(Model)
+2024-10-24 18:02:50 - Поиск всех пользователей в базе данных
+2024-10-24 18:02:50 - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0
+2024-10-24 18:02:50 - View name [videocardJSP/Admin/User/user], model {_csrf=org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken@75222a45, users=[User(id=35563cb5-e7ad-48b7-9b85-cdd67e334623, username=digion4ik, password=$2a$10$7keer4eVnZm1dvnrhMXppeTVkdKuAtNdX4628wovAy55K4qVRYztu, email=vbobrenok@mail.ru, role=USER), User(id=4cad4fcd-c6e2-46b1-ade1-9921725bdf94, username=7katyee, password=$2a$10$Dqrf2VQEAa/VqrzR0B3ESum06AGA9l9ODeWGkqsSPeatT/FBqs5.u, email=catherine14316@gmail.com, role=USER), User(id=631ea358-b994-4765-8f72-eb237f08c674, username=T1meLord, password=$2a$10$1yFR4XYF7sTvOyRJgFwkl.NU/vOtSAnAOMbgkF.gFoFeP8M6jpgLG, email=vlad.bobrenok.2001@gmail.com, role=ADMIN), User(id=e69e923d-1ba8-4c14-81d0-5f1cf2e4d718, username=mixer404, password=$2a$10$mcFuZML2yGYyFtvi68bRxe2WMyE.mTYbmIAE5YhGzBa8w9gAh8f/i, email=mixer404@gmail.com, role=ADMIN)], org.springframework.validation.BindingResult._csrf=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+2024-10-24 18:02:50 - Forwarding to [/WEB-INF/views/videocardJSP/Admin/User/user.jsp]
+2024-10-24 18:02:50 - Securing GET /WEB-INF/views/videocardJSP/Admin/User/user.jsp?
+2024-10-24 18:02:50 - Secured GET /WEB-INF/views/videocardJSP/Admin/User/user.jsp?
+2024-10-24 18:02:50 - Completed 200 OK

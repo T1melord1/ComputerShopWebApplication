@@ -18,8 +18,7 @@
 <body>
 <h1>Обновление данных видеокарты</h1>
 <form:form modelAttribute="videocard" cssClass="fonts" action="/videocards/admin/update/${videocard.id}" method="post">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 <table>
     <tr>
         <td>Manufacturer:</td>

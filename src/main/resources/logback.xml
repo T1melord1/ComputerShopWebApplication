@@ -2,19 +2,32 @@
 <configuration>
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} - %msg%n"/>
 
+    <!-- Консольный аппендер -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
+    <!-- Файловый аппендер -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>D:\Projects\git\ComputerShopWebApplication\src\main\resources\static\logs\application.log</file>  <!-- Путь к папке static -->
+        <append>true</append>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Настройка логгеров -->
     <logger name="com.example.website.service" level="DEBUG"/>
     <logger name="org.hibernate.SQL" level="DEBUG"/>
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
     <logger name="org.springframework.security" level="DEBUG"/>
     <logger name="org.springframework.web" level="DEBUG"/>
 
+    <!-- Корневой логгер -->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/> <!-- Добавлено для файла -->
     </root>
 </configuration>

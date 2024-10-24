@@ -13,7 +13,11 @@
             font-family: "Comic Sans MS", cursive;
         }
         .alert {
-            color: green; /* Или другой цвет, который ты хочешь */
+            color: red; /* Или другой цвет, который ты хочешь */
+            margin-bottom: 20px;
+        }
+        .alert-success{
+            color: green;
             margin-bottom: 20px;
         }
     </style>
@@ -22,7 +26,7 @@
 <h2>Login</h2>
 <!-- Блок для сообщения об успешной регистрации -->
 <c:if test="${not empty successMessage}">
-    <div class="alert">${successMessage}</div>
+    <div class="alert-success">${successMessage}</div>
 </c:if>
 <c:if test="${param.error != null}">
     <div class="alert">Неправильное имя пользователя или пароль. Попробуйте снова.</div>

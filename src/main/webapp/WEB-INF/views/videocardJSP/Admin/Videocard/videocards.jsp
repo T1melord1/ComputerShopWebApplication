@@ -76,7 +76,7 @@
         </tr>
     </c:forEach>
     <form action="/users" method="get">
-        <button class="fonts" type="submit">Пользователи</button>
+        <button class="logout-button" type="submit">Пользователи</button>
     </form>
 </table>
 </body>

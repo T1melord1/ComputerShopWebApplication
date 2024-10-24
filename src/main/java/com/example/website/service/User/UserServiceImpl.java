@@ -33,16 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User authenticate(String username, String password) {
-        User user = findUserByUsername(username);
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user; // Успешная аутентификация
-        }
-        return null; // Неуспешная аутентификация
-    }
-
-    @Override
     public List<User> findAllUsers() {
+        log.debug("Поиск всех пользователей в базе данных");
         return userRepository.findAll();
     }
 }

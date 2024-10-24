@@ -1,13 +1,13 @@
 package com.example.website.controller;
 
 import com.example.website.entity.User.User;
+import com.example.website.service.Email.EmailService;
 import com.example.website.service.User.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -18,6 +18,8 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+
+    private final EmailService emailService;
 
     @GetMapping("/register")
     public String showRegistrationForm(HttpServletRequest request) {
@@ -36,10 +38,12 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
+    public String registerUser(User user, RedirectAttributes redirectAttributes) {
         userService.registerUser(user);
-        redirectAttributes.addFlashAttribute("successMessage", "Регистрация прошла успешно! Пожалуйста, войдите.");
-        return "redirect:/login"; // Перенаправление на страницу логина
+        emailService.sendEmail(user.getEmail(), "Подтверждение регистрации",
+                "Спасибо за регистрацию. Пожалуйста, подтвердите ваш email.");
+        redirectAttributes.addFlashAttribute("successMessage", "Регистрация прошла успешно! Проверьте вашу почту для подтверждения.");
+        return "redirect:/login";
     }
 
     @GetMapping("/users")
@@ -48,5 +52,4 @@ public class UserController {
         model.addAttribute("users", users);
         return "videocardJSP/Admin/User/user";
     }
-
 }

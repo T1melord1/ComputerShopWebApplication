@@ -9,7 +9,6 @@ public interface UserService {
 
     User findUserByUsername(String username);
 
-    User authenticate(String username, String password);
 
     List<User> findAllUsers();
 }
