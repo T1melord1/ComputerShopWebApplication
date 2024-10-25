@@ -1,10 +1,9 @@
 package com.example.website.entity.User;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
@@ -27,4 +26,7 @@ public class User {
     @Column(columnDefinition = "enum('USER', 'ADMIN', 'ROOT')", nullable = false)
     @Enumerated(EnumType.STRING)
     private UserType role = UserType.USER;
+    @Getter
+    @Setter
+    private String confirmationToken;
 }

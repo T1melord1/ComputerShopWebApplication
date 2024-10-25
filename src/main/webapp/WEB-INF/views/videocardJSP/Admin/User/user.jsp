@@ -36,12 +36,14 @@
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Token</th>
         </tr>
         <c:forEach var="user" items="${users}" varStatus="status">
             <tr>
                 <td>${status.index + 1}</td>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
+                <td>${user.confirmationToken}</td>
             </tr>
         </c:forEach>
     </table>

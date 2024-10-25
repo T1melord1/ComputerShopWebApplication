@@ -12,10 +12,17 @@
         .fonts {
             font-family: "Comic Sans MS", cursive;
         }
+        .alert {
+            color: red; /* Или другой цвет, который ты хочешь */
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 <h2>Register</h2>
+<c:if test="${not empty message}">
+    <div class="alert">${message}</div>
+</c:if>
 <form action="${pageContext.request.contextPath}/register" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <label for="username">Username:</label>

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -23,13 +25,15 @@ public class UserServiceImpl implements UserService {
         log.debug("Добавление пользователя: {}", user);
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+        String token = UUID.randomUUID().toString();
+        user.setConfirmationToken(token);
         userRepository.save(user);
     }
 
     @Override
-    public User findUserByUsername(String username) {
+    public Optional<User> findUserByUsername(String username) {
         log.debug("Поиск по имени пользователя: {}", username);
-        return userRepository.findByUsername(username).orElse(null);
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -37,4 +41,25 @@ public class UserServiceImpl implements UserService {
         log.debug("Поиск всех пользователей в базе данных");
         return userRepository.findAll();
     }
+
+    @Override
+    public Optional<User> findByConfirmationToken(String token) {
+        log.debug("Поиск пользователя по токену подтверждения: {}", token);
+        return userRepository.findByConfirmationToken(token);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        log.debug("Поиск почты пользователя: {}", email);
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public void updateUser(User user) {
+        log.debug("Обновление пользователя: {}", user);
+        userRepository.save(user);
+    }
 }
+
+
