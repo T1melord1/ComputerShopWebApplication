@@ -6,6 +6,9 @@ import com.example.website.service.User.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,8 +59,7 @@ public class UserController {
         } else if (existingUserUsername.isPresent()) {
             redirectAttributes.addFlashAttribute("message", "Пользователь с таким именем уже существует");
             return "redirect:/register";
-        }
-        else {
+        } else {
             userService.registerUser(user);
             emailService.sendEmail(user.getEmail(), "Подтверждение регистрации",
                     "Спасибо за регистрацию. Пожалуйста, подтвердите ваш email перейдя по адресу http://localhost:8080/email/confirm?token=" + user.getConfirmationToken());
@@ -82,9 +84,17 @@ public class UserController {
             log.debug("Пользователь {} подтвердил email", user.getUsername());
             redirectAttributes.addFlashAttribute("successMessage", "Email подтверждён. Вы можете войти.");
         } else {
-            redirectAttributes.addFlashAttribute(   "errorMessage", "Неверный токен подтверждения.");
+            redirectAttributes.addFlashAttribute("errorMessage", "Неверный токен подтверждения.");
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("/user/profile")
+    public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+        model.addAttribute("userProfile", user);
+        return"videocardJSP/User/userProfile";
     }
 }
 

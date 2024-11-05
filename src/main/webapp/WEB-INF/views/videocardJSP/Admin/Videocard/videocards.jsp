@@ -32,6 +32,16 @@
             font-family: "Comic Sans MS", cursive;
         }
 
+        .button-container {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-container button {
+            width: 100%;
+            padding: 5px;
+            font-family: "Comic Sans MS", cursive;
+        }
     </style>
 </head>
 <body>
@@ -64,13 +74,17 @@
             <td>
                 <form action="/videocards/admin/update/${videocard.id}" method="get">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <div class="button-container">
                     <button class="fonts" type="submit">Обновить</button>
+                    </div>
                 </form>
             </td>
             <td>
                 <form action="/videocards/admin/delete/${videocard.id}" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <div class="button-container">
                     <button class="fonts" type="submit">Удалить</button>
+                    </div>
                 </form>
             </td>
         </tr>

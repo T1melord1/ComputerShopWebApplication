@@ -43,6 +43,13 @@
         .cart-icon:hover {
             color: #0056b3; /* Цвет значка при наведении */
         }
+        .button-container { display: flex;
+            justify-content: center;
+            align-items: center; }
+        .button-container button {
+            width: 100%; /* Кнопка занимает всю ширину контейнера */
+            padding: 5px; /* Отступ внутри кнопки */
+            font-family: "Comic Sans MS", cursive; }
     </style>
 </head>
 <body>
@@ -63,6 +70,9 @@
     </form>
     <a href="${pageContext.request.contextPath}/cart" class="cart-icon">
         <i class="fas fa-shopping-cart"></i>
+    </a>
+    <a href="${pageContext.request.contextPath}/user/profile" class="cart-icon" data-username="username">
+        <i class="fas fa-user"></i>
     </a>
 </div>
 <table>
@@ -85,7 +95,9 @@
             <td>
                 <form action="/cart/add/${videocard.id}" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <div class="button-container">
                     <button class="fonts" type="submit">Добавить в корзину</button>
+                    </div>
                 </form>
             </td>
         </tr>

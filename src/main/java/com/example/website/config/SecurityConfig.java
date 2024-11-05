@@ -21,6 +21,10 @@ public class SecurityConfig {
     private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(myUserDetailsService);
@@ -46,6 +50,8 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
+                        .clearAuthentication(true)
+                        .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
                 .exceptionHandling(exception -> exception
@@ -54,8 +60,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
