@@ -11,7 +11,6 @@
         }
 
         .logout-button {
-            float: right;
             font-family: "Comic Sans MS", cursive;
         }
 
@@ -33,6 +32,7 @@
         }
 
         .cart-icon {
+            float: right;
             font-size: 36px; /* Размер значка */
             color: cornflowerblue; /* Цвет значка */
             cursor: pointer; /* Меняет курсор на указатель при наведении на значок */

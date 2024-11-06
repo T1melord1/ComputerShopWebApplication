@@ -12,6 +12,7 @@
         .fonts {
             font-family: "Comic Sans MS", cursive;
         }
+
         .button {
             float: right;
             font-family: "Comic Sans MS", cursive;
@@ -22,17 +23,30 @@
 <body>
 <form action="/videocards" method="get" class="button">
     <button type="submit" class="fonts">Вернуться на главную страницу</button>
-</form>
 
+</form>
 <table>
     <tr>
-        <td>ID: ${userProfile.id}</td>
+        <td>Username:<b> ${userProfile.username} </b></td>
     </tr>
     <tr>
-        <td>Username: ${userProfile.username}</td>
+        <td>Email:<b> ${userProfile.email} </b>
+            <c:if test="${userProfile.confirmationToken == null}">
+                - подтверждён
+            </c:if>
+            <c:if test="${userProfile.confirmationToken != null}">
+                - не подтверждён
+            </c:if>
+
+        </td>
+
     </tr>
     <tr>
-        <td>Email: ${userProfile.email}</td>
+        <td>
+            <form action="/password/change/{username}" method="get">
+                <button type="submit" class="fonts">Сменить пароль</button>
+            </form>
+         </td>
     </tr>
 </table>
 </body>

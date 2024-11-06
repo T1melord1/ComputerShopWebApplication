@@ -9,11 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -25,6 +24,7 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final EmailService emailService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/register")
     public String showRegistrationForm(HttpServletRequest request) {
@@ -94,7 +94,33 @@ public class UserController {
         Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
         User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
         model.addAttribute("userProfile", user);
-        return"videocardJSP/User/userProfile";
+        return "videocardJSP/User/userProfile";
+    }
+
+    @GetMapping("/password/change/{username}")
+    public String changePassword(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+        model.addAttribute("userProfile", user);
+        return "videocardJSP/User/changePassword";
+    }
+
+    @PostMapping("/password/change/{username}")
+    public String changePasswordConfirmation(@RequestParam("newPassword") String newPassword,
+                                             @RequestParam("oldPassword") String oldPassword,
+                                             @AuthenticationPrincipal UserDetails userDetails,
+                                             Model model, @PathVariable("username") String username) {
+        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userService.updateUser(user);
+            return "redirect:/user/profile";
+        } else {
+            model.addAttribute("errorMessage", "Старый пароль неверен");
+            return "videocardJSP/User/changePassword";
+        }
     }
 }
+
 

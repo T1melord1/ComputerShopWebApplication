@@ -19,6 +19,7 @@
         }
 
         .fonts {
+            float: right;
             font-family: "Comic Sans MS", cursive;
         }
     </style>
@@ -26,7 +27,7 @@
 
 <body>
 <form action="/videocards" method="get">
-    <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
+    <button class="fonts" type="submit">Вернуться на главную страницу</button>
 </form>
 <table>
     <tr>
