@@ -29,16 +29,16 @@
 <p style="color: red;"><%= request.getAttribute("errorMessage") %>
 </p>
 <% } %>
-<form action="/password/change/${userProfile.username}" method="post">
+<form action="/password/reset/${userProfile.username}" method="post">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <table>
         <tr>
-            <td>Старый пароль:</td>
-            <td><input type="password" id="oldPassword" name="oldPassword" required></td>
+            <td>Новый пароль:</td>
+            <td><input type="password" id="newPassword" name="newPassword" required></td>
         </tr>
-        <td>Новый пароль:</td>
-        <td><input type="password" id="newPassword" name="newPassword" required></td>
+        <td>Подтверждение пароля:</td>
+        <td><input type="password" id="confirmationPassword" name="confirmationPassword" required></td>
         <tr>
             <td colspan="2"><input type="submit" class="fonts" value="Изменить пароль"/></td>
         </tr>

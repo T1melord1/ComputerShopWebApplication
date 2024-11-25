@@ -22,25 +22,17 @@
 </head>
 <body>
 <form action="/user/profile" method="get">
-    <button type="submit" class="fonts-right">Вернуться в профиль</button>
+    <button type="submit" class="fonts-right">Вернуться на главную</button>
 </form>
-<p>Введите новый пароль</p>
-<% if (request.getAttribute("errorMessage") != null) { %>
-<p style="color: red;"><%= request.getAttribute("errorMessage") %>
-</p>
-<% } %>
-<form action="/password/change/${userProfile.username}" method="post">
-
+<p>Введите свой адрес электронной почты</p>
+<form action="/password/reset" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <table>
         <tr>
-            <td>Старый пароль:</td>
-            <td><input type="password" id="oldPassword" name="oldPassword" required></td>
+            <td><input type="email" id="email" name="email" required></td>
         </tr>
-        <td>Новый пароль:</td>
-        <td><input type="password" id="newPassword" name="newPassword" required></td>
         <tr>
-            <td colspan="2"><input type="submit" class="fonts" value="Изменить пароль"/></td>
+            <td colspan="2"><input type="submit" class="fonts" value="Отправить адрес"/></td>
         </tr>
     </table>
 </form>

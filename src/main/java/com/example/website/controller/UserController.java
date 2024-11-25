@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -120,6 +121,19 @@ public class UserController {
             model.addAttribute("errorMessage", "Старый пароль неверен");
             return "videocardJSP/User/changePassword";
         }
+    }
+
+    @PostMapping("/password/reset")
+    public String resetPassword(@RequestParam("email") String email, RedirectAttributes redirectAttributes) {
+        String token = UUID.randomUUID().toString();
+        emailService.sendEmail(email,"Сброс пароля", "Для сброса пароля перейдите по ссылке: " + "localhost:8080/reset-password?token=" + token);
+        redirectAttributes.addFlashAttribute("successMessage", "Ссылка для смены пароля отправлена. Проверьте вашу почту");
+        return "redirect:/login";
+    }
+
+    @GetMapping("/form/reset")
+    public String showResetForm() {
+        return "videocardJSP/User/resetForm";
     }
 }
 
