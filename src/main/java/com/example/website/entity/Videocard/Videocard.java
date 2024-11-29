@@ -24,7 +24,7 @@ public class Videocard {
     @Column(name = "graphic_processor")
     private String graphicProcessor = "Geforce RTX";
     @Column(name = "video_memory")
-    private BigDecimal videoMemory;
+    private BigDecimal videoMemory = BigDecimal.ONE;
     private String color = "Black";
     private BigDecimal price = BigDecimal.ZERO;
 }

@@ -10,5 +10,6 @@ public interface UserRepository {
     List<User> findAll();
     Optional<User> findByUsername(String username);
     Optional<User> findByConfirmationToken(String token);
+    Optional<User> findByResetToken(String token);
     Optional<User> findByEmail(String email);
 }

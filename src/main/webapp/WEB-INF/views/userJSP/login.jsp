@@ -40,5 +40,6 @@
     <button type="submit" class="fonts">Логин</button>
 </form:form>
 <p>Нет аккаунта? <a class="fonts" href="${pageContext.request.contextPath}/register">Зарегистрироваться</a></p>
+<p>Забыли пароль? <a class="fonts" href="${pageContext.request.contextPath}/password/reset">Сброс пароля</a></p>
 </body>
 </html>

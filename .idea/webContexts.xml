@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/Admin/Videocard/add-videocard.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/Admin/Videocard" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/User/resetPassword.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/User" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/User/test.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/User" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/add-videocard.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP/videocardsJSP.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/videocardJSP" />

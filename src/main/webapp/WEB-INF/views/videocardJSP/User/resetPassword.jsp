@@ -1,9 +1,10 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Смена пароля</title>
+    <meta charset="UTF-8">
+    <title>Сброс пароля</title>
     <style>
         body {
             background-color: ivory;
@@ -20,29 +21,29 @@
         }
     </style>
 </head>
-<body>
-<form action="/user/profile" method="get">
-    <button type="submit" class="fonts-right">Вернуться в профиль</button>
-</form>
-<p>Введите новый пароль</p>
-<% if (request.getAttribute("errorMessage") != null) { %>
-<p style="color: red;"><%= request.getAttribute("errorMessage") %>
-</p>
-<% } %>
-<form action="/password/reset/${userProfile.username}" method="post">
 
+<body>
+<form action="/user/login" method="get">
+    <button type="submit" class="fonts-right">Вернуться на главную</button>
+</form>
+<h2>Сброс пароля</h2>
+<form:form method="post" action="/reset-password" cssClass="fonts" modelAttribute="user">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <form:hidden path="resetToken" value="${user.resetToken}"/>
+    <form:hidden path="email" value="${user.email}"/>
     <table>
         <tr>
-            <td>Новый пароль:</td>
-            <td><input type="password" id="newPassword" name="newPassword" required></td>
+            <td><label for="newPassword">Новый пароль:</label></td>
+            <td><form:input type="password" path="newPassword" required="required"/></td>
         </tr>
-        <td>Подтверждение пароля:</td>
-        <td><input type="password" id="confirmationPassword" name="confirmationPassword" required></td>
         <tr>
-            <td colspan="2"><input type="submit" class="fonts" value="Изменить пароль"/></td>
+            <td><label for="confirmPassword">Подтвердите пароль:</label></td>
+            <td><form:input type="password" path="confirmPassword" required="required"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" class="fonts" value="Сменить пароль"/></td>
         </tr>
     </table>
-</form>
+</form:form>
 </body>
 </html>

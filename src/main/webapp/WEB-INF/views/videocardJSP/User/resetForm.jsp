@@ -18,23 +18,33 @@
             float: right;
             font-family: "Comic Sans MS", cursive;
         }
+
+        .form-group input {
+            width: 300px; /* Ширина для поля ввода */
+        }
+
+        .submit-button {
+            width: auto; /* Ширина кнопки будет зависеть от содержания */
+        }
     </style>
 </head>
 <body>
-<form action="/user/profile" method="get">
+<form action="/user/login" method="get">
     <button type="submit" class="fonts-right">Вернуться на главную</button>
 </form>
 <p>Введите свой адрес электронной почты</p>
 <form action="/password/reset" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <table>
-        <tr>
-            <td><input type="email" id="email" name="email" required></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" class="fonts" value="Отправить адрес"/></td>
-        </tr>
-    </table>
+    <div class="form-group">
+        <table>
+            <tr>
+                <td><input type="email" id="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" class="fonts submit-button" value="Подтвердить адрес почты"/></td>
+            </tr>
+        </table>
+    </div>
 </form>
 </body>
 </html>

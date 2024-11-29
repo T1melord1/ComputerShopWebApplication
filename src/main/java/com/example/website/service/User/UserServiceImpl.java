@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
         log.debug("Добавление пользователя: {}", user);
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        String token = UUID.randomUUID().toString();
-        user.setConfirmationToken(token);
+        String confirmationToken = UUID.randomUUID().toString();
+        user.setConfirmationToken(confirmationToken);
         userRepository.save(user);
     }
 
@@ -46,6 +46,12 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByConfirmationToken(String token) {
         log.debug("Поиск пользователя по токену подтверждения: {}", token);
         return userRepository.findByConfirmationToken(token);
+    }
+
+    @Override
+    public Optional<User> findByResetToken(String token) {
+        log.debug("Поиск пользователя по токену ресета: {}", token);
+        return userRepository.findByResetToken(token);
     }
 
     @Override

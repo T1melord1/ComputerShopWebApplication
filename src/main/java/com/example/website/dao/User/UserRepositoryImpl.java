@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -47,6 +47,18 @@ public class UserRepositoryImpl implements UserRepository{
     public Optional<User> findByConfirmationToken(String token) {
         try {
             User user = entityManager.createQuery("FROM User WHERE confirmationToken = :token", User.class)
+                    .setParameter("token", token)
+                    .getSingleResult();
+            return Optional.of(user);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<User> findByResetToken(String token) {
+        try {
+            User user = entityManager.createQuery("FROM User WHERE resetToken = :token", User.class)
                     .setParameter("token", token)
                     .getSingleResult();
             return Optional.of(user);

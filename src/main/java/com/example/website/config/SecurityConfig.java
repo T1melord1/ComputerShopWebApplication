@@ -39,7 +39,7 @@ public class SecurityConfig {
                         (authorize) -> authorize
                                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                                 .requestMatchers("/login", "/register","/email/confirm",
-                                        "/form/reset","/password/reset", "/css/**", "/js/**").permitAll()
+                                        "/form/reset","/password/reset","/reset-password", "/css/**", "/js/**").permitAll()
                                 .requestMatchers("/videocards/admin/**").hasRole("ADMIN")
                                 .anyRequest().authenticated())
                 .formLogin(form -> form

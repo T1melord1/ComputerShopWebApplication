@@ -36,7 +36,8 @@
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Token</th>
+            <th>Confirmation Token</th>
+            <th>Reset Token</th>
         </tr>
         <c:forEach var="user" items="${users}" varStatus="status">
             <tr>
@@ -44,6 +45,7 @@
                 <td>${user.username}</td>
                 <td>${user.email}</td>
                 <td>${user.confirmationToken}</td>
+                <td>${user.resetToken}</td>
             </tr>
         </c:forEach>
     </table>

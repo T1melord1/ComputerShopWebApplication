@@ -125,16 +125,65 @@ public class UserController {
 
     @PostMapping("/password/reset")
     public String resetPassword(@RequestParam("email") String email, RedirectAttributes redirectAttributes) {
-        String token = UUID.randomUUID().toString();
-        emailService.sendEmail(email,"Сброс пароля", "Для сброса пароля перейдите по ссылке: " + "localhost:8080/reset-password?token=" + token);
-        redirectAttributes.addFlashAttribute("successMessage", "Ссылка для смены пароля отправлена. Проверьте вашу почту");
+        Optional<User> userOpt = userService.findByEmail(email);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            String token = UUID.randomUUID().toString();
+            user.setResetToken(token);
+            userService.updateUser(user);  // Сохраняем изменения в базе данных
+
+            emailService.sendEmail(user.getEmail(), "Сброс пароля", "Для сброса пароля перейдите по ссылке: http://localhost:8080/reset-password?token=" + token);
+            redirectAttributes.addFlashAttribute("successMessage", "Ссылка для смены пароля отправлена. Проверьте вашу почту");
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Пользователь с таким email не найден.");
+        }
         return "redirect:/login";
     }
 
-    @GetMapping("/form/reset")
+
+    @GetMapping("/password/reset")
     public String showResetForm() {
         return "videocardJSP/User/resetForm";
     }
+
+    @GetMapping("/reset-password")
+    public String showResetPasswordForm(@RequestParam("token") String token, Model model, RedirectAttributes redirectAttributes) {
+        Optional<User> userOpt = userService.findByResetToken(token);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            model.addAttribute("user", user);
+            return "videocardJSP/User/resetPassword"; // Путь к вашей форме изменения пароля
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Неверный или истекший токен.");
+            return "redirect:/login";
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public String resetPassword(@ModelAttribute("user") User user,
+                                @RequestParam("newPassword") String newPassword,
+                                @RequestParam("confirmPassword") String confirmPassword,
+                                RedirectAttributes redirectAttributes) {
+        if (!newPassword.equals(confirmPassword)) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Пароли не совпадают.");
+            return "redirect:/reset-password?token=" + user.getResetToken();
+        }
+
+        Optional<User> userOpt = userService.findByResetToken(user.getResetToken());
+        if (userOpt.isPresent()) {
+            User existingUser = userOpt.get();
+            existingUser.setPassword(passwordEncoder.encode(newPassword));
+            existingUser.setResetToken(null); // Очистка токена после успешного сброса пароля
+            userService.updateUser(existingUser);
+            redirectAttributes.addFlashAttribute("successMessage", "Пароль успешно изменен.");
+            return "redirect:/login";
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Неверный или истекший токен.");
+            return "redirect:/login";
+        }
+    }
+
 }
+
 
 

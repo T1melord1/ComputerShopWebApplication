@@ -29,4 +29,7 @@ public class User {
     @Getter
     @Setter
     private String confirmationToken;
+    private String resetToken;
+    private String newPassword;
+    private String confirmPassword;
 }
