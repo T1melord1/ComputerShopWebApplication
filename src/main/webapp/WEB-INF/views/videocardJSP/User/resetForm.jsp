@@ -38,7 +38,7 @@
     <div class="form-group">
         <table>
             <tr>
-                <td><input type="email" id="email" name="email" required></td>
+                <td><input type="email" id="email" name="email" placeholder="Email" required></td>
             </tr>
             <tr>
                 <td><input type="submit" class="fonts submit-button" value="Подтвердить адрес почты"/></td>

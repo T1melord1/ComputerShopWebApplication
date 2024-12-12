@@ -1,7 +1,9 @@
 package com.example.website.controller;
 
 import com.example.website.entity.User.User;
+import com.example.website.entity.User.UserBalance;
 import com.example.website.service.Email.EmailService;
+import com.example.website.service.User.UserBalanceService;
 import com.example.website.service.User.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,6 +29,7 @@ public class UserController {
     private final UserService userService;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
+    private final UserBalanceService userBalanceService;
 
     @GetMapping("/register")
     public String showRegistrationForm(HttpServletRequest request) {
@@ -94,9 +98,21 @@ public class UserController {
     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
         User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+
+        Optional<UserBalance> balanceOptional = userBalanceService.findUserByUserID(user.getId());
+        if (balanceOptional.isPresent()) {
+            log.debug("Баланс пользователя найден: {}", balanceOptional.get());
+        } else {
+            log.debug("Баланс пользователя не найден для userId: {}", user.getId());
+        }
+        UserBalance userBalance = balanceOptional.orElse(new UserBalance());
+
         model.addAttribute("userProfile", user);
+        model.addAttribute("userBalance", userBalance);
         return "videocardJSP/User/userProfile";
     }
+
+
 
     @GetMapping("/password/change/{username}")
     public String changePassword(Model model, @AuthenticationPrincipal UserDetails userDetails) {

@@ -61,6 +61,7 @@
             <option class="fonts" value="NVIDIA">NVIDIA</option>
             <option class="fonts" value="AMD">AMD</option>
             <option class="fonts" value="Intel">Intel</option>
+            <option class="fonts" value="Apple">Apple</option>
         </select>
         <button class="fonts" type="submit">Найти видеокарту</button>
     </form>

@@ -30,6 +30,7 @@
                     <form:option value="NVIDIA" cssClass="fonts" label="NVIDIA"/>
                     <form:option value="AMD" cssClass="fonts" label="AMD"/>
                     <form:option value="Intel" cssClass="fonts" label="Intel"/>
+                    <form:option value="Apple" cssClass="fonts" label="Apple"/>
                 </form:select>
             </td>
         </tr>
@@ -37,20 +38,20 @@
             занимают соответствующие теги <form:input> с атрибутом path, который указывает на свойство объекта модели. --%>
         <tr>
             <td>Graphic Processor:</td>
-            <td><form:input path="graphicProcessor"/></td>
+            <td><form:input path="graphicProcessor" cssClass="fonts"/></td>
         </tr>
         <tr>
             <td>Video Memory:</td>
-            <td><form:input path="videoMemory"/></td>
+            <td><form:input path="videoMemory" cssClass="fonts"/></td>
         </tr>
         <tr>
             <td>Color:</td>
-            <td><form:input path="color"/></td>
+            <td><form:input path="color" cssClass="fonts"/></td>
         </tr>
         <tr>
             <td>Price:</td>
             <td>
-                <form:input path="price"/>
+                <form:input path="price" cssClass="fonts"/>
             </td>
         </tr>
         <tr>

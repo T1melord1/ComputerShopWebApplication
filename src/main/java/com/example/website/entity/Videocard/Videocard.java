@@ -18,7 +18,7 @@ public class Videocard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Column(columnDefinition = "enum('NVIDIA', 'AMD', 'Intel')")
+    @Column(columnDefinition = "enum('NVIDIA', 'AMD', 'Intel','Apple')")
     @Enumerated(EnumType.STRING)
     private VideocardType manufacturer;
     @Column(name = "graphic_processor")

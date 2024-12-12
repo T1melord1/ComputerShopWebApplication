@@ -28,6 +28,8 @@
 <table>
     <tr>
         <td>Username:<b> ${userProfile.username} </b></td>
+    </tr> <tr>
+        <td>Balance:<b> ${userBalance.balance} </b></td>
     </tr>
     <tr>
         <td>Email:<b> ${userProfile.email} </b>

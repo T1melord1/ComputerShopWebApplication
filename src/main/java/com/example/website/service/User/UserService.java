@@ -16,6 +16,5 @@ public interface UserService {
     Optional<User> findByConfirmationToken(String token);
     Optional<User> findByResetToken(String token);
     Optional<User> findByEmail(String email);
-
     void updateUser(User user);
 }

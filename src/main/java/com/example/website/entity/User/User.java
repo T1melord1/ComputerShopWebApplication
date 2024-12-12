@@ -1,9 +1,8 @@
 package com.example.website.entity.User;
 
 
-import lombok.*;
 import jakarta.persistence.*;
-import org.springframework.stereotype.Service;
+import lombok.*;
 
 import java.util.UUID;
 

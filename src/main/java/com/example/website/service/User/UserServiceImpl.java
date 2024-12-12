@@ -18,6 +18,7 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final UserBalanceService userBalanceService;
 
     @Override
     @Transactional
@@ -27,8 +28,16 @@ public class UserServiceImpl implements UserService {
         user.setPassword(encodedPassword);
         String confirmationToken = UUID.randomUUID().toString();
         user.setConfirmationToken(confirmationToken);
+        // Сначала сохраняем пользователя, чтобы у него был назначен ID
         userRepository.save(user);
+        // Логирование для отладки
+        log.debug("Пользователь сохранен с ID: {}", user.getId());
+        // Создаем начальный баланс, используя назначенный ID пользователя
+        userBalanceService.createBalance(user.getId());
+        // Логирование для отладки
+        log.debug("Начальный баланс создан для пользователя с ID: {}", user.getId());
     }
+
 
     @Override
     public Optional<User> findUserByUsername(String username) {
