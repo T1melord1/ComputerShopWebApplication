@@ -26,5 +26,5 @@ public class Videocard {
     @Column(name = "video_memory")
     private BigDecimal videoMemory = BigDecimal.ONE;
     private String color = "Black";
-    private BigDecimal price = BigDecimal.ZERO;
+    private double price;
 }

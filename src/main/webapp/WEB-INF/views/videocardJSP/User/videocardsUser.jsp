@@ -53,6 +53,10 @@
     </style>
 </head>
 <body>
+<c:if test="${not empty message}">
+    <p style="color: red;">${message}</p>
+</c:if>
+
 <div class="nav-links">
     <form action="${pageContext.request.contextPath}/videocards/find/manufacturer" method="get"
           style="display: inline;">

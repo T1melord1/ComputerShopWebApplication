@@ -7,7 +7,9 @@ import java.util.List;
 public interface CartService {
     List<Videocard> getVideocardsInCart();
 
-    void addToCart(Integer id);
+    String addToCart(Integer id);
 
     void deleteVideocardFromCart(Integer id);
+
+    void clearCart();
 }

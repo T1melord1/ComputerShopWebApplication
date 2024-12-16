@@ -1,14 +1,17 @@
 package com.example.website.service.User;
 
-import com.example.website.entity.User.User;
 import com.example.website.entity.User.UserBalance;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UserBalanceService {
+public interface UserBalanceService  {
 
     Optional<UserBalance> findUserByUserID(UUID id);
 
     void createBalance(UUID id);
+
+    void updateBalance(BigDecimal userBalance, UUID id);
 }

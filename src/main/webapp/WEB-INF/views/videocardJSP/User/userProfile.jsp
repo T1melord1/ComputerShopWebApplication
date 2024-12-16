@@ -29,7 +29,7 @@
     <tr>
         <td>Username:<b> ${userProfile.username} </b></td>
     </tr> <tr>
-        <td>Balance:<b> ${userBalance.balance} </b></td>
+        <td>Баланс:<b> ${userBalance.balance} ${userBalance.currency}</b></td>
     </tr>
     <tr>
         <td>Email:<b> ${userProfile.email} </b>

@@ -30,15 +30,35 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public void addToCart(Integer id) {
+    public String addToCart(Integer id) {
         log.debug("Добавление видеокарты с ID {} в корзину", id);
+        // Найти видеокарту по ID
         Videocard videocard = videocardRepository.findById(id);
+
+        // Проверка на наличие видеокарты в корзине
+        boolean alreadyInCart = videocards.stream()
+                .anyMatch(v -> v.getId().equals(id));
+        if (alreadyInCart) {
+            log.debug("Видеокарта с ID {} уже находится в корзине", id);
+            return "Видеокарта уже находится в корзине"; // Если видеокарта уже в корзине, не добавляем её повторно
+        }
+
+        // Добавление видеокарты в корзину
         videocards.add(videocard);
+        log.debug("Видеокарта с ID {} успешно добавлена в корзину", id);
+        return "Видеокарта успешно добавлена в корзину";
     }
+
 
     @Override
     public void deleteVideocardFromCart(Integer id) {
         log.debug("Удаление видеокарты с ID {} из корзины", id);
         videocards.removeIf(videocard -> videocard.getId().equals(id));
+    }
+
+    @Override
+    public void clearCart() {
+        log.debug("Очистка корзины");
+        videocards.clear();
     }
 }

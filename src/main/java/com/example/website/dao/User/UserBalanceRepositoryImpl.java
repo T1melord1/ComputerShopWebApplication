@@ -4,6 +4,7 @@ import com.example.website.entity.User.UserBalance;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -38,5 +39,20 @@ public class UserBalanceRepositoryImpl implements UserBalanceRepository {
         userBalance.setBalance(BigDecimal.ZERO);
         entityManager.persist(userBalance);
     }
+
+    @Override
+    @Transactional
+    public void updateBalance(BigDecimal newBalance, UUID userId) {
+        Optional<UserBalance> balanceOptional = findByUserId(userId);
+        if (balanceOptional.isPresent()) {
+            UserBalance userBalance = balanceOptional.get();
+            userBalance.setBalance(newBalance);
+            entityManager.merge(userBalance); // Обновление существующего объекта
+        } else {
+            // Обработка случая, когда пользователь не найден, например, выбросить исключение или создать новую запись
+            throw new RuntimeException("Баланс пользователя не найден");
+        }
+    }
+
 
 }

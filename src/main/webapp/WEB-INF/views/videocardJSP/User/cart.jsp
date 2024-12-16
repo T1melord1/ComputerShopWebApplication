@@ -12,24 +12,41 @@
         .graphicProcessor {
             padding-left: 50px;
         }
+        .number{
+            padding-left: 50px;
+        }
 
         body {
             background-color: ivory;
             font-family: "Comic Sans MS", cursive;
         }
 
-        .fonts {
+        .button-order {
+            padding: 2px;
+            font-family: "Comic Sans MS", cursive;
+            margin-top: 10px;
+        }
+
+        .button-videocard {
             float: right;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        .fonts {
             font-family: "Comic Sans MS", cursive;
         }
     </style>
 </head>
-
 <body>
 <form action="/videocards" method="get">
-    <button class="fonts" type="submit">Вернуться на главную страницу</button>
+    <button class="button-videocard" type="submit">Вернуться на главную страницу</button>
 </form>
+<c:if test="${not empty message}"> <p style="color: red;">${message}</p> </c:if>
 <table>
+    <tr>
+        <td>Баланс: <b> ${userBalance.balance} ${userBalance.currency}</b></td>
+    </tr>
+    <tr></tr>
     <tr>
         <th>Number</th>
         <th>Manufacturer</th>
@@ -42,7 +59,7 @@
     <c:set var="totalPrice" value="0"/>
     <c:forEach var="videocard" items="${cart}" varStatus="number">
         <tr>
-            <td>${number.index + 1}</td>
+            <td class="number">${number.index + 1}</td>
             <td>${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory}</td>
@@ -50,7 +67,7 @@
             <td>${videocard.price}</td>
             <td>
                 <form action="/cart/delete/${videocard.id}" method="post">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="fonts" type="submit">Удалить</button>
                 </form>
             </td>
@@ -59,5 +76,9 @@
     </c:forEach>
 </table>
 <b>Общая стоимость: ${totalPrice}</b>
+<form action="/cart/order" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button class="button-order" type="submit">Заказать</button>
+</form>
 </body>
 </html>

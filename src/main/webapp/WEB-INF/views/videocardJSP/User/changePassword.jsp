@@ -35,10 +35,10 @@
     <table>
         <tr>
             <td>Старый пароль:</td>
-            <td><input type="password" id="oldPassword" name="oldPassword" placeholder="Password" required></td>
+            <td><input type="password" id="oldPassword" name="oldPassword" placeholder="Password" class="fonts" required></td>
         </tr>
         <td>Новый пароль:</td>
-        <td><input type="password" id="newPassword" name="newPassword" placeholder="Confirm password" required></td>
+        <td><input type="password" id="newPassword" name="newPassword" placeholder="Confirm password" class="fonts" required></td>
         <tr>
             <td colspan="2"><input type="submit" class="fonts" value="Изменить пароль"/></td>
         </tr>
