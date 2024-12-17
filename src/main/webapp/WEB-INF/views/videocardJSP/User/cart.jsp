@@ -41,7 +41,8 @@
 <form action="/videocards" method="get">
     <button class="button-videocard" type="submit">Вернуться на главную страницу</button>
 </form>
-<c:if test="${not empty message}"> <p style="color: red;">${message}</p> </c:if>
+<c:if test="${not empty errorMessage}"> <p style="color: red;" class="fonts">${errorMessage}</p>
+</c:if><c:if test="${not empty successMessage}"> <p style="color: green;" class="fonts">${successMessage}</p> </c:if>
 <table>
     <tr>
         <td>Баланс: <b> ${userBalance.balance} ${userBalance.currency}</b></td>

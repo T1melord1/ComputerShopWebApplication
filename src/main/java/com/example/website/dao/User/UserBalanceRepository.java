@@ -12,4 +12,6 @@ public interface UserBalanceRepository {
     void createBalance(UUID userId);
 
     void updateBalance(BigDecimal userBalance, UUID userId);
+
+    Optional<UserBalance> findUserBalanceByUsername(String username);
 }

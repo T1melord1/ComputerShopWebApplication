@@ -1,7 +1,6 @@
 package com.example.website.service.User;
 
 import com.example.website.dao.User.UserBalanceRepository;
-import com.example.website.entity.User.User;
 import com.example.website.entity.User.UserBalance;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -37,4 +36,9 @@ public class UserBalanceServiceImpl implements UserBalanceService {
     userBalanceRepository.updateBalance(newBalance, id);
     }
 
+    @Override
+    public Optional<UserBalance> findUserBalanceByUsername(String username){
+        log.debug("Поиск баланса пользователя по ник-нейму: {}", username);
+        return userBalanceRepository.findUserBalanceByUsername(username);
+    }
 }

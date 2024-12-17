@@ -40,13 +40,13 @@ public class CartServiceImpl implements CartService {
                 .anyMatch(v -> v.getId().equals(id));
         if (alreadyInCart) {
             log.debug("Видеокарта с ID {} уже находится в корзине", id);
-            return "Видеокарта уже находится в корзине"; // Если видеокарта уже в корзине, не добавляем её повторно
+            return "alreadyInCart"; // Если видеокарта уже в корзине, не добавляем её повторно
         }
 
         // Добавление видеокарты в корзину
         videocards.add(videocard);
         log.debug("Видеокарта с ID {} успешно добавлена в корзину", id);
-        return "Видеокарта успешно добавлена в корзину";
+        return "success";
     }
 
 

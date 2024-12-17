@@ -47,7 +47,7 @@
 <c:if test="${param.error != null}">
     <div class="alert">Неправильное имя пользователя или пароль. Попробуйте снова.</div>
 </c:if>
-<form:form action="${pageContext.request.contextPath}/login" method="post">
+<form:form action="${pageContext.request.contextPath}/login" method="post" cssClass="fonts">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <table>
         <tr>

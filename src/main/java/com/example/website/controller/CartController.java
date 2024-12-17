@@ -9,6 +9,7 @@ import com.example.website.service.User.UserService;
 import com.example.website.service.Videocard.VideocardService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,6 +30,7 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/cart")
 @RequiredArgsConstructor
+@Slf4j
 public class CartController {
 
     private final CartService cartService;
@@ -50,7 +52,13 @@ public class CartController {
     @PostMapping("/add/{id}")
     public String addToCart(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         String message = cartService.addToCart(id);
-        redirectAttributes.addFlashAttribute("message", message);
+        if ("alreadyInCart".equals(message)) {
+            redirectAttributes.addFlashAttribute("message", "Видеокарта уже находится в корзине");
+            redirectAttributes.addFlashAttribute("messageType", "error");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Видеокарта успешно добавлена в корзину");
+            redirectAttributes.addFlashAttribute("messageType", "success");
+        }
         return "redirect:/videocards";
     }
 
@@ -63,27 +71,38 @@ public class CartController {
     @PostMapping("/order")
     @Transactional
     public String order(@AuthenticationPrincipal UserDetails userDetails, RedirectAttributes redirectAttributes) {
-        // Находим пользователя по username
-        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
-        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+        // Логирование username
+        log.debug("Обработка заказа для пользователя: {}", userDetails.getUsername());
 
-        // Находим баланс пользователя по userId
-        Optional<UserBalance> balanceOptional = userBalanceService.findUserByUserID(user.getId());
-        UserBalance userBalance = balanceOptional.orElseThrow(() -> new RuntimeException("Баланс пользователя не найден"));
+        // Находим пользователя по username
+        Optional<UserBalance> balanceOptional = userBalanceService.findUserBalanceByUsername(userDetails.getUsername());
+
+        UserBalance userBalance = balanceOptional.orElseThrow(() -> new UsernameNotFoundException("Баланс пользователя не найден"));
+
+        // Логирование текущего баланса
+        log.debug("Текущий баланс для пользователя {}: {}", userDetails.getUsername(), userBalance.getBalance());
 
         // Получаем видеокарты из корзины и рассчитываем общую стоимость
         List<Videocard> videocards = cartService.getVideocardsInCart();
         BigDecimal totalPrice = BigDecimal.valueOf(videocards.stream().mapToDouble(Videocard::getPrice).sum());
 
+        // Логирование общей стоимости
+        log.debug("Общая стоимость заказа: {}", totalPrice);
+
         // Проверяем, достаточно ли средств на балансе
         if (userBalance.getBalance().compareTo(totalPrice) < 0) {
-            String message = "Недостаточно средств на балансе";
-            redirectAttributes.addFlashAttribute("message", message);
+            log.debug("Недостаточно средств на балансе: {} < {}", userBalance.getBalance(), totalPrice);
+            String errorMessage = "Недостаточно средств на балансе";
+            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
             return "redirect:/cart";
         }
 
         // Вычитаем стоимость товаров в корзине из баланса пользователя
         BigDecimal newBalance = userBalance.getBalance().subtract(totalPrice);
+
+        // Логирование нового баланса
+        log.debug("Новый баланс после заказа для пользователя {}: {}", userDetails.getUsername(), newBalance);
+
         userBalanceService.updateBalance(newBalance, userBalance.getUserId());
 
         // Удаляем видеокарты из базы данных
@@ -95,8 +114,8 @@ public class CartController {
         // Очищаем корзину
         cartService.clearCart();
 
+        String successMessage = "Заказ успешно оформлен!";
+        redirectAttributes.addFlashAttribute("successMessage", successMessage);
         return "redirect:/cart";
     }
-
-
 }

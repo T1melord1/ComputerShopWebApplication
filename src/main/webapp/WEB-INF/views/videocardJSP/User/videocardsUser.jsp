@@ -54,7 +54,7 @@
 </head>
 <body>
 <c:if test="${not empty message}">
-    <p style="color: red;">${message}</p>
+    <p style="${messageType == 'success' ? 'color: green;' : 'color: red;'}" class="fonts">${message}</p>
 </c:if>
 
 <div class="nav-links">

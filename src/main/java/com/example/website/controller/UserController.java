@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -38,6 +39,28 @@ public class UserController {
         }
         return "userJSP/register";
     }
+
+    @GetMapping("/balance/replenish")
+    public String showBalanceReplenishForm() {
+        return "videocardJSP/User/balance";
+    }
+
+    @PostMapping("/balance/replenish")
+    public String balanceReplenish(@RequestParam("amount") BigDecimal amount, @AuthenticationPrincipal UserDetails userDetails, RedirectAttributes redirectAttributes) {
+        // Находим текущий баланс пользователя
+        Optional<UserBalance> balanceOptional = userBalanceService.findUserBalanceByUsername(userDetails.getUsername());
+        UserBalance existingBalance = balanceOptional.orElseThrow(() -> new RuntimeException("Баланс пользователя не найден"));
+
+        // Обновляем баланс
+        BigDecimal newBalance = existingBalance.getBalance().add(amount);
+        existingBalance.setBalance(newBalance);
+        userBalanceService.updateBalance(existingBalance.getBalance(), existingBalance.getUserId());
+
+        // Добавление сообщения об успешном пополнении
+        redirectAttributes.addFlashAttribute("successMessage", "Баланс успешно пополнен на " + amount + " BYN.");
+        return "redirect:/balance/replenish";
+    }
+
 
     @GetMapping("/login")
     public String showLoginForm(HttpServletRequest request) {

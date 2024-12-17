@@ -23,13 +23,19 @@
 <body>
 <form action="/videocards" method="get" class="button">
     <button type="submit" class="fonts">Вернуться на главную страницу</button>
-
 </form>
 <table>
     <tr>
         <td>Username:<b> ${userProfile.username} </b></td>
-    </tr> <tr>
-        <td>Баланс:<b> ${userBalance.balance} ${userBalance.currency}</b></td>
+    </tr>
+    <tr>
+        <td>
+            Баланс:<b> ${userBalance.balance} ${userBalance.currency}</b>
+            <form action="/balance/replenish" method="get" style="display: inline;">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button type="submit" class="fonts">Пополнить</button>
+            </form>
+        </td>
     </tr>
     <tr>
         <td>Email:<b> ${userProfile.email} </b>
@@ -39,16 +45,14 @@
             <c:if test="${userProfile.confirmationToken != null}">
                 - не подтверждён
             </c:if>
-
         </td>
-
     </tr>
     <tr>
         <td>
             <form action="/password/change/{username}" method="get">
                 <button type="submit" class="fonts">Сменить пароль</button>
             </form>
-         </td>
+        </td>
     </tr>
 </table>
 </body>
