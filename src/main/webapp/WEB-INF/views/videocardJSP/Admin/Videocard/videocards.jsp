@@ -44,6 +44,13 @@
             font-family: "Comic Sans MS", cursive;
         }
 
+        .vertical-line {
+            border-left: 2px solid black;
+            height: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
         @media only screen and (max-width: 600px) {
             body {
                 font-family: Palatino, sans-serif;
@@ -125,7 +132,7 @@
     <tr>
         <th>ID</th>
         <th>Created Date</th>
-        <th>Updated Date</th>
+        <th class="vertical-line">Updated Date</th>
         <th>Manufacturer</th>
         <th>Graphic Processor</th>
         <th>Video Memory</th>
@@ -135,9 +142,9 @@
     <c:forEach var="videocard" items="${videocards}">
         <tr>
             <td>${videocard.id}</td>
-            <td class="created-date">${videocard.createdDate}</td>
-            <td class="created-date">${videocard.updatedDate}</td>
-            <td class="manufacturer">${videocard.manufacturer}</td>
+            <td class="created-date vertical-line">${videocard.createdDate}</td>
+            <td class="created-date vertical-line">${videocard.updatedDate}</td>
+            <td class="manufacturer vertical-line">${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory} GB</td>
             <td>${videocard.color}</td>
