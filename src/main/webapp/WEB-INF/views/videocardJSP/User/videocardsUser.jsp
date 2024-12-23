@@ -1,30 +1,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Videocard List</title>
     <style>
         .nav-links {
-            position: relative; /* Относительное позиционирование для навигационных ссылок */
-            margin-bottom: 20px; /* Отступ между ссылками и формой */
+            position: relative;
+            margin-bottom: 20px;
         }
 
         .logout-button {
             font-family: "Comic Sans MS", cursive;
         }
 
-        .videoMemory {
-            padding-left: 35px; /* Добавляет отступ слева */
-        }
-
-        .graphicProcessor {
-            padding-left: 50px;
+        .videoMemory, .graphicProcessor, .manufacturer, .number, .price, .color {
+            padding-left: 10px;
         }
 
         body {
             background-color: ivory;
             font-family: "Comic Sans MS", cursive;
+            margin: 0;
+            padding: 0;
         }
 
         .fonts {
@@ -33,29 +33,90 @@
 
         .cart-icon {
             float: right;
-            font-size: 36px; /* Размер значка */
-            color: cornflowerblue; /* Цвет значка */
-            cursor: pointer; /* Меняет курсор на указатель при наведении на значок */
-            display: inline-block; /* Делает элемент блочным, но оставляет его в строке */
-            transition: color 0.3s; /* Плавный переход цвета при наведении на 0.3 секунды */
+            font-size: 36px;
+            color: cornflowerblue;
+            cursor: pointer;
+            display: inline-block;
+            transition: color 0.3s;
         }
 
         .cart-icon:hover {
-            color: #0056b3; /* Цвет значка при наведении */
+            color: #0056b3;
         }
-        .button-container { display: flex;
+
+        .button-container {
+            display: flex;
             justify-content: center;
-            align-items: center; }
+            align-items: center;
+        }
+
         .button-container button {
-            width: 100%; /* Кнопка занимает всю ширину контейнера */
-            padding: 5px; /* Отступ внутри кнопки */
-            font-family: "Comic Sans MS", cursive; }
+            width: 100%;
+            padding: 5px;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
+                font-size: 18px; /* Увеличенный размер шрифта для мобильных устройств */
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .cart-icon {
+                float: none;
+                font-size: 30px; /* Увеличенный размер значка корзины */
+                margin-bottom: 10px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: center;
+                font-size: 16px; /* Увеличенный размер шрифта для таблицы */
+            }
+
+            .button-container {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .button-container button {
+                width: 100%;
+                font-size: 16px; /* Увеличенный размер шрифта для кнопок */
+                font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
+            }
+
+            .nav-links form, .nav-links a {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .nav-links form select, .nav-links form button, .nav-links .logout-button {
+                width: 100%;
+                font-size: 16px; /* Увеличенный размер шрифта для элементов формы */
+                font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
+            }
+
+            label {
+                font-size: 16px; /* Увеличенный размер шрифта для меток */
+                font-family: Palatino, sans-serif; /* Шрифт Palatino для меток на мобильных устройствах */
+            }
+        }
     </style>
 </head>
 <body>
-<c:if test="${not empty message}">
-    <p style="${messageType == 'success' ? 'color: green;' : 'color: red;'}" class="fonts">${message}</p>
-</c:if>
 
 <div class="nav-links">
     <form action="${pageContext.request.contextPath}/videocards/find/manufacturer" method="get"
@@ -73,6 +134,10 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="logout-button" type="submit">Выйти из аккаунта</button>
     </form>
+    <c:if test="${not empty message}">
+        <p style="${messageType == 'success' ? 'color: green;' : 'color: red;'}" class="fonts">${message}</p>
+    </c:if>
+
     <a href="${pageContext.request.contextPath}/cart" class="cart-icon">
         <i class="fas fa-shopping-cart"></i>
     </a>
@@ -91,17 +156,17 @@
     </tr>
     <c:forEach var="videocard" items="${videocards}" varStatus="status">
         <tr>
-            <td>${status.index + 1}</td>
-            <td>${videocard.manufacturer}</td>
+            <td class="number">${status.index + 1}</td>
+            <td class="manufacturer">${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory} GB</td>
-            <td>${videocard.color}</td>
-            <td>${videocard.price}</td>
+            <td class="color">${videocard.color}</td>
+            <td class="price">${videocard.price}</td>
             <td>
                 <form action="/cart/add/${videocard.id}" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div class="button-container">
-                    <button class="fonts" type="submit">Добавить в корзину</button>
+                        <button class="fonts" type="submit">Добавить в корзину</button>
                     </div>
                 </form>
             </td>
