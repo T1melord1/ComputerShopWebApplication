@@ -1,4 +1,4 @@
-`<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -82,6 +82,7 @@
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Balance</th>
             <th>Confirmation Token</th>
             <th>Reset Token</th>
         </tr>
@@ -90,6 +91,12 @@
                 <td>${status.index + 1}</td>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
+                <td>
+                    <c:forEach var="balance" items="${userBalances}">
+                        <c:if test="${balance.userId == user.id}">
+                            ${balance.balance} </c:if>
+                    </c:forEach>
+                </td>
                 <td>${user.confirmationToken}</td>
                 <td>${user.resetToken}</td>
             </tr>
@@ -101,4 +108,3 @@
 </form>
 </body>
 </html>
-`

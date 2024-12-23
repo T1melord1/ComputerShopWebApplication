@@ -4,6 +4,7 @@ import com.example.website.entity.Videocard.Videocard;
 import com.example.website.entity.Videocard.VideocardType;
 import com.example.website.service.Videocard.VideocardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -14,6 +14,12 @@
         .fonts {
             font-family: "Comic Sans MS", cursive;
         }
+
+        .fonts-button {
+            float: right;
+            font-family: "Comic Sans MS", cursive;
+        }
+
         .videoMemory {
             padding-left: 35px; /* Добавляет отступ слева */
         }
@@ -61,6 +67,9 @@
     </style>
 </head>
 <body>
+<form action="/videocards" method="get">
+    <button class="fonts-button" type="submit">Вернуться к списку видеокарт</button>
+</form>
 <h2>Найденная видеокарта</h2>
 <table>
     <tr>
@@ -82,8 +91,5 @@
         </tr>
     </c:forEach>
 </table>
-<form action="/videocards" method="get">
-    <button class="fonts" type="submit">Вернуться к списку видеокарт</button>
-</form>
 </body>
 </html>

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,6 +25,14 @@ public class UserBalanceServiceImpl implements UserBalanceService {
     }
 
     @Override
+    public List<UserBalance> findAllBalances() {
+        log.debug("Поиск всех балансов пользователей");
+        return userBalanceRepository.findAllBalances();
+    }
+
+
+    @Override
+    @Transactional
     public void createBalance(UUID id) {
         log.debug("Создание баланса пользователя: {}", id);
         userBalanceRepository.createBalance(id);

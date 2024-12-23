@@ -8,24 +8,27 @@ import com.example.website.service.User.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@EnableJpaAuditing
 public class UserController {
     private final UserService userService;
     private final EmailService emailService;
@@ -41,7 +44,10 @@ public class UserController {
     }
 
     @GetMapping("/balance/replenish")
-    public String showBalanceReplenishForm() {
+    public String showBalanceReplenishForm(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        Optional<UserBalance> balanceOptional = userBalanceService.findUserBalanceByUsername(userDetails.getUsername());
+        UserBalance existingBalance = balanceOptional.orElseThrow(() -> new RuntimeException("Баланс пользователя не найден"));
+        model.addAttribute("userBalance", existingBalance);
         return "videocardJSP/User/balance";
     }
 
@@ -52,9 +58,11 @@ public class UserController {
         UserBalance existingBalance = balanceOptional.orElseThrow(() -> new RuntimeException("Баланс пользователя не найден"));
 
         // Обновляем баланс
+        log.debug("Пополнение баланса пользователя на: {}", amount);
         BigDecimal newBalance = existingBalance.getBalance().add(amount);
         existingBalance.setBalance(newBalance);
         userBalanceService.updateBalance(existingBalance.getBalance(), existingBalance.getUserId());
+
 
         // Добавление сообщения об успешном пополнении
         redirectAttributes.addFlashAttribute("successMessage", "Баланс успешно пополнен на " + amount + " BYN.");
@@ -73,7 +81,9 @@ public class UserController {
     @GetMapping("/users")
     public String showUsers(Model model) {
         List<User> users = userService.findAllUsers();
+        List<UserBalance> userBalances = userBalanceService.findAllBalances();
         model.addAttribute("users", users);
+        model.addAttribute("userBalances", userBalances);
         return "videocardJSP/Admin/User/user";
     }
 
@@ -134,7 +144,6 @@ public class UserController {
         model.addAttribute("userBalance", userBalance);
         return "videocardJSP/User/userProfile";
     }
-
 
 
     @GetMapping("/password/change/{username}")

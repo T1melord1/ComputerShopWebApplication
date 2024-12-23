@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,30 +8,24 @@
     <title>Videocard List</title>
     <style>
         .nav-links {
-            position: relative; /* Относительное позиционирование для навигационных ссылок */
-            margin-bottom: 20px; /* Отступ между ссылками и формой */
+            position: relative;
+            margin-bottom: 20px;
         }
 
         .logout-button {
-            float: right;
             font-family: "Comic Sans MS", cursive;
+            float: right;
         }
 
-        .videoMemory {
-            padding-left: 35px; /* Добавляет отступ слева */
-        }
-
-        .graphicProcessor {
-            padding-left: 50px;
-        }
-
-        .manufacturer{
-            padding-left: 25px;
+        .videoMemory, .graphicProcessor, .manufacturer {
+            padding-left: 10px;
         }
 
         body {
             background-color: ivory;
             font-family: "Comic Sans MS", cursive;
+            margin: 0;
+            padding: 0;
         }
 
         .fonts {
@@ -38,6 +33,7 @@
         }
 
         .button-container {
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -50,8 +46,15 @@
 
         @media only screen and (max-width: 600px) {
             body {
-                font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
-                font-size: 18px; /* Увеличенный размер шрифта для мобильных устройств */
+                font-family: Palatino, sans-serif;
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
             }
 
             table {
@@ -62,13 +65,18 @@
             th, td {
                 padding: 10px;
                 text-align: center;
-                font-size: 16px; /* Увеличенный размер шрифта для таблицы */
+                font-size: 16px;
+            }
+
+            .button-container {
+                width: 100%;
+                margin-bottom: 10px;
             }
 
             .button-container button {
                 width: 100%;
-                font-size: 16px; /* Увеличенный размер шрифта для кнопок */
-                font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
+                font-size: 16px;
+                font-family: Palatino, sans-serif;
             }
 
             .nav-links form, .nav-links a {
@@ -79,18 +87,18 @@
 
             .nav-links form select, .nav-links form button, .nav-links .logout-button {
                 width: 100%;
-                font-size: 16px; /* Увеличенный размер шрифта для элементов формы */
-                font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
+                font-size: 16px;
+                font-family: Palatino, sans-serif;
             }
 
             label {
-                font-size: 16px; /* Увеличенный размер шрифта для меток */
-                font-family: Palatino, sans-serif; /* Шрифт Palatino для меток на мобильных устройствах */
+                font-size: 16px;
+                font-family: Palatino, sans-serif;
             }
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll('.created-date').forEach(td => {
                 if (td.innerText.includes('T')) {
                     td.innerText = td.innerText.replace('T', ' ');
@@ -100,6 +108,7 @@
     </script>
 </head>
 <body>
+
 <div class="nav-links">
     <form action="${pageContext.request.contextPath}/videocards/admin/add" method="get" style="display: inline;">
         <button class="fonts" type="submit">Добавить видеокарту</button>
@@ -108,11 +117,15 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="logout-button" type="submit">Выйти из аккаунта</button>
     </form>
+    <form action="/users" method="get" style="display: inline;">
+        <button class="fonts" type="submit">Пользователи</button>
+    </form>
 </div>
 <table>
     <tr>
         <th>ID</th>
         <th>Created Date</th>
+        <th>Updated Date</th>
         <th>Manufacturer</th>
         <th>Graphic Processor</th>
         <th>Video Memory</th>
@@ -123,6 +136,7 @@
         <tr>
             <td>${videocard.id}</td>
             <td class="created-date">${videocard.createdDate}</td>
+            <td class="created-date">${videocard.updatedDate}</td>
             <td class="manufacturer">${videocard.manufacturer}</td>
             <td class="graphicProcessor">${videocard.graphicProcessor}</td>
             <td class="videoMemory">${videocard.videoMemory} GB</td>
@@ -146,10 +160,6 @@
             </td>
         </tr>
     </c:forEach>
-    <form action="/users" method="get">
-        <button class="logout-button" type="submit">Пользователи</button>
-    </form>
 </table>
 </body>
 </html>
-

@@ -20,6 +20,7 @@
 
     <!-- Настройка логгеров -->
     <logger name="com.example.website.service" level="DEBUG"/>
+    <logger name="com.example.website.controller" level="DEBUG"/>
     <logger name="org.hibernate.SQL" level="DEBUG"/>
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
     <logger name="org.springframework.security" level="DEBUG"/>

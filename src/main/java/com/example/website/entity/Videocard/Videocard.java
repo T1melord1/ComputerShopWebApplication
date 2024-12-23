@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "videocards")
@@ -18,6 +21,12 @@ public class Videocard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+    @CreatedDate
+    @Column(updatable = false, name = "createdDate")
+    private LocalDateTime createdDate;
+    @LastModifiedDate
+    @Column(name = "updatedDate")
+    private LocalDateTime updatedDate;
     @Column(columnDefinition = "enum('NVIDIA', 'AMD', 'Intel','Apple')")
     @Enumerated(EnumType.STRING)
     private VideocardType manufacturer;
@@ -27,4 +36,16 @@ public class Videocard {
     private BigDecimal videoMemory = BigDecimal.ONE;
     private String color = "Black";
     private double price;
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        createdDate = now;
+        updatedDate = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = LocalDateTime.now();
+    }
 }

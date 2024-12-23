@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -83,5 +84,10 @@ public class UserBalanceRepositoryImpl implements UserBalanceRepository {
             log.error("Пользователь не найден: {}", username, e);
             throw new RuntimeException("Пользователь не найден", e);
         }
+    }
+
+    @Override
+    public List<UserBalance> findAllBalances() {
+        return entityManager.createQuery("FROM UserBalance ", UserBalance.class).getResultList();
     }
 }

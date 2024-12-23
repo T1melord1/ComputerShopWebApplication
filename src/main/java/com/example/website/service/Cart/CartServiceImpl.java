@@ -51,6 +51,7 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
+    @Transactional
     public void deleteVideocardFromCart(Integer id) {
         log.debug("Удаление видеокарты с ID {} из корзины", id);
         videocards.removeIf(videocard -> videocard.getId().equals(id));

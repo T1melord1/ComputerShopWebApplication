@@ -1,6 +1,7 @@
 package com.example.website.dao.User;
 
 import com.example.website.entity.User.User;
+import com.example.website.entity.User.UserBalance;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -42,6 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> findAll() {
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
+
 
     @Override
     public Optional<User> findByConfirmationToken(String token) {

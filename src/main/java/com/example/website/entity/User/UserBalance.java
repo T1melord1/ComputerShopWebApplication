@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +28,23 @@ public class UserBalance {
     @Column(nullable = false, length = 3)
     private String currency; // char(3)
 
+    @Column(updatable = false, name = "createdDate")
+    private LocalDateTime createdDate;
+
+    @Column(name = "updatedDate")
+    private LocalDateTime updatedDate;
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        createdDate = now;
+        updatedDate = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = LocalDateTime.now();
+    }
 }
 
 

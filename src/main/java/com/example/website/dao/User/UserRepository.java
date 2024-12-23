@@ -1,6 +1,7 @@
 package com.example.website.dao.User;
 
 import com.example.website.entity.User.User;
+import com.example.website.entity.User.UserBalance;
 
 import java.util.List;
 import java.util.Optional;

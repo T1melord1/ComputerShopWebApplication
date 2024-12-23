@@ -134,16 +134,17 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="logout-button" type="submit">Выйти из аккаунта</button>
     </form>
+
+    <a href="${pageContext.request.contextPath}/cart" class="cart-icon" style="display: inline">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+    <a href="${pageContext.request.contextPath}/user/profile" class="cart-icon" data-username="username"
+       style="display: inline">
+        <i class="fas fa-user"></i>
+    </a>
     <c:if test="${not empty message}">
         <p style="${messageType == 'success' ? 'color: green;' : 'color: red;'}" class="fonts">${message}</p>
     </c:if>
-
-    <a href="${pageContext.request.contextPath}/cart" class="cart-icon">
-        <i class="fas fa-shopping-cart"></i>
-    </a>
-    <a href="${pageContext.request.contextPath}/user/profile" class="cart-icon" data-username="username">
-        <i class="fas fa-user"></i>
-    </a>
 </div>
 <table>
     <tr>
