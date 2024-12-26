@@ -67,7 +67,12 @@
 </form>
 <table>
     <tr>
-        <td>Username:<b> ${userProfile.username} </b></td>
+        <td>Username:<b> ${userProfile.username} </b>
+            <form action="/balance/replenish" method="get" style="display: inline;">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button type="submit" class="fonts">Мои покупки</button>
+            </form>
+        </td>
     </tr>
     <tr>
         <td>

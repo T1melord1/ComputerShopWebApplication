@@ -20,10 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -143,6 +141,11 @@ public class UserController {
         model.addAttribute("userProfile", user);
         model.addAttribute("userBalance", userBalance);
         return "videocardJSP/User/userProfile";
+    }
+
+    @GetMapping("/user/orders")
+    public String showUserOrders(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+
     }
 
 
