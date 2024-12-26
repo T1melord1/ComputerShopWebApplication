@@ -20,7 +20,7 @@ public class VideoCardServiceImpl implements VideocardService {
     @Override
     @Transactional
     public List<Videocard> getVideocard() {
-        log.debug("Получение списка видеокарт из БД");
+        log.debug("Получение списка видеокарт из базы данных");
         return videocardRepository.findAll();
     }
 
