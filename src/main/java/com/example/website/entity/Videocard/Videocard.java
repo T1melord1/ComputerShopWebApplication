@@ -36,6 +36,8 @@ public class Videocard {
     private BigDecimal videoMemory = BigDecimal.ONE;
     private String color = "Black";
     private double price;
+    @Column(name = "order_id")
+    private Integer orderId;
 
     @PrePersist
     protected void onCreate() {

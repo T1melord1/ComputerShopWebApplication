@@ -1,5 +1,6 @@
 package com.example.website.controller;
 
+import com.example.website.entity.User.Orders;
 import com.example.website.entity.User.User;
 import com.example.website.entity.User.UserBalance;
 import com.example.website.service.Email.EmailService;
@@ -76,6 +77,17 @@ public class UserController {
         return "userJSP/login";
     }
 
+    @GetMapping("/user/orders")
+    public String showOrders(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+
+        List<Orders> orders = userService.findAllOrders(user.getId());
+        model.addAttribute("orders", orders);
+        return "videocardJSP/User/orders";
+    }
+
+
     @GetMapping("/users")
     public String showUsers(Model model) {
         List<User> users = userService.findAllUsers();
@@ -141,11 +153,6 @@ public class UserController {
         model.addAttribute("userProfile", user);
         model.addAttribute("userBalance", userBalance);
         return "videocardJSP/User/userProfile";
-    }
-
-    @GetMapping("/user/orders")
-    public String showUserOrders(Model model, @AuthenticationPrincipal UserDetails userDetails) {
-
     }
 
 

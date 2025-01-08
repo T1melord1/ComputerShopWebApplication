@@ -1,7 +1,7 @@
 package com.example.website.dao.User;
 
+import com.example.website.entity.User.Orders;
 import com.example.website.entity.User.User;
-import com.example.website.entity.User.UserBalance;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Repository
@@ -79,6 +80,18 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (NoResultException e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public List<Orders> findAllOrders(UUID userId) {
+        return entityManager.createQuery("SELECT o FROM Orders o WHERE o.user.id = :userId", Orders.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
+
+    @Override
+    public void saveOrders(Orders orders) {
+        entityManager.merge(orders);
     }
 
 }

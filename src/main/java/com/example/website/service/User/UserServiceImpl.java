@@ -1,6 +1,7 @@
 package com.example.website.service.User;
 
 import com.example.website.dao.User.UserRepository;
+import com.example.website.entity.User.Orders;
 import com.example.website.entity.User.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,13 @@ public class UserServiceImpl implements UserService {
         userBalanceService.createBalance(user.getId());
         // Логирование для отладки
         log.debug("Начальный баланс создан для пользователя с ID: {}", user.getId());
+    }
+
+    @Override
+    @Transactional
+    public void saveOrders(Orders orders) {
+        log.debug("Сохранение заказа в БД: {}", orders);
+        userRepository.saveOrders(orders);
     }
 
 
@@ -74,6 +82,12 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         log.debug("Обновление пользователя: {}", user);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<Orders> findAllOrders(UUID userId) {
+        log.debug("Поиск всех заказов пользователя в базе данных c ID: {}", userId);
+        return userRepository.findAllOrders(userId);
     }
 }
 

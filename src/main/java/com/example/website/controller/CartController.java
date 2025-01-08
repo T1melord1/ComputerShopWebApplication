@@ -1,12 +1,12 @@
 package com.example.website.controller;
 
+import com.example.website.entity.User.Orders;
 import com.example.website.entity.User.User;
 import com.example.website.entity.User.UserBalance;
 import com.example.website.entity.Videocard.Videocard;
 import com.example.website.service.Cart.CartService;
 import com.example.website.service.User.UserBalanceService;
 import com.example.website.service.User.UserService;
-import com.example.website.service.Videocard.VideocardService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,7 +37,6 @@ public class CartController {
     private final CartService cartService;
     private final UserService userService;
     private final UserBalanceService userBalanceService;
-    private final VideocardService videocardService;
 
     @GetMapping("")
     public String showCart(Model model, @AuthenticationPrincipal UserDetails userDetails) {
@@ -71,51 +71,55 @@ public class CartController {
     @PostMapping("/order")
     @Transactional
     public String order(@AuthenticationPrincipal UserDetails userDetails, RedirectAttributes redirectAttributes) {
-        // Логирование username
         log.debug("Обработка заказа для пользователя: {}", userDetails.getUsername());
 
-        // Находим пользователя по username
-        Optional<UserBalance> balanceOptional = userBalanceService.findUserBalanceByUsername(userDetails.getUsername());
+        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+        Optional<UserBalance> balanceOptional = userBalanceService.findUserByUserID(user.getId());
 
         UserBalance userBalance = balanceOptional.orElseThrow(() -> new UsernameNotFoundException("Баланс пользователя не найден"));
-
-        // Логирование текущего баланса
         log.debug("Текущий баланс для пользователя {}: {}", userDetails.getUsername(), userBalance.getBalance());
 
-        // Получаем видеокарты из корзины и рассчитываем общую стоимость
-        List<Videocard> videocards = cartService.getVideocardsInCart();
-        BigDecimal totalPrice = BigDecimal.valueOf(videocards.stream().mapToDouble(Videocard::getPrice).sum());
-
-        // Логирование общей стоимости
-        log.debug("Общая стоимость заказа: {}", totalPrice);
-
-        // Проверяем, достаточно ли средств на балансе
-        if (userBalance.getBalance().compareTo(totalPrice) < 0) {
-            log.debug("Недостаточно средств на балансе: {} < {}", userBalance.getBalance(), totalPrice);
-            String errorMessage = "Недостаточно средств на балансе";
-            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
+        List<Videocard> videocardsList = cartService.getVideocardsInCart();
+        if (videocardsList.isEmpty()) {
+            log.debug("Корзина пуста для пользователя {}", userDetails.getUsername());
+            redirectAttributes.addFlashAttribute("errorMessage", "Корзина пуста");
             return "redirect:/cart";
         }
 
-        // Вычитаем стоимость товаров в корзине из баланса пользователя
+        BigDecimal totalPrice = BigDecimal.valueOf(videocardsList.stream().mapToDouble(Videocard::getPrice).sum());
+        log.debug("Общая стоимость заказа: {}", totalPrice);
+
+        if (userBalance.getBalance().compareTo(totalPrice) < 0) {
+            log.debug("Недостаточно средств на балансе: {} < {}", userBalance.getBalance(), totalPrice);
+            redirectAttributes.addFlashAttribute("errorMessage", "Недостаточно средств на балансе");
+            return "redirect:/cart";
+        }
+
         BigDecimal newBalance = userBalance.getBalance().subtract(totalPrice);
-
-        // Логирование нового баланса
         log.debug("Новый баланс после заказа для пользователя {}: {}", userDetails.getUsername(), newBalance);
-
         userBalanceService.updateBalance(newBalance, userBalance.getUserId());
 
-        // Удаляем видеокарты из базы данных
-        List<Integer> videoCardIds = videocards.stream()
-                .map(Videocard::getId)
-                .collect(Collectors.toList());
-        videoCardIds.forEach(videocardService::delete);
+        // Объединение названий видеокарт в одну строку с жирным выделением цены
+        String videocards = videocardsList.stream()
+                .map(vc -> vc.getManufacturer() + " " + vc.getGraphicProcessor() + " <strong>" + vc.getPrice() + "</strong>" + " BYN")
+                .collect(Collectors.joining(", "));
 
-        // Очищаем корзину
+        Orders orders = new Orders();
+        orders.setOrderDate(LocalDateTime.now());
+        orders.setVideocards(videocards); // Сохранение объединенных названий видеокарт с жирной ценой
+        orders.setTotalPrice(totalPrice);
+        orders.setUser(user);
+
+        userService.saveOrders(orders); // Сохраняем заказ в базе данных
+
         cartService.clearCart();
 
-        String successMessage = "Заказ успешно оформлен!";
-        redirectAttributes.addFlashAttribute("successMessage", successMessage);
+        log.debug("Заказ успешно оформлен для пользователя {}", userDetails.getUsername());
+        redirectAttributes.addFlashAttribute("successMessage", "Заказ успешно оформлен!");
         return "redirect:/cart";
     }
+
+
+
 }
