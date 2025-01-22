@@ -91,7 +91,7 @@
         <tr>
             <td>${number.index + 1}</td>
             <td class="order-date">${order.orderDate}</td>
-            <td><b>${order.totalPrice} BYN</b></td>
+            <td><b><span style="color: green;">${order.totalPrice} BYN</span></b></td>
             <td class="vertical-line">${order.videocards}</td>
         </tr>
         <c:set var="totalPrice" value="${totalPrice + order.totalPrice}"/>

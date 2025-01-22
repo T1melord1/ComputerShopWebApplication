@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "user_balance")
 public class UserBalance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,10 +29,10 @@ public class UserBalance {
     @Column(nullable = false, length = 3)
     private String currency; // char(3)
 
-    @Column(updatable = false, name = "createdDate")
+    @Column(updatable = false, name = "created_date")
     private LocalDateTime createdDate;
 
-    @Column(name = "updatedDate")
+    @Column(name = "updated_date")
     private LocalDateTime updatedDate;
 
     @PrePersist

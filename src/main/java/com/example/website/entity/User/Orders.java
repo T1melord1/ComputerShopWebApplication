@@ -1,6 +1,5 @@
 package com.example.website.entity.User;
 
-import com.example.website.entity.Videocard.Videocard;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,14 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "userOrders")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "user_orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
