@@ -2,56 +2,53 @@ package com.example.website.dao.Videocard;
 
 import com.example.website.entity.Videocard.Videocard;
 import com.example.website.entity.Videocard.VideocardType;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
-import jakarta.persistence.Query;
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class VideocardRepositoryImpl implements VideocardRepository {
 
-    private final SessionFactory sessionFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<Videocard> findAll() {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Videocard", Videocard.class).getResultList();
+        TypedQuery<Videocard> query = entityManager.createQuery("from Videocard", Videocard.class);
+        return query.getResultList();
     }
 
     @Override
     public Videocard save(Videocard videocard) {
-        Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(videocard);
+        if (videocard.getId() == null) {
+            entityManager.persist(videocard); // для новых сущностей
+        } else {
+            videocard = entityManager.merge(videocard); // для обновления существующих
+        }
         return videocard;
     }
 
     @Override
     public void delete(Integer id) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("delete from Videocard v where v.id=:videocardId");
-        query.setParameter("videocardId", id);
-        query.executeUpdate();
+        Videocard videocard = entityManager.find(Videocard.class, id);
+        if (videocard != null) {
+            entityManager.remove(videocard);
+        }
     }
 
     @Override
     public List<Videocard> getVideocardByManufacturer(VideocardType manufacturer) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Videocard v where v.manufacturer=:manufacturer", Videocard.class);
+        TypedQuery<Videocard> query = entityManager.createQuery(
+                "from Videocard v where v.manufacturer = :manufacturer", Videocard.class);
         query.setParameter("manufacturer", manufacturer);
-        List<Videocard> videocards = query.getResultList();
-        return videocards;
+        return query.getResultList();
     }
 
     @Override
     public Videocard findById(Integer id) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Videocard v where v.id=:videocardId");
-        query.setParameter("videocardId", id);
-        return (Videocard) query.getSingleResult();
+        return entityManager.find(Videocard.class, id);
     }
-
 }

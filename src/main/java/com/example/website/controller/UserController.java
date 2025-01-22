@@ -1,6 +1,5 @@
 package com.example.website.controller;
 
-import com.example.website.entity.User.Orders;
 import com.example.website.entity.User.User;
 import com.example.website.entity.User.UserBalance;
 import com.example.website.service.Email.EmailService;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -30,9 +30,9 @@ import java.util.UUID;
 @EnableJpaAuditing
 public class UserController {
     private final UserService userService;
-    private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
     private final UserBalanceService userBalanceService;
+    private final EmailService emailService;
 
     @GetMapping("/register")
     public String showRegistrationForm(HttpServletRequest request) {
@@ -40,6 +40,11 @@ public class UserController {
             return "redirect:/videocards";
         }
         return "userJSP/register";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(User user, RedirectAttributes redirectAttributes) {
+        return userService.registerUser(user, redirectAttributes);
     }
 
     @GetMapping("/balance/replenish")
@@ -52,19 +57,7 @@ public class UserController {
 
     @PostMapping("/balance/replenish")
     public String balanceReplenish(@RequestParam("amount") BigDecimal amount, @AuthenticationPrincipal UserDetails userDetails, RedirectAttributes redirectAttributes) {
-        // Находим текущий баланс пользователя
-        Optional<UserBalance> balanceOptional = userBalanceService.findUserBalanceByUsername(userDetails.getUsername());
-        UserBalance existingBalance = balanceOptional.orElseThrow(() -> new RuntimeException("Баланс пользователя не найден"));
-
-        // Обновляем баланс
-        log.debug("Пополнение баланса пользователя на: {}", amount);
-        BigDecimal newBalance = existingBalance.getBalance().add(amount);
-        existingBalance.setBalance(newBalance);
-        userBalanceService.updateBalance(existingBalance.getBalance(), existingBalance.getUserId());
-
-
-        // Добавление сообщения об успешном пополнении
-        redirectAttributes.addFlashAttribute("successMessage", "Баланс успешно пополнен на " + amount + " BYN.");
+        userService.balanceReplenish(amount, userDetails, redirectAttributes);
         return "redirect:/balance/replenish";
     }
 
@@ -77,17 +70,6 @@ public class UserController {
         return "userJSP/login";
     }
 
-    @GetMapping("/user/orders")
-    public String showOrders(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
-        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
-
-        List<Orders> orders = userService.findAllOrders(user.getId());
-        model.addAttribute("orders", orders);
-        return "videocardJSP/User/orders";
-    }
-
-
     @GetMapping("/users")
     public String showUsers(Model model) {
         List<User> users = userService.findAllUsers();
@@ -97,61 +79,15 @@ public class UserController {
         return "videocardJSP/Admin/User/user";
     }
 
-    @PostMapping("/register")
-    public String registerUser(User user, RedirectAttributes redirectAttributes) {
-        Optional<User> existingUserEmail = userService.findByEmail(user.getEmail());
-        Optional<User> existingUserUsername = userService.findUserByUsername(user.getUsername());
-        if (existingUserEmail.isPresent()) {
-            redirectAttributes.addFlashAttribute("message", "Пользователь с таким почтовым адресом уже существует");
-            return "redirect:/register";
-        } else if (existingUserUsername.isPresent()) {
-            redirectAttributes.addFlashAttribute("message", "Пользователь с таким именем уже существует");
-            return "redirect:/register";
-        } else {
-            userService.registerUser(user);
-            emailService.sendEmail(user.getEmail(), "Подтверждение регистрации",
-                    "Спасибо за регистрацию. Пожалуйста, подтвердите ваш email перейдя по адресу http://localhost:8080/email/confirm?token=" + user.getConfirmationToken());
-            redirectAttributes.addFlashAttribute("successMessage", "Регистрация прошла успешно! Проверьте вашу почту для подтверждения.");
-            return "redirect:/login";
-        }
-    }
-
 
     @GetMapping("/email/confirm")
     public String confirmEmail(@RequestParam("token") String token, RedirectAttributes redirectAttributes) {
-        Optional<User> userOpt = userService.findByConfirmationToken(token);
-
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
-            if (user.getConfirmationToken() == null) {  // Проверка на уже подтверждённого пользователя
-                redirectAttributes.addFlashAttribute("infoMessage", "Email уже был подтверждён.");
-                return "redirect:/login";
-            }
-            user.setConfirmationToken(null);  // Сброс токена после подтверждения
-            userService.updateUser(user);
-            log.debug("Пользователь {} подтвердил email", user.getUsername());
-            redirectAttributes.addFlashAttribute("successMessage", "Email подтверждён. Вы можете войти.");
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Неверный токен подтверждения.");
-        }
-        return "redirect:/login";
+        return userService.confirmEmail(token, redirectAttributes);
     }
 
     @GetMapping("/user/profile")
     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
-        Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
-        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
-
-        Optional<UserBalance> balanceOptional = userBalanceService.findUserByUserID(user.getId());
-        if (balanceOptional.isPresent()) {
-            log.debug("Баланс пользователя найден: {}", balanceOptional.get());
-        } else {
-            log.debug("Баланс пользователя не найден для userId: {}", user.getId());
-        }
-        UserBalance userBalance = balanceOptional.orElse(new UserBalance());
-
-        model.addAttribute("userProfile", user);
-        model.addAttribute("userBalance", userBalance);
+        userService.showUserProfile(model, userDetails);
         return "videocardJSP/User/userProfile";
     }
 
@@ -206,15 +142,7 @@ public class UserController {
 
     @GetMapping("/reset-password")
     public String showResetPasswordForm(@RequestParam("token") String token, Model model, RedirectAttributes redirectAttributes) {
-        Optional<User> userOpt = userService.findByResetToken(token);
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
-            model.addAttribute("user", user);
-            return "videocardJSP/User/resetPassword"; // Путь к вашей форме изменения пароля
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Неверный или истекший токен.");
-            return "redirect:/login";
-        }
+        return userService.showResetPasswordForm(token, model, redirectAttributes);
     }
 
     @PostMapping("/reset-password")
@@ -222,25 +150,8 @@ public class UserController {
                                 @RequestParam("newPassword") String newPassword,
                                 @RequestParam("confirmPassword") String confirmPassword,
                                 RedirectAttributes redirectAttributes) {
-        if (!newPassword.equals(confirmPassword)) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Пароли не совпадают.");
-            return "redirect:/reset-password?token=" + user.getResetToken();
-        }
-
-        Optional<User> userOpt = userService.findByResetToken(user.getResetToken());
-        if (userOpt.isPresent()) {
-            User existingUser = userOpt.get();
-            existingUser.setPassword(passwordEncoder.encode(newPassword));
-            existingUser.setResetToken(null); // Очистка токена после успешного сброса пароля
-            userService.updateUser(existingUser);
-            redirectAttributes.addFlashAttribute("successMessage", "Пароль успешно изменен.");
-            return "redirect:/login";
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Неверный или истекший токен.");
-            return "redirect:/login";
-        }
+        return userService.userPasswordReset(user, newPassword, confirmPassword, redirectAttributes);
     }
-
 }
 
 

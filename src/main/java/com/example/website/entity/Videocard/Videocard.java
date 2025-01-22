@@ -22,10 +22,10 @@ public class Videocard {
     @Column(name = "id", nullable = false)
     private Integer id;
     @CreatedDate
-    @Column(updatable = false, name = "createdDate")
+    @Column(updatable = false, name = "created_date")
     private LocalDateTime createdDate;
     @LastModifiedDate
-    @Column(name = "updatedDate")
+    @Column(name = "updated_date")
     private LocalDateTime updatedDate;
     @Column(columnDefinition = "enum('NVIDIA', 'AMD', 'Intel','Apple')")
     @Enumerated(EnumType.STRING)

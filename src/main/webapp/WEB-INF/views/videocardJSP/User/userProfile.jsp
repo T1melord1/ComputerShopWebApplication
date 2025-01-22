@@ -68,7 +68,7 @@
 <table>
     <tr>
         <td>Username:<b> ${userProfile.username} </b>
-            <form action="/user/orders" method="get" style="display: inline;">
+            <form action="${pageContext.request.contextPath}/cart/user/orders" method="get" style="display: inline;">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <button type="submit" class="fonts">Мои покупки</button>
             </form>
