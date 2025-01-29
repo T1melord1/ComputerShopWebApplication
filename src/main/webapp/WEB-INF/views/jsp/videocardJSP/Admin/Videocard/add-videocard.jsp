@@ -5,16 +5,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Добавить видеокарту</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <style>
-        body {
-            background-color: ivory;
-            font-family: "Comic Sans MS", cursive;
-        }
-
-        .fonts {
-            font-family: "Comic Sans MS", cursive;
-        }
-
         @media only screen and (max-width: 600px) {
             body {
                 font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */

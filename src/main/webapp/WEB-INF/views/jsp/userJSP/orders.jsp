@@ -1,31 +1,23 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Смена пароля</title>
+    <title>Список заказов</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
     <style>
-        body {
-            background-color: ivory;
-            font-family: "Comic Sans MS", cursive;
+
+        .vertical-line {
+            border-left: 2px solid black;
+            height: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
         }
 
-        .fonts {
+        .button-right {
             font-family: "Comic Sans MS", cursive;
-        }
-
-        .fonts-right {
             float: right;
-            font-family: "Comic Sans MS", cursive;
-        }
-
-        .form-group input {
-            width: 300px; /* Ширина для поля ввода */
-        }
-
-        .submit-button {
-            width: auto; /* Ширина кнопки будет зависеть от содержания */
         }
 
         @media only screen and (max-width: 600px) {
@@ -69,24 +61,41 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.order-date').forEach(td => {
+                if (td.innerText.includes('T')) {
+                    td.innerText = td.innerText.replace('T', ' ');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-<form action="/user/login" method="get">
-    <button type="submit" class="fonts-right">Вернуться на главную</button>
+
+<form action="/user/profile" method="get">
+    <button class="button-right" type="submit">Вернуться в профиль</button>
 </form>
-<p>Введите свой адрес электронной почты</p>
-<form action="/password/reset" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <div class="form-group">
-        <table>
-            <tr>
-                <td><input type="email" id="email" name="email" placeholder="Email" required></td>
-            </tr>
-            <tr>
-                <td><input type="submit" class="fonts submit-button" value="Подтвердить адрес почты"/></td>
-            </tr>
-        </table>
-    </div>
-</form>
+<h2>Список заказов</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Order Date</th>
+        <th>Total Price</th>
+        <th>Videocard Name</th>
+    </tr>
+    <c:set var="totalPrice" value="0"/>
+    <c:forEach var="order" items="${orders}" varStatus="number">
+        <tr>
+            <td>${number.index + 1}</td>
+            <td class="order-date">${order.orderDate}</td>
+            <td><b><span style="color: green;">${order.totalPrice} BYN</span></b></td>
+            <td class="vertical-line">${order.videocards}</td>
+        </tr>
+        <c:set var="totalPrice" value="${totalPrice + order.totalPrice}"/>
+
+    </c:forEach>
+</table>
+<b>Общая стоимость всех заказов: ${totalPrice}</b>
 </body>
 </html>

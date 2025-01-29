@@ -1,19 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <TITLE>Профиль</TITLE>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <style>
-        body {
-            background-color: ivory;
-            font-family: "Comic Sans MS", cursive;
-        }
-
-        .fonts {
-            font-family: "Comic Sans MS", cursive;
-        }
-
         .button {
             float: right;
             font-family: "Comic Sans MS", cursive;
@@ -65,6 +58,9 @@
 <form action="/videocards" method="get" class="button">
     <button type="submit" class="fonts">Вернуться на главную страницу</button>
 </form>
+<c:if test="${not empty correctChange}">
+    <div class="alert" style="color: green">${correctChange}</div>
+</c:if>
 <table>
     <tr>
         <td>Username:<b> ${userProfile.username} </b>

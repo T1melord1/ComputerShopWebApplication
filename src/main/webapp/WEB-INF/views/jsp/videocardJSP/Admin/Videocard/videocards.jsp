@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Videocard List</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <style>
         .nav-links {
             position: relative;
@@ -19,17 +20,6 @@
 
         .videoMemory, .graphicProcessor, .manufacturer {
             padding-left: 10px;
-        }
-
-        body {
-            background-color: ivory;
-            font-family: "Comic Sans MS", cursive;
-            margin: 0;
-            padding: 0;
-        }
-
-        .fonts {
-            font-family: "Comic Sans MS", cursive;
         }
 
         .button-container {

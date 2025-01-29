@@ -5,31 +5,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
     <title>Videocard List</title>
     <style>
-        .nav-links {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .logout-button {
-            font-family: "Comic Sans MS", cursive;
-        }
-
-        .videoMemory, .graphicProcessor, .manufacturer, .number, .price, .color {
-            padding-left: 10px;
-        }
-
-        body {
-            background-color: ivory;
-            font-family: "Comic Sans MS", cursive;
-            margin: 0;
-            padding: 0;
-        }
-
-        .fonts {
-            font-family: "Comic Sans MS", cursive;
-        }
+        /* Общие стили */
 
         .cart-icon {
             float: right;
@@ -44,6 +24,41 @@
             color: #0056b3;
         }
 
+        .nav-links {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .logout-button {
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        /* Таблица */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
         .button-container {
             display: flex;
             justify-content: center;
@@ -56,6 +71,7 @@
             font-family: "Comic Sans MS", cursive;
         }
 
+        /* Адаптивный дизайн */
         @media only screen and (max-width: 600px) {
             body {
                 font-family: Palatino, sans-serif; /* Шрифт Palatino для мобильных устройств */
@@ -154,6 +170,7 @@
         <th>Video Memory</th>
         <th>Color</th>
         <th>Price</th>
+        <th>Actions</th>
     </tr>
     <c:forEach var="videocard" items="${videocards}" varStatus="status">
         <tr>
