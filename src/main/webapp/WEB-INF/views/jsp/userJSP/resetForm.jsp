@@ -1,19 +1,24 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Доступ запрещен</title>
+    <title>Смена пароля</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
     <style>
-        body {
+        .fonts-right {
+            float: right;
             font-family: "Comic Sans MS", cursive;
-            background-color: ivory;
-            text-align: center;
-            margin-top: 50px;
         }
-        h1 {
-            color: red;
+
+        .form-group input {
+            width: 300px; /* Ширина для поля ввода */
+        }
+
+        .submit-button {
+            width: auto; /* Ширина кнопки будет зависеть от содержания */
         }
 
         @media only screen and (max-width: 600px) {
@@ -59,8 +64,22 @@
     </style>
 </head>
 <body>
-<h1>Доступ запрещен</h1>
-<p>У вас нет прав доступа к этой странице.</p>
-<a href="<c:url value='/videocards' />">Вернуться на главную</a>
+<form action="/user/login" method="get">
+    <button type="submit" class="fonts-right">Вернуться на главную</button>
+</form>
+<p>Введите свой адрес электронной почты:</p>
+<form action="/password/reset" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <div class="form-group">
+        <table>
+            <tr>
+                <td><input type="email" id="email" name="email" placeholder="Email" class="fonts" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" class="fonts submit-button" value="Подтвердить адрес почты"/></td>
+            </tr>
+        </table>
+    </div>
+</form>
 </body>
 </html>

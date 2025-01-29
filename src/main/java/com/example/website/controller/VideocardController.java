@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/videocards")
@@ -18,13 +20,13 @@ public class VideocardController {
     private final VideocardService videocardService;
 
     @GetMapping("/admin")
-    public String getAllVideocards(Model model) {
+    public String getAllVideocardsAdmin(Model model) {
         List<Videocard> videocards = videocardService.getVideocard();
         model.addAttribute("videocards", videocards);
         return "videocardJSP/Admin/Videocard/videocards";
     }
     @GetMapping("")
-    public String getAllVideocardsAdmin(Model model) {
+    public String getAllVideocards(Model model) {
         List<Videocard> videocards = videocardService.getVideocard();
         model.addAttribute("videocards", videocards);
         return "videocardJSP/User/videocardsUser";

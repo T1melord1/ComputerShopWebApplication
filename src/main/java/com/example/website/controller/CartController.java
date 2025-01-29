@@ -39,7 +39,7 @@ public class CartController {
         UserBalance userBalance = balanceOptional.orElse(new UserBalance());
         model.addAttribute("cart", cartService.getVideocardsInCart());
         model.addAttribute("userBalance", userBalance);
-        return "videocardJSP/User/cart";
+        return "userJSP/cart";
     }
 
     @PostMapping("/add/{id}")
@@ -70,7 +70,7 @@ public class CartController {
     @GetMapping("/user/orders")
     public String showOrders(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         cartService.showOrders(userDetails, model);
-        return "videocardJSP/User/orders";
+        return "userJSP/orders";
     }
 
 }

@@ -1,31 +1,15 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Регистрация</title>
+    <title>Пополнение баланса</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
     <style>
-        body {
-            background-color: ivory;
+        .button-right{
             font-family: "Comic Sans MS", cursive;
-        }
-
-        .fonts {
-            font-family: "Comic Sans MS", cursive;
-        }
-
-        .fonts-right {
             float: right;
-            font-family: "Comic Sans MS", cursive;
-        }
-
-        .alert {
-            color: red;
-            margin-bottom: 20px;
-        }
-
-        table {
-            margin-top: 20px;
         }
 
         @media only screen and (max-width: 600px) {
@@ -68,37 +52,27 @@
                 font-family: Palatino, sans-serif; /* Шрифт Palatino для меток на мобильных устройствах */
             }
         }
-
     </style>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/login" method="get">
-    <button type="submit" class="fonts-right">Вернуться на главную</button>
+
+<form action="/user/profile" method="get">
+    <button class="button-right" type="submit">Вернуться в профиль</button>
 </form>
-<h2>Регистрация</h2>
-<c:if test="${not empty message}">
-    <div class="alert">${message}</div>
-</c:if>
-<form action="${pageContext.request.contextPath}/register" method="post">
+<h2>Пополнение баланса</h2>
+<td>Баланс: <b> ${userBalance.balance} ${userBalance.currency}
+<c:if test="${not empty successMessage}"> <p style="color: green;" class="fonts">${successMessage}</p></c:if>
+<form action="/balance/replenish" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <table>
         <tr>
-            <td><label for="username">Имя пользователя:</label></td>
-            <td><input type="text" id="username" name="username" class="fonts" placeholder="Username" required></td>
+            <td>Сумма пополнения:</td>
+            <td><input type="text" name="amount" class="fonts" /></td>
         </tr>
         <tr>
-            <td><label for="email">Почта:</label></td>
-            <td><input type="email" id="email" name="email" class="fonts" placeholder="Email" required></td>
-        </tr>
-        <tr>
-            <td><label for="password">Пароль:</label></td>
-            <td><input type="password" id="password" name="password" class="fonts" placeholder="Password" required></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" class="fonts" value="Регистрация"/></td>
+            <td colspan="2"><input type="submit" class="fonts" value="Пополнить"/></td>
         </tr>
     </table>
 </form>
-<p>Уже есть аккаунт? <a class="fonts" href="${pageContext.request.contextPath}/login">Логин</a></p>
 </body>
 </html>

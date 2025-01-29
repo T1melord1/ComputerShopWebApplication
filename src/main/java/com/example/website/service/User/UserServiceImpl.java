@@ -163,9 +163,9 @@ public class UserServiceImpl implements UserService {
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             model.addAttribute("user", user);
-            return "videocardJSP/User/resetPassword"; // Путь к вашей форме изменения пароля
+            return "userJSP/resetPassword"; // Путь к вашей форме изменения пароля
         } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Неверный или истекший токен.");
+            redirectAttributes.addFlashAttribute("errorChangingPassword", "Неверный или истекший токен.");
             return "redirect:/login";
         }
     }
@@ -174,7 +174,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String userPasswordReset(User user, String newPassword, String confirmPassword, RedirectAttributes redirectAttributes) {
         if (!newPassword.equals(confirmPassword)) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Пароли не совпадают.");
+            redirectAttributes.addFlashAttribute("errorMessage", "Пароли не совпадают!");
             return "redirect:/reset-password?token=" + user.getResetToken();
         }
         Optional<User> userOpt = findByResetToken(user.getResetToken());
@@ -183,11 +183,11 @@ public class UserServiceImpl implements UserService {
             existingUser.setPassword(passwordEncoder.encode(newPassword));
             existingUser.setResetToken(null); // Очистка токена после успешного сброса пароля
             updateUser(existingUser);
-            redirectAttributes.addFlashAttribute("successMessage", "Пароль успешно изменен.");
+            redirectAttributes.addFlashAttribute("correctChangingPassword", "Пароль успешно изменен.");
         } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Неверный или истекший токен.");
+            redirectAttributes.addFlashAttribute("errorChangingPassword", "Неверный или истекший токен.");
         }
-        return "userJSP/login";
+        return "redirect:/login";
 
     }
 }

@@ -52,7 +52,7 @@ public class UserController {
         Optional<UserBalance> balanceOptional = userBalanceService.findUserBalanceByUsername(userDetails.getUsername());
         UserBalance existingBalance = balanceOptional.orElseThrow(() -> new RuntimeException("Баланс пользователя не найден"));
         model.addAttribute("userBalance", existingBalance);
-        return "videocardJSP/User/balance";
+        return "userJSP/balance";
     }
 
     @PostMapping("/balance/replenish")
@@ -88,7 +88,7 @@ public class UserController {
     @GetMapping("/user/profile")
     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         userService.showUserProfile(model, userDetails);
-        return "videocardJSP/User/userProfile";
+        return "userJSP/userProfile";
     }
 
 
@@ -97,23 +97,25 @@ public class UserController {
         Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
         User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
         model.addAttribute("userProfile", user);
-        return "videocardJSP/User/changePassword";
+        return "userJSP/changePassword";
     }
 
     @PostMapping("/password/change/{username}")
     public String changePasswordConfirmation(@RequestParam("newPassword") String newPassword,
                                              @RequestParam("oldPassword") String oldPassword,
                                              @AuthenticationPrincipal UserDetails userDetails,
-                                             Model model, @PathVariable("username") String username) {
+                                             Model model, @PathVariable("username") String username,
+                                             RedirectAttributes redirectAttributes) {
         Optional<User> userOptional = userService.findUserByUsername(userDetails.getUsername());
         User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
         if (passwordEncoder.matches(oldPassword, user.getPassword())) {
             user.setPassword(passwordEncoder.encode(newPassword));
             userService.updateUser(user);
+            redirectAttributes.addFlashAttribute("correctChange", "Пароль успешно изменён");
             return "redirect:/user/profile";
         } else {
             model.addAttribute("errorMessage", "Старый пароль неверен");
-            return "videocardJSP/User/changePassword";
+            return "userJSP/changePassword";
         }
     }
 
@@ -137,7 +139,7 @@ public class UserController {
 
     @GetMapping("/password/reset")
     public String showResetForm() {
-        return "videocardJSP/User/resetForm";
+        return "userJSP/resetForm";
     }
 
     @GetMapping("/reset-password")

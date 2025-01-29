@@ -1,25 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Список заказов</title>
+    <title>Доступ запрещен</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
     <style>
         body {
-            background-color: ivory;
-            font-family: "Comic Sans MS", cursive;
+            text-align: center;
+            margin-top: 50px;
         }
-
-        .vertical-line {
-            border-left: 2px solid black;
-            height: 100%;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .button-right {
-            font-family: "Comic Sans MS", cursive;
-            float: right;
+        h1 {
+            color: red;
         }
 
         @media only screen and (max-width: 600px) {
@@ -63,41 +57,10 @@
             }
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll('.order-date').forEach(td => {
-                if (td.innerText.includes('T')) {
-                    td.innerText = td.innerText.replace('T', ' ');
-                }
-            });
-        });
-    </script>
 </head>
 <body>
-
-<form action="/user/profile" method="get">
-    <button class="button-right" type="submit">Вернуться в профиль</button>
-</form>
-<h2>Список заказов</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Order Date</th>
-        <th>Total Price</th>
-        <th>Videocard Name</th>
-    </tr>
-    <c:set var="totalPrice" value="0"/>
-    <c:forEach var="order" items="${orders}" varStatus="number">
-        <tr>
-            <td>${number.index + 1}</td>
-            <td class="order-date">${order.orderDate}</td>
-            <td><b><span style="color: green;">${order.totalPrice} BYN</span></b></td>
-            <td class="vertical-line">${order.videocards}</td>
-        </tr>
-        <c:set var="totalPrice" value="${totalPrice + order.totalPrice}"/>
-
-    </c:forEach>
-</table>
-<b>Общая стоимость всех заказов: ${totalPrice}</b>
+<h1>Доступ запрещен</h1>
+<p>У вас нет прав доступа к этой странице.</p>
+<a href="<c:url value='/videocards' />">Вернуться на главную</a>
 </body>
 </html>
