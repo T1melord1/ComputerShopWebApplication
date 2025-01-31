@@ -1,50 +1,49 @@
 # ComputerShopWebApplication
 
 ## Overview
-ComputerShopWebApplication is a web-based application designed for managing computer hardware components. The application provides CRUD (Create, Read, Update, Delete) functionality and user authentication, built using Spring Boot, Spring MVC, JSP, Spring Security, Spring Data JPA (Hibernate ORM), MySQL, Lombok, JDBC (Spring Session JDBC), Maven, Git.
+ComputerShopWebApplication is a web-based application designed for managing computer hardware components. It provides CRUD (Create, Read, Update, Delete) functionality and user authentication. The application is built using **Spring Boot, Spring MVC, JSP, Spring Security, Spring Data JPA (Hibernate ORM), MySQL, Lombok, JDBC (Spring Session JDBC), Maven, Git**.
 
 ## Features
-- Session-based authentication and authorization with **Spring Security & Spring Session JDBC**
-- CRUD operations for managing computer components (**Spring MVC + JPA**)
-- MySQL database integration (**Spring Data JPA**)
-- Email confirmation for user registration (**Spring Boot Mail**)
-- Role-based access control (**Admin, User**)
-- **Spring MVC with JSP-based UI**
-- **Session management stored in the database (Spring Session JDBC)**
-- Logging and monitoring with **Spring Boot Actuator**
+- **Session-based authentication and authorization** with Spring Security & Spring Session JDBC  
+- **CRUD operations** for managing computer components (Spring MVC + JPA)  
+- **MySQL database integration** (Spring Data JPA)  
+- **Email confirmation** for user registration (Spring Boot Email)  
+- **Role-based access control** (Admin, User)  
+- **JSP-based UI** with Spring MVC  
+- **Session management stored in the database** (Spring Session JDBC)  
+- **Logging and monitoring** with Spring Boot Actuator  
 
 ## Technologies Used
 ### Backend:
-- **Java** (Spring Boot, Spring Security, Spring Data JPA, Spring Session JDBC)
-- **Authentication:** Spring Security (session-based), BCrypt password hashing
-- **Session Management:** Spring Session JDBC (MySQL storage)
-- **Email Services:** Spring Boot Mail
-- **Logging & Monitoring:** Spring Boot Actuator
+- **Java (Spring Boot, Spring Security, Spring Data JPA, Spring Session JDBC)**
+- **Authentication:** Spring Security (session-based), BCrypt password hashing  
+- **Session Management:** Spring Session JDBC (MySQL storage)  
+- **Email Services:** Spring Boot Email  
+- **Logging & Monitoring:** Spring Boot Actuator  
 
 ### Frontend:
-- **JSP, JSTL, CSS**
+- **JSP, JSTL, CSS**  
 
 ### Database:
-- **MySQL** (Spring Data JPA, Hibernate ORM)
+- **MySQL (Spring Data JPA, Hibernate ORM)**  
 
 ### Other:
-- **Lombok** (to reduce boilerplate code)
-- **Server:** Spring Boot embedded server (Tomcat)
-- **Build Tool:** Maven
-- **Version Control:** Git (GitHub)
-
+- **Lombok** (to reduce boilerplate code)  
+- **Server:** Spring Boot embedded server (Tomcat)  
+- **Build Tool:** Maven  
+- **Version Control:** Git (GitHub)  
 
 ## Installation
 ### Prerequisites
-- Java 17 or later
-- Maven
-- MySQL
-- Apache Tomcat (if deploying manually)
+- **Java 17 or later**  
+- **Maven**  
+- **MySQL (ensure it's running)**  
+- **Apache Tomcat** *(only if deploying as a WAR instead of running Spring Boot standalone)*  
 
 ### Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repository/ComputerShopWebApplication.git
+   git clone https://github.com/T1melord1/ComputerShopWebApplication.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -62,6 +61,7 @@ ComputerShopWebApplication is a web-based application designed for managing comp
    mvn clean install
    ```
 5. Run the application:
+   Ensure MySQL is running before executing the command.
    ```sh
    mvn spring-boot:run
    ```
