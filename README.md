@@ -4,24 +4,35 @@
 ComputerShopWebApplication is a web-based application designed for managing computer hardware components. The application provides CRUD (Create, Read, Update, Delete) functionality and user authentication, built using Spring Boot, Spring MVC, JSP, Spring Security, Spring Data JPA (Hibernate ORM), MySQL, Lombok, JDBC (Spring Session JDBC), Maven, Git.
 
 ## Features
-- Session-based authentication and authorization (Spring Security)
-- CRUD operations for managing computer components (Spring MVC + JPA)
--  MySQL database integration (Spring Data JPA)
-- Email confirmation for user registration
-- Role-based access control (Admin, User)
-- Spring MVC with JSP-based UI
-- Session management with Spring Session JDBC
-- Logging and monitoring with Spring Boot Actuator
+- Session-based authentication and authorization with **Spring Security & Spring Session JDBC**
+- CRUD operations for managing computer components (**Spring MVC + JPA**)
+- MySQL database integration (**Spring Data JPA**)
+- Email confirmation for user registration (**Spring Boot Mail**)
+- Role-based access control (**Admin, User**)
+- **Spring MVC with JSP-based UI**
+- **Session management stored in the database (Spring Session JDBC)**
+- Logging and monitoring with **Spring Boot Actuator**
 
 ## Technologies Used
-- **Backend:** Java, Spring Boot, Spring Security, Spring Data JPA
-- **Frontend:** JSP, JSTL, CSS
-- **Database:** MySQL
-- **Authentication:** Spring Security, BCrypt password hashing
-- **Session Management:** Spring Session JDBC
+### Backend:
+- **Java** (Spring Boot, Spring Security, Spring Data JPA, Spring Session JDBC)
+- **Authentication:** Spring Security (session-based), BCrypt password hashing
+- **Session Management:** Spring Session JDBC (MySQL storage)
 - **Email Services:** Spring Boot Mail
-- **Server:** Apache Tomcat(or Spring Boot)
+- **Logging & Monitoring:** Spring Boot Actuator
+
+### Frontend:
+- **JSP, JSTL, CSS**
+
+### Database:
+- **MySQL** (Spring Data JPA, Hibernate ORM)
+
+### Other:
+- **Lombok** (to reduce boilerplate code)
+- **Server:** Spring Boot embedded server (Tomcat)
 - **Build Tool:** Maven
+- **Version Control:** Git (GitHub)
+
 
 ## Installation
 ### Prerequisites
