@@ -1,7 +1,7 @@
 # ComputerShopWebApplication
 
 ## Overview
-ComputerShopWebApplication is a web-based application designed for managing computer hardware components. The application provides CRUD (Create, Read, Update, Delete) functionality and user authentication, built using Spring Core, Spring MVC, JSP, Spring Boot, Spring Data JPA, Spring Security and MySQL.
+ComputerShopWebApplication is a web-based application designed for managing computer hardware components. The application provides CRUD (Create, Read, Update, Delete) functionality and user authentication, built using Spring Boot, Spring MVC, JSP, Spring Security, Spring Data JPA (Hibernate ORM), MySQL, Lombok, JDBC (Spring Session JDBC), Maven, Git.
 
 ## Features
 - Session-based authentication and authorization (Spring Security)
