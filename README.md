@@ -60,8 +60,7 @@ ComputerShopWebApplication is a web-based application designed for managing comp
    ```sh
    mvn clean install
    ```
-5. Run the application:
-   Ensure MySQL is running before executing the command.
+5. Run the application, ensure MySQL is running before executing the command:
    ```sh
    mvn spring-boot:run
    ```
@@ -69,12 +68,12 @@ ComputerShopWebApplication is a web-based application designed for managing comp
 ## Usage
 - Open a web browser and go to `http://localhost:8080/`
 - Register or log in as an admin or user
-- Manage computer components through the admin panel
-- Browse products as a regular user
+- Admins can manage computer components through the admin panel
+- Users can browse products and make purchases
 
 ## Security
 - **User Roles:** Admin, User
-- **Authentication:** Form-based login
+- **Authentication:** Form-based login (Spring Security)
 - **Password Encryption:** BCrypt
 - **Session Management:** JDBC-based sessions
 
